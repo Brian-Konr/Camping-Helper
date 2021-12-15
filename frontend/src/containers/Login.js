@@ -8,6 +8,7 @@ const NormalLoginForm = () => {
 
   return (
     <div className='wrapper'>
+      <h1>登入</h1>
       <Form
         name="normal_login"
         className="login-form"
@@ -43,12 +44,8 @@ const NormalLoginForm = () => {
           />
         </Form.Item>
         <Form.Item>
-          <Form.Item name="remember" valuePropName="checked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
           <a className="login-form-forgot" href="">
-            Forgot password
+            忘記密碼？
           </a>
         </Form.Item>
 
