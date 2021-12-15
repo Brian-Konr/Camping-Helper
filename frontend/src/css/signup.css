@@ -1,0 +1,13 @@
+.wrapper {
+    float: left;
+    align-items:center;
+    justify-content:center;
+    width:600px;
+    height:800px;
+    background-color:#eee;
+}
+
+.signup-form {
+    margin: 0 auto;
+    max-width: 450px;
+}
