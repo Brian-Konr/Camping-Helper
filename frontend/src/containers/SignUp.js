@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Form, Input, Select, Checkbox, Button } from 'antd';
 import '../css/signup.css'
 
-const { Option } = Select;
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -40,8 +39,6 @@ const RegistrationForm = () => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
-
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
 
   return (
       <div className='wrapper'>
@@ -176,7 +173,7 @@ const RegistrationForm = () => {
                 {...tailFormItemLayout}
             >
                 <Checkbox>
-                I have read the <a href="">agreement</a>
+                I have read the <a href="/agreement">agreement</a>
                 </Checkbox>
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>

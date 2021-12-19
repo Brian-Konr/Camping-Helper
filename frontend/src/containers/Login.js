@@ -1,9 +1,25 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import instance from "../api";
 import '../css/login.css'
 const NormalLoginForm = () => {
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
+    let email = "dodofkwork@gmail.com"
+    let password = "atccintern1234";
+    try {
+      let res = await instance.post("/djoser/auth/jwt/create", {
+        email: email,
+        password: password
+      })
+      if(res.data) {
+        localStorage.setItem("token", res.data.access);
+      }
+      let teamsRes = await instance.get("activity/1/teams");
+      console.log(teamsRes.status);
+    } catch(e) {
+      console.log(e);
+    }
   };
 
   return (
@@ -21,7 +37,7 @@ const NormalLoginForm = () => {
           name="username"
           rules={[
             {
-              required: true,
+              // required: true,
               message: 'Please input your Username!',
             },
           ]}
@@ -32,7 +48,7 @@ const NormalLoginForm = () => {
           name="password"
           rules={[
             {
-              required: true,
+              // required: true,
               message: 'Please input your Password!',
             },
           ]}
