@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'camping_helper.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    "default": dj_database_url.parse(dev_config.get("DATABASE_URL"))
 }
 
 AUTH_USER_MODEL = 'user.User'
