@@ -5,20 +5,16 @@ from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-dev_config = {
-    **dotenv_values(".env.prod"),
-    **os.environ,
-}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = dev_config.get("SECRET_KEY", "3%shon=klkpnlfe4k$=r@40==6sn5!zd$2406!fqxc*=^fe5q=")
+SECRET_KEY = os.environ.get("SECRET_KEY", "3%shon=klkpnlfe4k$=r@40==6sn5!zd$2406!fqxc*=^fe5q=")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = int(dev_config.get("DEBUG", "0"))
-ALLOWED_HOSTS = dev_config.get("DJANGO_ALLOWED_HOSTS").split(" ")
+DEBUG = int(os.environ.get("DEBUG", "0"))
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # Application definition
 INTERNAL_APPS = [
@@ -85,7 +81,7 @@ WSGI_APPLICATION = 'camping_helper.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    "default": dj_database_url.parse(dev_config.get("DATABASE_URL"))
+    "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 AUTH_USER_MODEL = 'user.User'
@@ -178,8 +174,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = dev_config.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = dev_config.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
