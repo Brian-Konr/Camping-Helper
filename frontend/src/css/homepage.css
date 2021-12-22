@@ -1,0 +1,39 @@
+  .layout-container {
+    padding: 0px;
+    width: 1080px;
+    margin: 0 auto;
+  }
+  .site-layout-background {
+    background: #fff;
+  }
+  .hotwrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .classtitle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .class-name {
+    margin-left: 4px;
+    margin-bottom: -4px;
+  }
+  .classtitle-element {
+    position: relative;
+    margin-left: auto;
+    margin-right: 0;
+    display: 'flex';
+    align-items: 'center';
+  }
+  .filter {
+    display: flex;
+    align-items: center;
+  }
+  .filterbutton {
+    margin-bottom: 10px;
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+  }

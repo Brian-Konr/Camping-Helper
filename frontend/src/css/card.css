@@ -1,0 +1,28 @@
+.site-card-border-less-wrapper {
+    width: 100%;
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+  
+  .cardwrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0;
+  }
+  .detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+/*.HotCardContainer {
+    display: flex;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    padding: 24px 0 10px;
+    margin: -24px 0 -10px;
+    padding-left: 3vw;
+}*/
