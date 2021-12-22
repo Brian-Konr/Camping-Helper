@@ -1,3 +1,6 @@
+.page {
+    height: 100%;
+}
 .wrapper {
     display: flex;
     flex-direction: row;
@@ -7,8 +10,74 @@
     min-width: 300px;
     position: relative;
 }
-
+.Leftside-signup {
+    flex-basis: 55%;
+    min-height: 80vh;
+    padding: 20px;
+    background-color: #fff;
+    align-self: center; 
+}
+.Rightside-signup {
+    min-height: 100vh;
+    flex-basis: 45%;
+    background-color: #44ACFF;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+.title {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 16px;
+    text-align: center;
+}
+.intro {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 16px;
+    text-align: center;
+}
+.item {
+    font-size: 16px;
+    border-radius: 14px;
+}
 .signup-form {
-    margin: 0 auto;
-    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 550px;
+    max-height: 100px;
+    text-align: center;
+    position: relative;
+}
+.SignUp-form-button {
+    display: inline-flex;
+    text-align: center;
+    position: relative;
+    border-radius: 20px;
+    border-color: #FB8CB3;
+    color: #fff;
+    background-color: #FB8CB3;
+    margin-top: -10px;
+}
+.Login-alter {
+    display: block;
+    text-align: center;
+    position: relative;
+    margin-top: 20px;
+}
+.sign-up-check {
+    margin-top: -10px;
+
+}
+.alter-button {
+    margin-left: 6px;
+    border-color: #FB8CB3;
+    color: #FB8CB3;
+    background-color: #fff;
 }

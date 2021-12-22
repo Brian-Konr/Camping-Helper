@@ -10,7 +10,7 @@
     min-width: 300px;
     position: relative;
 }
-.Leftside {
+.Leftside-login {
     min-height: 100vh;
     flex-basis: 45%;
     background-color: #44ACFF;
@@ -35,7 +35,7 @@
     padding: 16px;
     text-align: center;
 }
-.Rightside {
+.Rightside-login {
     flex-basis: 55%;
     min-height: 50vh;
     padding: 20px;

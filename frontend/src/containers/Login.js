@@ -12,7 +12,7 @@ const NormalLoginForm = () => {
   return (
     <Layout className='page'>
       <Content className='wrapper'>
-        <div className='Leftside'>
+        <div className='Leftside-login'>
           <div className='title'>
             歡迎回來!
           </div>
@@ -20,7 +20,7 @@ const NormalLoginForm = () => {
             介紹
           </div>
         </div>
-        <div className='Rightside'>
+        <div className='Rightside-login'>
           <div className='form-wrapper'>
             <h1>登入</h1>
             <Form
