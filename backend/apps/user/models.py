@@ -43,8 +43,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_host = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
+    first_name = models.CharField(help_text="名字", max_length=50)
+    last_name = models.CharField(help_text="姓氏", max_length=50)
+    birthday = models.DateField()
+    username = models.CharField(help_text="用戶名稱", max_length=50)
+    if_agree = models.BooleanField(default=False, help_text="是否同意服務條款和資料政策")
+
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = [
+        'first_name', 'last_name', 'birthday', 'username', 'if_agree',
+    ]
 
     objects = MyUserManager()
 
