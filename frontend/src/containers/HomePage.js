@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Layout, Pagination, Menu, Breadcrumb, Divider, Button  } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import Hotcard from './HotCard';
-import Appbar from './Appbar';
+import Appbar from '../components/Appbar';
 import Generalcard from './Generalcard';
 import '../css/homepage.css';
 const { Header, Content, Sider } = Layout;
