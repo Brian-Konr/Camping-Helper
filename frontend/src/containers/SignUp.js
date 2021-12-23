@@ -187,4 +187,5 @@ const RegistrationForm = () => {
   );
 };
 
+// haha just for test
 export default RegistrationForm;
