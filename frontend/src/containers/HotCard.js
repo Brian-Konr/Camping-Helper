@@ -1,10 +1,11 @@
 import React from 'react';
+import { useState } from 'react';
 import 'antd/dist/antd.css';
 import '../css/card.css';
-import { Row, Col, Divider, Card, Avatar, message } from "antd";
-import Item from 'antd/lib/list/Item';
+import '../css/homepage.css';
+import { Row, Col, Divider, Card, Avatar, message, Pagination } from "antd";
 
-const hotcarddisplay = () => {
+const Hotcarddisplay = () => {
   const cardStyle = { 
     width: '330px',
     height: '300px',
@@ -23,14 +24,23 @@ const hotcarddisplay = () => {
     key: 1,
     avatarSrc: avatarSrc
   };
-  let infoArr = [info, {...info, key: 2}, {...info, key: 3}];
+  let infoArr = [info, {...info, key: 2}, {...info, key: 3}, {...info, key: 4}, {...info, key: 5}, {...info, key: 6}, {...info, key: 7}, {...info, key: 8}];
   console.log(infoArr);
+
+  const numEachPage = 3;
+  const [minVal, setMinVal] = useState(0);
+  const [maxVal, setMaxVal] = useState(1);
+
+  const handlePagination = (value) => {
+    setMinVal((value - 1) * numEachPage);
+    setMaxVal(value * numEachPage);
+  }
 
   return (
     <>
       <div className="site-card-border-less-wrapper">
         <div className="cardwrapper">
-          {infoArr.map((item) => (
+          {infoArr.slice(minVal, maxVal).map((item) => (
             <Card
               key={item.key}
               onClick={() => message.info(`You are clicking card ${item.key}`)}
@@ -57,6 +67,12 @@ const hotcarddisplay = () => {
               </div>
             </Card>
           ))}
+          <Pagination
+            defaultCurrent={1}
+            defaultPageSize={numEachPage}
+            onChange={handlePagination}
+            total={infoArr.length}
+          />
           {/* <Card
             hoverable = {true}
             bordered={false}
@@ -105,4 +121,4 @@ const hotcarddisplay = () => {
   )
 }
 
-export default hotcarddisplay
+export default Hotcarddisplay
