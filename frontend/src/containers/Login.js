@@ -2,13 +2,16 @@ import React from 'react';
 import { Form, Input, Button, Checkbox, Layout } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../css/login.css'
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate} from "react-router-dom";
 const { Content } = Layout;
 
-const NormalLoginForm = () => {
+const NormalLoginForm = ({setIsLogin}) => {
+  const navigate = useNavigate();
+
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    setIsLogin(true);
+    navigate('/');
   };
 
   return (
