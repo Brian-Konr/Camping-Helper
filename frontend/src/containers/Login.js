@@ -2,6 +2,8 @@ import React from 'react';
 import { Form, Input, Button, Checkbox, Layout } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../css/login.css'
+import { Link } from "react-router-dom";
+
 const { Content } = Layout;
 
 const NormalLoginForm = () => {
@@ -73,8 +75,8 @@ const NormalLoginForm = () => {
                 </Button>
                 <div className='SignUp-alter'>
                   還沒有帳號嗎？ 
-                  <Button type="default" htmlType="submit" className="alter-button" shape='round'>
-                    註冊
+                  <Button type="default" className="alter-button" shape='round'>
+                    <Link to = '/signup'>註冊</Link>
                   </Button>
                 </div>
               </Form.Item>

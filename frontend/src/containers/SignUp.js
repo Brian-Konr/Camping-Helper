@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Select, Checkbox, Button, Layout } from 'antd';
 import '../css/signup.css'
+import { Link } from "react-router-dom";
 const { Content } = Layout;
 
 const { Option } = Select;
@@ -189,8 +190,8 @@ const RegistrationForm = () => {
                     </Button>
                     <div className='Login-alter'>
                       已經有帳號了？
-                      <Button type="default" htmlType="submit" className="alter-button" shape='round'>
-                        登入
+                      <Button type="default" className="alter-button" shape='round'>
+                        <Link to='/login'>登入</Link>
                       </Button>
                     </div>
                 </Form.Item>
