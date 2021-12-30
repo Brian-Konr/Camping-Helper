@@ -29,7 +29,7 @@ const Hotcarddisplay = () => {
 
   const numEachPage = 3;
   const [minVal, setMinVal] = useState(0);
-  const [maxVal, setMaxVal] = useState(1);
+  const [maxVal, setMaxVal] = useState(numEachPage);
 
   const handlePagination = (value) => {
     setMinVal((value - 1) * numEachPage);

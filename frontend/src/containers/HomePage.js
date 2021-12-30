@@ -38,7 +38,7 @@ const Homepage = ({isLogin}) => {
           <div className='generalwrapper'>
             <div className='classtitle'>
               <h2 className='class-name'>活動資訊</h2>
-              <Pagination size="small" total={50} className='classtitle-element' />
+              {/* <Pagination size="small" total={50} className='classtitle-element' /> */}
             </div>
             <Divider style={{
               height: '7px',
