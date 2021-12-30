@@ -61,7 +61,7 @@ const Hotcarddisplay = () => {
                 <p className="date">2021/12/22</p>
                 <Meta
                   avatar={<Avatar src={item.avatarSrc} />}
-                  title="Card title"
+                  title={`This is card ${item.key}`}
                   description="This is the description"
                 />
               </div>
