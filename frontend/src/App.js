@@ -4,6 +4,7 @@ import Login from "./containers/Login";
 import SignUp from './containers/SignUp';
 import HotCard from './containers/HotCard';
 import HomePage from './containers/HomePage';
+import Activation from './containers/Activation';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route exact path="/" element={<HomePage isLogin = {isLogin}/> } />
           <Route path="/login" element={<Login setIsLogin = {setIsLogin}/>} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/activation/:uid/:token" element={<Activation />} />
         </Routes>
       </Router>
     </div>
