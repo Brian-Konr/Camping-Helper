@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from datetime import timedelta
 from dotenv import dotenv_values
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -94,6 +95,9 @@ DATABASES = {
         'PORT': dev_config.get("SQL_PORT", "5432"),
     }
 }
+# DATABASES = {
+#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
 
 AUTH_USER_MODEL = 'user.User'
 
@@ -159,6 +163,8 @@ REST_FRAMEWORK = {
 }
 
 # todo: email template
+DOMAIN = 'localhost:3000'
+
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'google.com/{uid}/{token}',
     # 不開放改Email

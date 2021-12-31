@@ -147,6 +147,7 @@ REST_FRAMEWORK = {
     # },
 }
 
+DOMAIN = "localhost:3000"
 # todo: email template
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'google.com/{uid}/{token}',
