@@ -163,6 +163,8 @@ REST_FRAMEWORK = {
 }
 
 # todo: email template
+DOMAIN = 'localhost:3000'
+
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'google.com/{uid}/{token}',
     # 不開放改Email
