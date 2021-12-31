@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import { Form, Input, Select, Checkbox, Button } from 'antd';
+import { Form, Input, Select, Checkbox, Button, Layout } from 'antd';
 import '../css/signup.css'
+import { Link } from "react-router-dom";
+const { Content } = Layout;
 
+const { Option } = Select;
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -40,151 +43,173 @@ const RegistrationForm = () => {
     console.log('Received values of form: ', values);
   };
 
+  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+
   return (
-      <div className='wrapper'>
-        <h1>創建新帳號</h1>
-        <Form
-            {...formItemLayout}
-            form={form}
-            className='signup-form'
-            name="register"
-            onFinish={onFinish}
-            initialValues={{}}
-            scrollToFirstError
-            >
-            <Form.Item
-                name="name"
-                label="姓名"
-                rules={[
-                {
-                    required: true,
-                    message: 'Please input your name',
-                },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item label="BirthDate" style={{ marginBottom: 0 }}>
-                <Form.Item
-                name="year"
-                rules={[{ required: true }]}
-                style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
+    <Layout className='page'>
+      <Content className='wrapper'>
+        <div className='Leftside-signup'>
+          <div className='form-wrapper'>
+            <h1>創建新帳號</h1>
+            <Form
+                {...formItemLayout}
+                form={form}
+                className='signup-form'
+                name="register"
+                onFinish={onFinish}
+                initialValues={{}}
+                scrollToFirstError
                 >
-                <Input placeholder="Input birth year" />
-                </Form.Item>
                 <Form.Item
-                name="month"
-                rules={[{ required: true }]}
-                style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
+                  name="name"
+                  label="姓名"
+                  rules={[
+                  {
+                      required: true,
+                      message: 'Please input your name',
+                  },
+                  ]}
                 >
-                <Input placeholder="Input birth month" />
+                    <Input className='item'/>
                 </Form.Item>
-            </Form.Item>
 
-            <Form.Item
-                name="phone"
-                label="Phone Number"
-                rules={[{ required: true, message: 'Please input your phone number!' }]}
-            >
-                <Input style={{ width: '100%' }} />
-            </Form.Item>
+                <Form.Item label="BirthDate" style={{ marginBottom: 0 }}>
+                    <Form.Item
+                    name="year"
+                    rules={[{ required: true }]}
+                    style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
+                    >
+                    <Input className='item' placeholder="Input birth year" />
+                    </Form.Item>
+                    <Form.Item
+                    name="month"
+                    rules={[{ required: true }]}
+                    style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
+                    >
+                    <Input className='item' placeholder="Input birth month" />
+                    </Form.Item>
+                </Form.Item>
+
+                <Form.Item
+                  name="phone"
+                  label="Phone Number"
+                  rules={[{ required: true, message: 'Please input your phone number!' }]}
+                >
+                    <Input className='item' style={{ width: '100%' }} />
+                </Form.Item>
+
+                <Form.Item
+                  name="email"
+                  label="E-mail"
+                  rules={[
+                  {
+                      type: 'email',
+                      message: 'The input is not valid E-mail!',
+                  },
+                  {
+                      required: true,
+                      message: 'Please input your E-mail!',
+                  },
+                  ]}
+                >
+                    <Input className='item'/>
+                </Form.Item>
+
+                <Form.Item
+                  name="nickname"
+                  label="使用者名稱"
+                  rules={[
+                  {
+                      required: true,
+                      message: 'Please input your nickname!',
+                      whitespace: true,
+                  },
+                  ]}
+                >
+                    <Input className='item'/>
+                </Form.Item>
+
+                <Form.Item
+                  name="password"
+                  label="Password"
+                  rules={[
+                  {
+                      required: true,
+                      message: 'Please input your password!',
+                  },
+                  ]}
+                  hasFeedback
+                >
+                    <Input.Password className='item'/>
+                </Form.Item>
+
+                <Form.Item
+                  name="confirm"
+                  label="Confirm Password"
+                  dependencies={['password']}
+                  hasFeedback
+                  rules={[
+                  {
+                      required: true,
+                      message: 'Please confirm your password!',
+                  },
+                  ({ getFieldValue }) => ({
+                      validator(_, value) {
+                      if (!value || getFieldValue('password') === value) {
+                          return Promise.resolve();
+                      }
+
+                      return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                      },
+                  }),
+                  ]}
+                >
+                    <Input.Password className='item' />
+                </Form.Item>
 
 
-            <Form.Item
-                name="email"
-                label="E-mail"
-                rules={[
-                {
-                    type: 'email',
-                    message: 'The input is not valid E-mail!',
-                },
-                {
-                    required: true,
-                    message: 'Please input your E-mail!',
-                },
-                ]}
-            >
-                <Input />
-            </Form.Item>
+                <Form.Item
+                  name="agreement"
+                  valuePropName="checked"
+                  rules={[
+                  {
+                      validator: (_, value) =>
+                      value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+                  },
+                  ]}
+                  {...tailFormItemLayout}
+                >
+                    <Checkbox className='sign-up-check'>
+                      我同意此網站的<a href="">《服務條款》、《資料政策》</a>
+                    </Checkbox>
+                </Form.Item>
 
-            <Form.Item
-                name="nickname"
-                label="使用者名稱"
-                rules={[
-                {
-                    required: true,
-                    message: 'Please input your nickname!',
-                    whitespace: true,
-                },
-                ]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="password"
-                label="Password"
-                rules={[
-                {
-                    required: true,
-                    message: 'Please input your password!',
-                },
-                ]}
-                hasFeedback
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                {
-                    required: true,
-                    message: 'Please confirm your password!',
-                },
-                ({ getFieldValue }) => ({
-                    validator(_, value) {
-                    if (!value || getFieldValue('password') === value) {
-                        return Promise.resolve();
-                    }
-
-                    return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                    },
-                }),
-                ]}
-            >
-                <Input.Password />
-            </Form.Item>
-
-
-            <Form.Item
-                name="agreement"
-                valuePropName="checked"
-                rules={[
-                {
-                    validator: (_, value) =>
-                    value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
-                },
-                ]}
-                {...tailFormItemLayout}
-            >
-                <Checkbox>
-                I have read the <a href="/agreement">agreement</a>
-                </Checkbox>
-            </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
-                Register
-                </Button>
-                <a style={{"margin-left": "15px"}} href="">已經有帳號了？</a>
-            </Form.Item>
-        </Form>
-      </div>
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit" className="SignUp-form-button">
+                      註冊
+                    </Button>
+                    <div className='Login-alter'>
+                      已經有帳號了？
+                      <Button type="default" className="alter-button" shape='round'>
+                        <Link to='/login'>登入</Link>
+                      </Button>
+                    </div>
+                </Form.Item>
+            </Form>
+          </div>
+        </div>
+        <div className='Rightside-signup'>
+          <div className='title'>
+            歡迎加入!
+          </div>
+          <div className='intro'>
+            介紹
+          </div>
+        </div>
+      </Content>
+    </Layout>
   );
 };
 
+// haha just for test
 export default RegistrationForm;

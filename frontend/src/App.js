@@ -1,16 +1,20 @@
 import React from 'react';
+import { useState } from 'react';
 import Login from "./containers/Login";
 import SignUp from './containers/SignUp';
+import HotCard from './containers/HotCard';
+import HomePage from './containers/HomePage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <div className='App'>
       <Router>
         <Routes>
-          <Route exact path="/" element = {<h1>Hello</h1>} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/" element={<HomePage isLogin = {isLogin}/> } />
+          <Route path="/login" element={<Login setIsLogin = {setIsLogin}/>} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
     </div>
