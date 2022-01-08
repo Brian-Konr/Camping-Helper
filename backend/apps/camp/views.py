@@ -1,4 +1,4 @@
-from rest_framework import generics, status, viewsets
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
@@ -56,7 +56,7 @@ class CampViewSet(viewsets.ModelViewSet):
         if self.action in ["list", "retrieve"]:
             permission_classes = [AllowAny]
         elif self.action in ['create']:
-            permission_classes = [permissions.IsHostUser]
+            permission_classes = [IsAuthenticated, permissions.IsHostUser]
         elif self.action in ['delete', 'update']:
             permission_classes = [IsAuthenticated, permissions.IsOwner]
         else:

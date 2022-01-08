@@ -19,6 +19,7 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 # Application definition
 INTERNAL_APPS = [
     'apps.user.apps.UserConfig',
+    'apps.camp.apps.CampConfig',
 ]
 
 EXTERNAL_APPS = [
