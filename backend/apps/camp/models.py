@@ -18,7 +18,7 @@ class Camp(models.Model):
         help_text="活動資訊",
         default="",
     )
-    cover_photo = models.ImageField(
+    cover_photo = models.FileField(
         upload_to=camp_file_path,
         help_text="活動圖片",
         blank=True,
