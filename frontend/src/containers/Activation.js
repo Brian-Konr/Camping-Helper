@@ -17,6 +17,7 @@ const Activation = () => {
             });
             if(res.response.status == 204) setIsModelVisible(true);
         } catch(error) {
+            console.log(error);
             if(error.response.status == 403 || error.response.status == 400) console.log("activation failed!")
         }
     }
