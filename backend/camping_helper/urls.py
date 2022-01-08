@@ -6,6 +6,7 @@ from django.views.generic import RedirectView
 from drf_spectacular.views import SpectacularSwaggerView, SpectacularRedocView, SpectacularAPIView
 
 urlpatterns = [
+    path('', include('apps.camp.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
