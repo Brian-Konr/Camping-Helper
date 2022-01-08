@@ -59,11 +59,11 @@ class Camp(models.Model):
         blank=True,
         help_text="相關連結",
     )
-    fee = models.IntegerField(
+    fee = models.PositiveIntegerField(
         default=0,
         help_text="活動費用",
     )
-    quota = models.IntegerField(
+    quota = models.PositiveIntegerField(
         default=100,
         help_text="活動名額",
     )
