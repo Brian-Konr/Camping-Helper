@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Layout } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import instance from '../instance';
 import '../css/login.css'
 import { Link, useNavigate} from "react-router-dom";
 const { Content } = Layout;
@@ -11,9 +12,40 @@ const NormalLoginForm = ({setIsLogin}) => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
     setIsLogin(true);
-    navigate('/');
+
+    // just for test
+    let form = {
+      email: "admin@dodofk.xyz",
+      password: "#EDC$RFV%TGB"
+    }
+    submit(form);
+    // navigate('/');
   };
 
+  const submit = async (form) => {
+    try {
+      let {data} = await instance.post('/auth/jwt/create/', form);
+      if(data.access) {
+        localStorage.setItem("token", data.access);
+        await getInfo();
+      }
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
+
+  const getInfo = async () => {
+    try {
+      let {data} = await instance.get('/auth/users/me/');
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("name", data.name ? data.name : data.first_name); //because backend is not deployed yet
+      localStorage.setItem("email", data.email);
+      localStorage.setItem("birthday", data.birthday);
+      navigate("/");
+    } catch (error) {
+      console.log(error.response);
+    }
+  }
   return (
     <Layout className='page'>
       <Content className='wrapper'>
@@ -38,17 +70,18 @@ const NormalLoginForm = ({setIsLogin}) => {
             >
               <Form.Item 
                 className='form-item'
-                name="username"
+                name="email"
                 rules={[
                   {
                     required: true,
-                    message: 'Please input your Username!',
+                    type: 'email',
+                    message: 'The input is not valid E-mail!',
                   },
                 ]}
               >
                 <Input 
                   className='item'
-                  prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                  prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email Address" />
               </Form.Item>
               <Form.Item
                 name="password"
