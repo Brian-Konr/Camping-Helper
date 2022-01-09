@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Form, Input, Select, Checkbox, Button, Layout } from 'antd';
+import { DatePicker, Form, Input, Select, Checkbox, Button, Layout } from 'antd';
 import '../css/signup.css'
 import { Link } from "react-router-dom";
+import instance from '../instance';
 const { Content } = Layout;
 
 const { Option } = Select;
@@ -37,13 +38,36 @@ const tailFormItemLayout = {
 };
 
 const RegistrationForm = () => {
+  const monthDayCheck = (month, day) => {
+    let checkedMonth = month, checkedDay = day;
+    if(month.length === 1) checkedMonth = `0${month}`;
+    if(day.length === 1) checkedDay = `0${day}`;
+    return {checkedMonth, checkedDay};
+  }
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    // console.log('Received values of form: ', values);
+    let year = values.year;
+    let {checkedMonth, checkedDay} = monthDayCheck(values.month, values.day);
+    let date = `${year}-${checkedMonth}-${checkedDay}`;
+    delete values.year;
+    delete values.month;
+    delete values.day;
+
+    let finalForm = {...values, ...{birthday: date}};
+    console.log(finalForm);
+    // submit(finalForm);
   };
 
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+  const submit = async (request) => {
+    try {
+      let res = await instance.post('/auth/users/', request);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }
 
   return (
     <Layout className='page'>
@@ -77,26 +101,33 @@ const RegistrationForm = () => {
                     <Form.Item
                     name="year"
                     rules={[{ required: true }]}
-                    style={{ display: 'inline-block', width: 'calc(50% - 8px)' }}
+                    style={{ display: 'inline-block', width: 'calc(50% - 6px)' }}
                     >
-                    <Input className='item' placeholder="Input birth year" />
+                    <Input minLength={4} maxLength={4} className='item' placeholder="西元年" />
                     </Form.Item>
                     <Form.Item
                     name="month"
                     rules={[{ required: true }]}
-                    style={{ display: 'inline-block', width: 'calc(50% - 8px)', margin: '0 8px' }}
+                    style={{ display: 'inline-block', width: 'calc(25% - 6px)', margin: '0 8px' }}
                     >
-                    <Input className='item' placeholder="Input birth month" />
+                    <Input maxLength={2} className='item' placeholder="月" />
+                    </Form.Item>
+                    <Form.Item
+                    name="day"
+                    rules={[{ required: true }]}
+                    style={{ display: 'inline-block', width: 'calc(25% - 6px)' }}
+                    >
+                    <Input maxLength={2} className='item' placeholder="日" />
                     </Form.Item>
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                   name="phone"
                   label="Phone Number"
                   rules={[{ required: true, message: 'Please input your phone number!' }]}
                 >
-                    <Input className='item' style={{ width: '100%' }} />
-                </Form.Item>
+                  <Input className='item' style={{ width: '100%' }} />
+                </Form.Item> */}
 
                 <Form.Item
                   name="email"
@@ -116,12 +147,12 @@ const RegistrationForm = () => {
                 </Form.Item>
 
                 <Form.Item
-                  name="nickname"
+                  name="username"
                   label="使用者名稱"
                   rules={[
                   {
                       required: true,
-                      message: 'Please input your nickname!',
+                      message: 'Please input your username!',
                       whitespace: true,
                   },
                   ]}
@@ -144,7 +175,7 @@ const RegistrationForm = () => {
                 </Form.Item>
 
                 <Form.Item
-                  name="confirm"
+                  name="re_password"
                   label="Confirm Password"
                   dependencies={['password']}
                   hasFeedback
@@ -169,7 +200,7 @@ const RegistrationForm = () => {
 
 
                 <Form.Item
-                  name="agreement"
+                  name="if_agree"
                   valuePropName="checked"
                   rules={[
                   {
