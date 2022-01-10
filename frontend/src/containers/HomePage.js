@@ -4,10 +4,20 @@ import Hotcard from './HotCard';
 import Appbar from '../components/Appbar';
 import Generalcard from './Generalcard';
 import '../css/homepage.css';
+import instance from '../instance';
 const { Header, Content, Sider } = Layout;
 
 const Homepage = ({isLogin}) => {
   console.log(isLogin);
+
+  useEffect(async () => {
+    try {
+      let res = await instance.get('/camp/');
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  }, [])
   return (
     <Layout 
       style={{
