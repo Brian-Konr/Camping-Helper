@@ -10,10 +10,10 @@ class CampSerializer(serializers.HyperlinkedModelSerializer):
             "id", "url", "name", "information", "cover_photo",
             "is_public", "camp_start_date", "camp_end_date",
             "register_start_date", "register_end_date",
-            "host", "place", "link", "fee", "quota", "precaution",
+            "host", "place", "link", "fee", "quota", "precaution", "questions"
         ]
         read_only_fields = [
-            "host", "is_public",
+            "host", "is_public", "questions",
         ]
         extra_kwargs = {
             "fee": {"required": True},
