@@ -1,13 +1,15 @@
 import { useState } from "react";
-import { Card, Input, InputNumber, DatePicker, Button } from "antd";
+import { Upload, message, Card, Input, InputNumber, DatePicker, Button } from "antd";
 import moment from 'moment';
 import Loading from "./Loading";
 import instance from '../instance';
 import Modal from "antd/lib/modal/Modal";
+import UploadImg from "./UploadImg";
 const { RangePicker } = DatePicker;
-const CreateInput = ({activityName, date, info, place, fee, quota, precaution, setActivityName, setDate, setInfo, setPlace, setFee, setQuota, setPrecaution}) => {
+const CreateInput = ({activityName, date, info, place, fee, quota, precaution, setActivityName, setDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc}) => {
     const dateFormat = 'YYYY-MM-DD';
     const [modalVisible, setModalVisible] = useState(false);
+
 
     const store = () => {
         // how to determine post and patch
@@ -17,9 +19,12 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
         console.log('hello submit')
         // make it public
     }
+
     return (
         <>
             <Card>
+                <p>營隊封面圖片</p>
+                <UploadImg setSrc={setSrc}/>
                 <p>營隊名稱</p>
                 <Input placeholder="Activity Name" onChange={(e) => {setActivityName(e.target.value)}} value={activityName}></Input>
                 <p>營隊日期</p>
