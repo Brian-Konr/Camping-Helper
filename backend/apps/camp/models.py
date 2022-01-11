@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.contrib.postgres.fields import ArrayField
 from .. storage_backends import PublicMediaStorage, PrivateMediaStorage
 
 
@@ -78,6 +79,12 @@ class Camp(models.Model):
     precaution = models.CharField(
         help_text="注意事項",
         max_length=2000,
+        null=True,
+    )
+    questions = ArrayField(
+        models.PositiveIntegerField(
+            verbose_name="問題 key",
+        ),
         null=True,
     )
 
