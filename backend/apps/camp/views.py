@@ -69,16 +69,19 @@ class CampViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.action in ['set_public']:
             return models.Camp.objects.all()
-        elif self.request.query_params.get("view") is None:
+        view = self.request.query_params.get("view")
+        if view is None:
             return models.Camp.objects.filter(is_public=True)
-        assert self.request.query_params.get("view") in ["all", "own", "join", "superuser"], "Invalid view query type"
-        if self.request.query_params.get("view") == "all":
+
+        assert view in ["all", "own", "join", "superuser"], "Invalid view query type"
+
+        if view == "all":
             return models.Camp.objects.filter(is_public=True)
-        elif self.request.query_params.get("view") == "own":
+        elif view == "own":
             return models.Camp.objects.filter(host=self.request.user)
-        elif self.request.query_params.get("view") == "superuser":
+        elif view == "superuser":
             return models.Camp.objects.all()
-        elif self.request.query_params.get("view") == "join":
+        elif view == "join":
             pass
 
     def get_serializer_class(self):
