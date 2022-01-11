@@ -13,7 +13,7 @@ const App = () => {
     <div className='App'>
       <Router>
         <Routes>
-          <Route exact path="/" element={<HomePage isLogin = {isLogin}/> } />
+          <Route exact path="/" element={<HomePage isLogin = {isLogin} setIsLogin={setIsLogin}/> } />
           <Route path="/login" element={<Login setIsLogin = {setIsLogin}/>} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/activation/:uid/:token" element={<Activation />} />

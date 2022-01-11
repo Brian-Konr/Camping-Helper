@@ -15,7 +15,7 @@ const UploadImg = ({setSrc}) => {
     return (
         <>
             <Upload
-                accept=".jpg, .jpeg, .png"
+                accept=".jpg, .jpeg, .png, .pdf"
                 beforeUpload={() => false}
                 // onPreview={(file) => console.log(file.url)}
                 onChange={handleUpload}
