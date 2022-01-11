@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Layout, Pagination, Menu, Breadcrumb, Divider, Button, message } from 'antd';
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import Hotcard from './HotCard';
 import Appbar from '../components/Appbar';
 import Generalcard from './Generalcard';
 import '../css/homepage.css';
+import instance from '../instance';
 const { Header, Content, Sider } = Layout;
 
 const Homepage = ({isLogin}) => {
   console.log(isLogin);
+
+  useEffect(async () => {
+    try {
+      let res = await instance.get('/camp/');
+      console.log(res.data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  }, [])
   return (
     <Layout 
       style={{
@@ -26,7 +35,6 @@ const Homepage = ({isLogin}) => {
           <div className='hotwrapper'>
             <div className='classtitle'>
               <h2 className='class-name'>熱門推薦</h2>
-              <Pagination size="small" total={50} className='classtitle-element' />
             </div>
             <Divider style={{
               height: '7px',
@@ -38,7 +46,6 @@ const Homepage = ({isLogin}) => {
           <div className='generalwrapper'>
             <div className='classtitle'>
               <h2 className='class-name'>活動資訊</h2>
-              {/* <Pagination size="small" total={50} className='classtitle-element' /> */}
             </div>
             <Divider style={{
               height: '7px',
