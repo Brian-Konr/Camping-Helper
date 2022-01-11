@@ -125,6 +125,11 @@ class Registration(models.Model):
         blank=True,
         help_text="其他",
     )
+    is_finish = models.BooleanField(
+        default=False,
+        null=False,
+        help_text="是否完成報名填寫",
+    )
 
     class Meta:
         db_table = "registration"
