@@ -1,7 +1,6 @@
 import os, sys, dj_database_url
 from pathlib import Path
 from datetime import timedelta
-from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,6 +19,8 @@ ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 INTERNAL_APPS = [
     'apps.user.apps.UserConfig',
     'apps.camp.apps.CampConfig',
+    'apps.question.apps.QuestionConfig',
+    'apps.register.apps.RegisterConfig',
 ]
 
 EXTERNAL_APPS = [

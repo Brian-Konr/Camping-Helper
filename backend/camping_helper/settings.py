@@ -27,6 +27,8 @@ ALLOWED_HOSTS = ['*']
 INTERNAL_APPS = [
     'apps.user.apps.UserConfig',
     'apps.camp.apps.CampConfig',
+    'apps.question.apps.QuestionConfig',
+    'apps.register.apps.RegisterConfig',
 ]
 
 EXTERNAL_APPS = [

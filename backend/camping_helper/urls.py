@@ -7,6 +7,8 @@ from drf_spectacular.views import SpectacularSwaggerView, SpectacularRedocView, 
 
 urlpatterns = [
     path('', include('apps.camp.urls')),
+    # path('', include('apps.question.urls')),
+    path('', include('apps.register.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
