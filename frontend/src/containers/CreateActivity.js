@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { message } from "antd";
 import Appbar from "../components/Appbar";
+import { useNavigate } from "react-router-dom";
 import CreateInput from "../components/CreatInput";
 const CreateActivity = () => {
-    
+
+    const navigate = useNavigate();
+
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
     const [activityName, setActivityName] = useState("2022 台灣大學資管營");
     const [date, setDate] = useState(['2022-01-01', '2022-01-3']);
@@ -11,6 +15,13 @@ const CreateActivity = () => {
     const [fee, setFee] = useState(2500);
     const [quota, setQuota] = useState(70);
     const [precaution, setPrecaution] = useState("注意事項");
+
+    useEffect(() => {
+        if(!localStorage.getItem("username")) {
+            message.warn({content: "Please Login First!", duration: 1.2});
+            navigate('/login');
+        }
+    }, [])
 
     return (
         <div>

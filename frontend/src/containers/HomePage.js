@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Layout, Pagination, Menu, Breadcrumb, Divider, Button, message } from 'antd';
 import Hotcard from './HotCard';
 import Appbar from '../components/Appbar';
+import Navbar from '../components/Navbar';
 import Generalcard from './Generalcard';
 import '../css/homepage.css';
 import instance from '../instance';
 const { Header, Content, Sider } = Layout;
 
-const Homepage = ({isLogin}) => {
-  console.log(isLogin);
+const Homepage = ({isLogin, setIsLogin}) => {
 
   useEffect(async () => {
     try {
@@ -23,7 +23,8 @@ const Homepage = ({isLogin}) => {
       style={{
         backgroundColor: '#fff',
       }}>
-      <Appbar />
+      {/* <Appbar /> */}
+      <Navbar isLogin={isLogin} setIsLogin={setIsLogin}/>
       <Layout className='layout-container'>
         <Content
           className="site-layout-background"
