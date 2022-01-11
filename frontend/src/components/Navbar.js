@@ -31,7 +31,7 @@ const Navbar = () => {
                             <Menu.Item key="profile">Profile</Menu.Item>
                         </SubMenu>
                         <Menu.Item key="search">
-                            <Input placeholder='activity name' />
+                            <Input placeholder='Search by activity name'/>
                         </Menu.Item>
                         <Menu.Item onClick={handleLogOut} key="logout">Log Out</Menu.Item>
                     </Menu>

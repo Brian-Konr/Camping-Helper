@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react";
-import { message } from "antd";
+import { message, Steps, Button } from "antd";
 import Appbar from "../components/Appbar";
 import { useNavigate } from "react-router-dom";
 import CreateInput from "../components/CreatInput";
+import StepController from "../components/StepController";
+import "../css/createActivity.css"
+import EditFormQuestion from "../components/EditFormQuestion";
+const {Step} = Steps;
+
 const CreateActivity = () => {
 
     const navigate = useNavigate();
+
+    const [current, setCurrent] = useState(0);
 
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
     const [activityName, setActivityName] = useState("2022 台灣大學資管營");
@@ -26,10 +33,12 @@ const CreateActivity = () => {
     return (
         <div>
             <Appbar />
-            <div className="wrapper">
-                {/* <div className="headerPic">
-                    <img src='https://images.unsplash.com/photo-1634913940785-c17c505a9c1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80'></img>
-                </div> */}
+            <Steps current={current}>
+                <Step title="活動頁面設計" description="讓頁面豐富精彩&#127775;"/>
+                <Step title="表單問題選擇" description="This is a description."/>
+                <Step title="確認資訊與發佈" description="This is a description." />
+            </Steps>
+            <div className="wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
                 <div style={{display: 'flex', flexDirection: 'column', width: '67.3vw'}}>
                     <img src={src} width={'100%'} />
                     <h1>營隊名稱: {activityName}</h1>
@@ -61,6 +70,10 @@ const CreateActivity = () => {
                     setSrc={setSrc}
                 />
             </div>
+            <div className="form-question" style={{display: current === 1 ? 'block' : 'none'}}>
+                <EditFormQuestion />
+            </div>
+            <StepController current={current} setCurrent={setCurrent}/>
         </div>
     )
 }
