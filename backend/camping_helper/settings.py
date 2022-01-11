@@ -39,6 +39,7 @@ EXTERNAL_APPS = [
     'storages',
     # dev only
     'django_extensions',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 DJANGO_APPS = [
@@ -106,18 +107,7 @@ AUTH_USER_MODEL = 'user.User'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+
 ]
 
 
@@ -193,7 +183,7 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
 
-USE_SPACES = int(os.environ.get('USE_SPACES', '0'))
+USE_SPACES = int(dev_config.get('USE_SPACES', '1'))
 
 if USE_SPACES:
     AWS_ACCESS_KEY_ID = dev_config.get('AWS_ACCESS_KEY_ID')
@@ -207,14 +197,14 @@ if USE_SPACES:
     # static settings
     AWS_LOCATION = 'static'
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{AWS_LOCATION}/'
-    STATICFILES_STORAGE = 'bonder.storage_backends.StaticStorage'
+    STATICFILES_STORAGE = 'camping_helper.storage_backends.StaticStorage'
     # public media settings
     PUBLIC_MEDIA_LOCATION = 'media'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/'
-    DEFAULT_FILE_STORAGE = 'bonder.storage_backends.PublicMediaStorage'
+    DEFAULT_FILE_STORAGE = 'camping_helper.storage_backends.PublicMediaStorage'
     # private media
     PRIVATE_MEDIA_LOCATION = 'private'
-    PRIVATE_FILE_STORAGE = 'bonder.storage_backends.PrivateMediaStorage'
+    PRIVATE_FILE_STORAGE = 'camping_helper.storage_backends.PrivateMediaStorage'
 else:
     STATIC_URL = '/static/'
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')

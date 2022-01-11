@@ -1,9 +1,10 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from .. storage_backends import PublicMediaStorage, PrivateMediaStorage
 
 
 def camp_file_path(instance, filename):
-    return f'camp_{instance.id}/{filename}'
+    return f'camp_{instance.name}/{filename}'
 
 
 class Camp(models.Model):
@@ -21,6 +22,7 @@ class Camp(models.Model):
     cover_photo = models.FileField(
         upload_to=camp_file_path,
         help_text="活動圖片",
+        storage=PublicMediaStorage(),
         blank=True,
     )
     is_public = models.BooleanField(
@@ -29,10 +31,12 @@ class Camp(models.Model):
     )
     camp_start_date = models.DateField(
         blank=True,
+        null=True,
         help_text="活動開始日期",
     )
     camp_end_date = models.DateField(
         blank=True,
+        null=True,
         help_text="活動結束時間",
     )
     register_start_date = models.DateTimeField(
