@@ -13,6 +13,7 @@ class Camp(models.Model):
         unique=True,
         help_text="活動名稱",
         null=False,
+        db_index=True,
     )
     information = models.CharField(
         max_length=2000,
@@ -28,16 +29,19 @@ class Camp(models.Model):
     is_public = models.BooleanField(
         default=False,
         help_text="是否公開",
+        db_index=True,
     )
     camp_start_date = models.DateField(
         blank=True,
         null=True,
         help_text="活動開始日期",
+        db_index=True,
     )
     camp_end_date = models.DateField(
         blank=True,
         null=True,
         help_text="活動結束時間",
+        db_index=True,
     )
     register_start_date = models.DateTimeField(
         blank=False,
