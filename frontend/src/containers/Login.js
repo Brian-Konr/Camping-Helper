@@ -32,6 +32,7 @@ const NormalLoginForm = ({setIsLogin}) => {
         await getInfo();
       }
     } catch (error) {
+      message.error("帳號或密碼輸入錯誤! 請重新嘗試", 2);
       console.log(error.response);
     }
   }
@@ -46,7 +47,6 @@ const NormalLoginForm = ({setIsLogin}) => {
       navigate("/");
     } catch (error) {
       console.log(error.response);
-      message.error("帳號或密碼輸入錯誤! 請重新嘗試", 2);
     }
   }
   return (
