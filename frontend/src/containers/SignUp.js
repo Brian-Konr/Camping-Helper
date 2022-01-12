@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { DatePicker, Form, Input, Select, Checkbox, Button, Layout } from 'antd';
+import { useState } from 'react';
+import { DatePicker, Form, Input, Select, Checkbox, Button, Layout, Modal } from 'antd';
 import '../css/signup.css'
 import { Link } from "react-router-dom";
 import instance from '../instance';
@@ -38,6 +38,7 @@ const tailFormItemLayout = {
 };
 
 const RegistrationForm = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const monthDayCheck = (month, day) => {
     let checkedMonth = month, checkedDay = day;
     if(month.length === 1) checkedMonth = `0${month}`;
@@ -57,13 +58,14 @@ const RegistrationForm = () => {
 
     let finalForm = {...values, ...{birthday: date}};
     console.log(finalForm);
-    // submit(finalForm);
+    submit(finalForm);
   };
 
   const submit = async (request) => {
     try {
       let res = await instance.post('/auth/users/', request);
       console.log(res.data);
+      setIsModalVisible(true);
     } catch (error) {
       console.log(error.response.data);
     }
@@ -72,6 +74,14 @@ const RegistrationForm = () => {
   return (
     <Layout className='page'>
       <Content className='wrapper'>
+        <Modal
+          visible={isModalVisible}
+          onOk={() => setIsModalVisible(false)}
+          onCancel={() => setIsModalVisible(false)}
+        >
+          <p>註冊成功!</p>
+          <p>請至您的電子信箱進行驗證</p>
+        </Modal>
         <div className='Leftside-signup'>
           <div className='form-wrapper'>
             <h1>創建新帳號</h1>
@@ -120,14 +130,6 @@ const RegistrationForm = () => {
                     <Input maxLength={2} className='item' placeholder="日" />
                     </Form.Item>
                 </Form.Item>
-
-                {/* <Form.Item
-                  name="phone"
-                  label="Phone Number"
-                  rules={[{ required: true, message: 'Please input your phone number!' }]}
-                >
-                  <Input className='item' style={{ width: '100%' }} />
-                </Form.Item> */}
 
                 <Form.Item
                   name="email"

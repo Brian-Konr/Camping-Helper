@@ -6,22 +6,26 @@ import axios from 'axios';
 import instance from '../instance';
 
 const Activation = () => {
+    const [failed, setFailed] = useState("");
     const navigate = useNavigate();
     const [isModalVisible, setIsModelVisible] = useState(false);
     const { uid, token } = useParams();
-    const activate = async() => {
+    useEffect( async () => {
         try {
             let res = await instance.post('/auth/users/activation/', {
                 uid: uid,
                 token: token
             });
-            if(res.response.status == 204) setIsModelVisible(true);
+            console.log(res.status);
+            setIsModelVisible(true);
         } catch(error) {
             console.log(error);
-            if(error.response.status == 403 || error.response.status == 400) console.log("activation failed!")
+            if(error.response.status == 403 || error.response.status == 400) setFailed("Activation Failed!");
         }
-    }
-    activate();
+    }, [])
+    // const activate = async() => {
+    // }
+    // activate();
     return(
         <div>
             <Modal 
@@ -37,10 +41,11 @@ const Activation = () => {
                 <p>驗證成功!</p>
                 <p>系統將導至登入頁面...</p>
             </Modal>
-            <ul>
+            {/* <ul>
                 <li>{`uid: ${uid}`}</li>
                 <li>{`token: ${token}`}</li>
-            </ul>
+            </ul> */}
+            <h1>{failed}</h1>
         </div>
     )
 }
