@@ -6,6 +6,7 @@ import CreateInput from "../components/CreatInput";
 import StepController from "../components/StepController";
 import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
+import checkLogin from "../utility/checkLogin";
 const {Step} = Steps;
 
 const CreateActivity = () => {
@@ -24,10 +25,7 @@ const CreateActivity = () => {
     const [precaution, setPrecaution] = useState("注意事項");
 
     useEffect(() => {
-        if(!localStorage.getItem("username")) {
-            message.warn({content: "Please Login First!", duration: 1.2});
-            navigate('/login');
-        }
+        if(checkLogin() === false) navigate('/login');
     }, [])
 
     return (
