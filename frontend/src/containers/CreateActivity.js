@@ -92,7 +92,7 @@ const CreateActivity = () => {
                 />
             </div>
             <div className="form-question" style={{display: current === 1 ? 'block' : 'none'}}>
-                <EditFormQuestion />
+                <EditFormQuestion current={current}/>
             </div>
             <StepController current={current} setCurrent={setCurrent}/>
         </div>
