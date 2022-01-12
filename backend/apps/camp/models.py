@@ -9,6 +9,14 @@ def camp_file_path(instance, filename):
 
 
 class Camp(models.Model):
+
+    class ClassCategory(models.IntegerChoices):
+        FIRST = 1, "文法類"
+        SECOND = 2, "財經類"
+        THIRD = 3, "理工類"
+        FOURTH = 4, "醫護類"
+        OTHER = 5, "其他"
+
     name = models.CharField(
         max_length=150,
         unique=True,
@@ -86,6 +94,18 @@ class Camp(models.Model):
             verbose_name="問題 key",
         ),
         null=True,
+        help_text="使用之問題",
+    )
+    short_description = models.CharField(
+        max_length=200,
+        default="",
+        blank=True,
+        help_text="營隊簡短介紹",
+    )
+    category = models.PositiveIntegerField(
+        choices=ClassCategory.choices,
+        default=ClassCategory.OTHER,
+        help_text="營隊類組",
     )
 
     def __str__(self):

@@ -42,12 +42,19 @@ class Registration(models.Model):
         null=True,
         help_text="出生年月日",
     )
-    school_and_grade = models.CharField(
-        verbose_name="School name and grade",
+    school = models.CharField(
+        verbose_name="School name",
         max_length=200,
         blank=True,
         default="",
-        help_text="學校名稱與年級",
+        help_text="學校名稱",
+    )
+    grade = models.CharField(
+        verbose_name="Grade",
+        max_length=20,
+        blank=True,
+        default="",
+        help_text="年級",
     )
     special_disease = models.CharField(
         max_length=500,
@@ -133,3 +140,9 @@ class Registration(models.Model):
 
     class Meta:
         db_table = "registration"
+        constraints =[
+            models.UniqueConstraint(
+                fields=["camp", "user"],
+                name="unique-camp-for-user",
+            ),
+        ]
