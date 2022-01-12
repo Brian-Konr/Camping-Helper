@@ -164,6 +164,12 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Camping Helper API",
+    "DESCRIPTION": "All API use JWT to authenticate user",
+    "SCHEMA_COERCE_PATH_PK_SUFFIX": True,
+}
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587

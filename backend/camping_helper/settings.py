@@ -185,6 +185,12 @@ SIMPLE_JWT = {
     'ROTATE_REFRESH_TOKENS': True,
 }
 
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Camping Helper API",
+    "DESCRIPTION": "All API use JWT to authenticate user",
+    "SCHEMA_COERCE_PATH_PK_SUFFIX": True,
+}
+
 USE_SPACES = int(dev_config.get('USE_SPACES', '1'))
 
 if USE_SPACES:
