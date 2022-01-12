@@ -10,7 +10,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 from drf_spectacular.utils import extend_schema_view, extend_schema
-from drf_spectacular.utils import OpenApiParameter
+from drf_spectacular.utils import OpenApiParameter, OpenApiResponse
 
 
 @extend_schema_view(
@@ -90,7 +90,7 @@ class CampViewSet(viewsets.ModelViewSet):
     def get_permissions(self):
         if self.action in ["list"] and self.request.query_params.get("view") == "superuser":
             permission_classes = [IsAdminUser]
-        elif self.action in ["list", "retrieve"]:
+        elif self.action in ["list", "retrieve", "check_name"]:
             permission_classes = [AllowAny]
         elif self.action in ['create']:
             permission_classes = [IsAuthenticated, permissions.IsHostUser]
@@ -115,7 +115,7 @@ class CampViewSet(viewsets.ModelViewSet):
         methods=['put'],
         permission_classes=[permissions.IsOwner],
         url_path="public",
-        url_name="activity-setpublic",
+        url_name="camp-setpublic",
     )
     def set_public(self, request, pk=None):
         camp = self.get_object()
@@ -127,6 +127,39 @@ class CampViewSet(viewsets.ModelViewSet):
         self.perform_update(serializer)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @extend_schema(
+        description="檢查是否已經有重複名字營隊",
+        parameters=[
+            OpenApiParameter(
+                name="name",
+                location=OpenApiParameter.QUERY,
+                description="name to check whether it exists",
+                required=True,
+                type=str,
+            ),
+        ],
+        responses={
+            200: OpenApiResponse(description="Available Name"),
+            204: OpenApiResponse(description="Not Available Name"),
+            400: OpenApiResponse(description="Bad Request"),
+        }
+    )
+    @action(
+        detail=False,
+        methods=["get"],
+        permission_classes=[AllowAny],
+        url_path="check-name",
+        url_name="camp-checkname"
+    )
+    def check_name(self, request):
+        name = self.request.query_params.get("name")
+        if name is None:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+        if models.Camp.objects.filter(name=name).exists():
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response(status=status.HTTP_200_OK)
 
     # @action(
     #     detail=True,
