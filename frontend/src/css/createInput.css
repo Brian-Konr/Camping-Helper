@@ -1,3 +1,11 @@
+.inputTitle {
+    color: #1c496e;
+    font-size: 2rem;
+    font-weight: 500;
+    padding: 8px;
+    margin-bottom: 2vh;
+    text-align: center;
+}
 .ant-input {
     border-radius: 8px;
 }
@@ -14,12 +22,12 @@ p {
 .custom-card {
     margin-left: 1vw;
     margin-top: 1vw;
-    margin-right: 0px;
-    margin-bottom: 0px;
     min-height: 100vh;
     display: flex;
     flex: 2;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    border-radius: 0, 10 ,10, 0;
+    background-color: #ffffff;
 }

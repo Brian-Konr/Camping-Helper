@@ -27,6 +27,9 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
         <>
             <div className="custom-card">
                 <div>
+                    <div className='inputTitle'>
+                        輸入活動資訊 !
+                    </div>
                     <p id="top-describe">營隊封面圖片</p>
                     <UploadImg setSrc={setSrc}/>
                     <p>營隊名稱</p>

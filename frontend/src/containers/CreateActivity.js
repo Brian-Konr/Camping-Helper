@@ -38,8 +38,8 @@ const CreateActivity = () => {
                 <Step title="表單問題選擇" description="This is a description."/>
                 <Step title="確認資訊與發佈" description="This is a description." />
             </Steps>
-            <div className="wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
-                <div style={{display: 'flex', flexDirection: 'column', flex: 5}}>
+            <div className="create-wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
+                <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 5}}>
                     <img src={src} width={'100%'} style={{marginBottom: '0.5vw'}}/>
                     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                         <h1>營隊名稱: {activityName}</h1>
@@ -50,27 +50,29 @@ const CreateActivity = () => {
                     </div>
                     <div className="general-information">
                         <div className="detail">
-                            <ClockCircleOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <ClockCircleOutlined id="create-icon"/>
                             <h2>活動時間: {date[0]} ~ {date[1]}</h2>
                         </div>
                         <div className="detail">
-                            <EnvironmentOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <EnvironmentOutlined id="create-icon"/>
                             <h2>活動地點: {place}</h2>
                         </div>
                         <div className="detail">
-                            <DollarOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <DollarOutlined id="create-icon"/>
                             <h2>活動費用: {fee} 元</h2>
                         </div>
                         <div className="detail">
-                            <TeamOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <TeamOutlined id="create-icon"/>
                             <h2>活動名額: {quota} 人</h2>
                     </div>
                     </div>
-                    <p>活動資訊:</p>
-                    {/*whiteSpace 可以讓 textarea 根據換行做輸出 */}
-                    <p style={{whiteSpace: 'pre-line'}}> {info} </p>
-                    <p>注意事項:</p>
-                    <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
+                    <div className="detail-info">
+                        <p>活動資訊:</p>
+                        {/*whiteSpace 可以讓 textarea 根據換行做輸出 */}
+                        <p style={{whiteSpace: 'pre-line'}}> {info} </p>
+                        <p>注意事項:</p>
+                        <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
+                    </div>
                 </div>
                 <CreateInput
                     className='inputcontent'
