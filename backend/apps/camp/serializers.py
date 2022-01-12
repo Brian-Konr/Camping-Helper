@@ -3,6 +3,10 @@ from . import models
 
 
 class CampSerializer(serializers.HyperlinkedModelSerializer):
+    host = serializers.PrimaryKeyRelatedField(
+        many=False,
+        read_only=True,
+    )
 
     class Meta:
         model = models.Camp
@@ -23,6 +27,10 @@ class CampSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class CampStatusSerializer(serializers.HyperlinkedModelSerializer):
+    host = serializers.PrimaryKeyRelatedField(
+        many=False,
+        read_only=True,
+    )
 
     class Meta:
         model = models.Camp
