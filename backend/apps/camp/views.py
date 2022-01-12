@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter, OpenApiResponse
+import csv
 
 
 @extend_schema_view(
@@ -36,7 +37,13 @@ from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiPara
         ],
     ),
     create=extend_schema(
-        description="**auto set camp host to request user**",
+        description="**auto set camp host to request user**<br/>"
+                    "其中category營隊類組的值<br/>"
+                    "`1`代表文法類<br/>"
+                    "`2`代表財經類<br/>"
+                    "`3`代表理工類<br/>"
+                    "`4`代表醫護類<br/>"
+                    "`5`代表其他<br/>",
     ),
     retrieve=extend_schema(
         description="**only camp owner have permission**",
@@ -160,12 +167,17 @@ class CampViewSet(viewsets.ModelViewSet):
         else:
             return Response(status=status.HTTP_200_OK)
 
-    # @action(
-    #     detail=True,
-    #     methods=['post'],
-    #     permission_classes=[AllowAny],
-    #     url_path="join",
-    #     url_name="activity-userjoin",
-    # )
-    # def join(self, request, pk=None):
-    #     pass
+    @extend_schema(
+        description="下載所有報名資料",
+    )
+    @action(
+        detail=False,
+        methods=["get"],
+        url_path="check-name",
+        url_name="camp-checkname"
+    )
+    def download(self, request):
+        pass
+
+
+

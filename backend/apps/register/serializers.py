@@ -16,7 +16,7 @@ class RegisterSerializer(NestedHyperlinkedModelSerializer):
         fields = [
             "id", "user", "camp", "name", "sex",
             "nationality", "id_number", "birth_date",
-            "school_and_grade", "special_disease", "fb_link",
+            "school", "grade", "special_disease", "fb_link",
             "eating_habit", "email", "contact_number",
             "guardian_name", "guardian_relationship",
             "guardian_contact_number", "introduction",
