@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Select } from "antd";
+import { Card, Select } from "antd";
 import { OPTIONS } from "../utility/questions";
+import "../css/createActivity.css"
 
 const EditFormQuestion = ({current}) => {
     
@@ -23,21 +24,28 @@ const EditFormQuestion = ({current}) => {
     }, [current])
 
     return (
-        <Select
-            mode="multiple"
-            placeholder="請選擇表單的問題"
-            value={selectedItems}
-            onChange={handleSelect}
-            style={{width: '40vw'}}
-            size="large"
-            maxTagCount={5}
-        >
-            {filteredOptions.map((curOption) => (
-                <Select.Option style={{lineHeight: '40px'}} key={curOption.key} value={curOption.title}>
-                    {curOption.title}
-                </Select.Option>
-            ))}
-        </Select>
+        <div className="questionWrapper">
+            <div className="question-title">
+                <h2>選擇表單問題 !</h2>
+            </div>
+            <Select
+                mode="multiple"
+                placeholder="請選擇表單的問題"
+                value={selectedItems}
+                onChange={handleSelect}
+                style={{width: '35vw'}}
+                size="large"
+                maxTagCount={5}
+                >
+                {filteredOptions.map((curOption) => (
+                    <Select.Option style={{lineHeight: '40px'}} key={curOption.key} value={curOption.title}>
+                        {curOption.title}
+                    </Select.Option>
+                ))}
+            </Select>
+        </div>
+        
+        
 
     )
 }

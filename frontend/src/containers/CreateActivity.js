@@ -7,7 +7,7 @@ import StepController from "../components/StepController";
 import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
 import checkLogin from "../utility/checkLogin";
-import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined } from '@ant-design/icons';
+import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
 const {Step} = Steps;
 
@@ -33,16 +33,16 @@ const CreateActivity = () => {
     return (
         <div>
             <Appbar />
-            <Steps size="small" className="stepwrapper" current={current}>
+            <Steps className="stepwrapper" current={current}>
                 <Step title="活動頁面設計" description="讓頁面豐富精彩&#127775;"/>
                 <Step title="表單問題選擇" description="This is a description."/>
                 <Step title="確認資訊與發佈" description="This is a description." />
             </Steps>
             <div className="create-wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
-                <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 5}}>
-                    <img src={src} width={'100%'} style={{marginBottom: '0.5vw'}}/>
+                <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 7}}>
+                        <img src={src} style={{width: '100%', padding: '8px', borderRadius: '16px'}}/>
                     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <h1>營隊名稱: {activityName}</h1>
+                        <h1>營隊名稱 : {activityName}</h1>
                         <div id="tag" style={{marginRight: '0.5em',}}>
                             <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
                             <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
@@ -51,26 +51,31 @@ const CreateActivity = () => {
                     <div className="general-information">
                         <div className="detail">
                             <ClockCircleOutlined id="create-icon"/>
-                            <h2>活動時間: {date[0]} ~ {date[1]}</h2>
+                            <h2>活動時間 : {date[0]} ~ {date[1]}</h2>
                         </div>
                         <div className="detail">
                             <EnvironmentOutlined id="create-icon"/>
-                            <h2>活動地點: {place}</h2>
+                            <h2>活動地點 : {place}</h2>
                         </div>
                         <div className="detail">
                             <DollarOutlined id="create-icon"/>
-                            <h2>活動費用: {fee} 元</h2>
+                            <h2>活動費用 : {fee} 元</h2>
                         </div>
                         <div className="detail">
                             <TeamOutlined id="create-icon"/>
-                            <h2>活動名額: {quota} 人</h2>
-                    </div>
+                            <h2>活動名額 : {quota} 人</h2>
+                        </div>
                     </div>
                     <div className="detail-info">
-                        <p>活動資訊:</p>
-                        {/*whiteSpace 可以讓 textarea 根據換行做輸出 */}
+                        <div className="detail-in">
+                            <BulbOutlined id="info-icon"/>
+                            <h2>活動資訊 :</h2>                            
+                        </div>
                         <p style={{whiteSpace: 'pre-line'}}> {info} </p>
-                        <p>注意事項:</p>
+                        <div className="detail-in">
+                            <WarningOutlined id="info-icon"/>
+                            <h2>注意事項 :</h2>
+                        </div>
                         <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
                     </div>
                 </div>

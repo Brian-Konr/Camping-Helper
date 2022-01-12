@@ -6,6 +6,7 @@ import instance from '../instance';
 import Modal from "antd/lib/modal/Modal";
 import UploadImg from "./UploadImg";
 import "../css/createInput.css"
+import { ArrowDownOutlined } from '@ant-design/icons';
 
 const { RangePicker } = DatePicker;
 
@@ -30,44 +31,61 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                     <div className='inputTitle'>
                         輸入活動資訊 !
                     </div>
-                    <p id="top-describe">營隊封面圖片</p>
-                    <UploadImg setSrc={setSrc}/>
-                    <p>營隊名稱</p>
-                    <Input placeholder="Activity Name" onChange={(e) => {setActivityName(e.target.value)}} value={activityName} style={{'border-radius': '8px'}}></Input>
-                    <p>營隊日期</p>
-                    <RangePicker 
-                        onChange={(_, dateString) => {setDate(dateString)}}
-                        value={[moment(date[0], dateFormat), moment(date[1]), dateFormat]}
-                        style={{'border-radius': '8px'}}
-                    />
-                    <p>活動資訊</p>
-                    <Input.TextArea
-                        placeholder="輸入活動資訊"
-                        showCount={true}
-                        autoSize={{minRows: 2, maxRows: 10}}
-                        maxLength={500}
-                        onChange={(e) => {setInfo(e.target.value)}}
-                    />
-                    <p>活動地點</p>
-                    <Input placeholder="Where to host the activity?" maxLength={100} onChange={(e) => {setPlace(e.target.value)}} style={{'border-radius': '8px'}}></Input>
-                    <div style={{display: 'flex'}}>
-                        <div>
-                            <p>活動費用</p>
+                    <Card title="營隊封面圖片">
+                        <UploadImg setSrc={setSrc}/>
+                    </Card>
+                    <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    <Card title="營隊名稱">
+                        <Input placeholder="Activity Name" 
+                                onChange={(e) => {setActivityName(e.target.value)}} 
+                                value={activityName} 
+                                style={{'border-radius': '8px'}}
+                                ></Input>
+                    </Card>
+                    <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    <Card title="營隊日期">
+                        <RangePicker 
+                            onChange={(_, dateString) => {setDate(dateString)}}
+                            value={[moment(date[0], dateFormat), moment(date[1]), dateFormat]}
+                            style={{'border-radius': '8px'}}
+                        />
+                    </Card>
+                    <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    <Card title="活動地點">
+                        <Input placeholder="Where to host the activity?"
+                                maxLength={100} onChange={(e) => {setPlace(e.target.value)}} 
+                                style={{'border-radius': '8px'}}
+                        ></Input>
+                    </Card>
+                    <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                        <Card title="活動費用">
                             <InputNumber defaultValue={2500} min={0} onChange={(e) => {setFee(e)} } style={{'border-radius': '8px'}}/>
-                        </div>
-                        <div style={{marginLeft: '110px'}}>
-                            <p>活動名額</p>
+                        </Card>
+                        <Card title="活動名額">
                             <InputNumber defaultValue={70} min={0} max={300} onChange={(e) => {setQuota(e)}} style={{'border-radius': '8px'}}/>
-                        </div>
+                        </Card>
                     </div>
-                    <p>注意事項</p>
-                    <Input.TextArea
-                        placeholder="輸入注意事項"
-                        showCount={true}
-                        autoSize={{minRows: 2, maxRows: 10}}
-                        maxLength={500}
-                        onChange={(e) => {setPrecaution(e.target.value)}}
-                    />
+                    <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    <Card title="活動資訊">
+                        <Input.TextArea
+                            placeholder="輸入活動資訊"
+                            showCount={true}
+                            autoSize={{minRows: 2, maxRows: 10}}
+                            maxLength={500}
+                            onChange={(e) => {setInfo(e.target.value)}}
+                        />
+                    </Card>
+                    <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    <Card title="注意事項">
+                        <Input.TextArea
+                            placeholder="輸入注意事項"
+                            showCount={true}
+                            autoSize={{minRows: 2, maxRows: 10}}
+                            maxLength={500}
+                            onChange={(e) => {setPrecaution(e.target.value)}}
+                        />
+                    </Card>
                 </div>
                 
                 <div style={{display: 'flex', marginBottom: '2vh'}}>
