@@ -2,7 +2,9 @@ import { useState, useEffect } from "react";
 import instance from "../instance";
 import { useNavigate, useParams } from "react-router-dom";
 import checkLogin from "../utility/checkLogin";
+import CompleteForm from "../components/CompleteForm";
 
+const questions = [1];
 const AnswerForm = () => {
     const navigate = useNavigate();
     const {campId} = useParams();
@@ -21,9 +23,13 @@ const AnswerForm = () => {
         else navigate('/login');
     }, [])
 
+    const [name, setName] = useState("");
+
     return (
         <>
             <h1>{`Answering form of ${campName}`}</h1>
+            <CompleteForm />
+            {/* <FormInput value={name} setValue={setName} questionName={"姓名"} placeholder={"請輸入你的名字"} maxLength={10}/> */}
         </>
     )
 }

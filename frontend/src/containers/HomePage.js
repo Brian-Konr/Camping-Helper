@@ -10,29 +10,10 @@ const { Header, Content, Sider } = Layout;
 
 const Homepage = ({isLogin, setIsLogin}) => {
 
-	// const [totalLen, setTotalLen] = useState(3);
-	// const [nextPage, setNextPage] = useState(0);
-	// useEffect(async () => {
-	// 	let res = await fetchData(3, 0);
-	// 	console.log(res.data);
-	// 	setTotalLen(res.data.count);
-	// }, [])
-
-	// const fetchData = async (limit, nextPage) => {
-	// 	try {
-	// 		let res = await instance.get('/camp/', {
-	// 			params: {
-	// 				offset: nextPage * limit,
-	// 				limit: limit
-	// 			}
-	// 		});
-	// 		console.log(res.data);
-	// 		setNextPage(nextPage => nextPage + 1);
-	// 		return res;
-	// 	} catch (error) {
-	// 		console.log(error.response);
-	// 	}
-	// }
+    /*
+        TODO: Home page has to be styled, which have 6 (can be discussed later) cards in every page.
+        And when click next or prev button, we can realize page switching
+    */ 
     return (
         <Layout 
             style={{

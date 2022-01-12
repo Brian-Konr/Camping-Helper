@@ -18,9 +18,13 @@ const HotCard = () => {
 	const [curPage, setCurPage] = useState(0);
 	const [curOffset, setCurOffset] = useState(0);
 	useEffect(async () => {
-		let res = await fetchData(curOffset);
-		console.log(res.data);
-		setTotalLen(res.data.count);
+		try {
+			let res = await fetchData(curOffset);
+			console.log(res.data);
+			setTotalLen(res.data.count);
+		} catch (error) {
+			console.log(error);
+		}
 	}, [])
 
 	const fetchData = async (offset) => {
