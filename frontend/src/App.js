@@ -2,7 +2,6 @@ import React from 'react';
 import { useState } from 'react';
 import Login from "./containers/Login";
 import SignUp from './containers/SignUp';
-import HotCard from './containers/HotCard';
 import HomePage from './containers/HomePage';
 import Activation from './containers/Activation';
 import CreateActivity from './containers/CreateActivity';

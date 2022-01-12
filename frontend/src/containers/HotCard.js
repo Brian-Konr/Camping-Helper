@@ -1,80 +1,89 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../css/card.css';
 import { Row, Col, Divider, Card, Avatar, message, Pagination } from "antd";
+import ThumbnailCard from '../components/ThumbnailCard';
+import PrevButton from "../icons/prev-button.png";
+import NextButton from "../icons/next-button.png";
+import instance from '../instance';
+
+const numEachPage = 3;
+
 
 const HotCard = () => {
-  const cardStyle = { 
-    width: '330px',
-    height: '300px',
-    borderRadius: '16px',
-    boxShadow: '2px 4px 6px 2px rgba(83, 83, 83, 0.3)',
-    overflow: "hidden",
-    margin: '0px 16px 0',
- }
-  const { Meta } = Card
 
-  let src = "https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png";
-  let avatarSrc = "https://joeschmoe.io/api/v1/random";
+	const [cardArr, setCardArr] = useState([]);
+	const [totalLen, setTotalLen] = useState(3);
+	const [nextPage, setNextPage] = useState(0);
+	const [curPage, setCurPage] = useState(0);
+	const [curOffset, setCurOffset] = useState(0);
+	useEffect(async () => {
+		let res = await fetchData(curOffset);
+		console.log(res.data);
+		setTotalLen(res.data.count);
+	}, [])
 
-  let info = {
-    src: src,
-    key: 1,
-    avatarSrc: avatarSrc
-  };
-  let infoArr = [info, {...info, key: 2}, {...info, key: 3}, {...info, key: 4}, {...info, key: 5}, {...info, key: 6}, {...info, key: 7}, {...info, key: 8}];
-  console.log(infoArr);
+	const fetchData = async (offset) => {
+		try {
+			let res = await instance.get('/camp/', {
+				params: {
+					offset: offset,
+					limit: numEachPage*2
+				}
+			});
+			console.log(res.data);
+			setCardArr(cardArr.concat(res.data.results));
+			return res;
+		} catch (error) {
+			console.log(error.response);
+		}
+	}
 
-  const numEachPage = 3;
-  const [minVal, setMinVal] = useState(0);
-  const [maxVal, setMaxVal] = useState(numEachPage);
+	useEffect(() => {
+		console.log("card updated: ", cardArr);
+		setCurOffset(cardArr.length);
+	}, [cardArr]);
 
-  const handlePagination = (value) => {
-    setMinVal((value - 1) * numEachPage);
-    setMaxVal(value * numEachPage);
-  }
+	useEffect(() => {
+		console.log("next page is: ", nextPage);
+	}, [nextPage]);
 
-  return (
-    <>
-      <div className="site-card-border-less-wrapper">
-        <div className="cardwrapper">
-          {infoArr.slice(minVal, maxVal).map((item) => (
-            <Card
-              key={item.key}
-              onClick={() => message.info(`You are clicking card ${item.key}`)}
-              hoverable = {true}
-              bordered={false}
-              cover={
-                <img
-                  alt="example"
-                  src= {item.src}
-                  width='100%'
-                  height='180px'
-                />
-              }
-              style={cardStyle}
-              bodyStyle={{backgroundColor: '#d2f1ff', height: '120px', padding: '12px 18px'}}
-            >
-              <div className='detail-wrapper'>
-                <p className="date">2021/12/22</p>
-                <Meta
-                  avatar={<Avatar src={item.avatarSrc} />}
-                  title={`This is card ${item.key}`}
-                  description="This is the description"
-                />
-              </div>
-            </Card>
-          ))}
-          <Pagination
-            defaultCurrent={1}
-            defaultPageSize={numEachPage}
-            onChange={handlePagination}
-            total={infoArr.length}
-          />
-        </div>
-      </div>
-    </>
-  )
+	useEffect(() => {
+		console.log("current page is: ", curPage);
+	}, [curPage])
+
+	const handleNext = () => {
+		if(curOffset < totalLen) fetchData(curOffset);
+		if(curPage < Math.floor(totalLen * 1.0 / numEachPage)) setCurPage(prev => prev + 1);
+	}
+
+	const handlePrevious = () => {
+		if(curPage > 0) setCurPage(prev => prev - 1);
+	}
+    return (
+        <>
+        	<div className="site-card-border-less-wrapper">
+			<div>{`current page: ${curPage}`}</div>
+			<div style={{width: '100px'}}>
+				<img src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
+			</div>
+			<div className="cardwrapper">
+				{cardArr.slice(curPage*numEachPage, curPage*numEachPage + 3).map((item) => ( 
+					<ThumbnailCard
+						name={item.name}
+						key={item.id} 
+						keyVal={item.id} 
+						src={"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"}
+						place={item.place}
+					/> 
+				))}
+			</div>
+			<div style={{width: '100px'}}>
+				<img src={NextButton} style={{width: '100%'}} onClick={handleNext} alt="next-button"/>
+			</div>
+         	 </div>
+        </>
+    )
 }
 
 export default HotCard

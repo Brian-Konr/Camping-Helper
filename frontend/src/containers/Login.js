@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Layout } from 'antd';
+import { Form, Input, Button, Checkbox, Layout, message } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 import instance from '../instance';
 import '../css/login.css'
@@ -14,11 +14,13 @@ const NormalLoginForm = ({setIsLogin}) => {
     setIsLogin(true);
 
     // just for test
-    let form = {
-      email: "admin@dodofk.xyz",
-      password: "#EDC$RFV%TGB"
-    }
-    submit(form);
+
+    // let form = {
+    //   email: "admin@dodofk.xyz",
+    //   password: "#EDC$RFV%TGB"
+    // }
+    
+    submit(values);
     // navigate('/');
   };
 
@@ -44,6 +46,7 @@ const NormalLoginForm = ({setIsLogin}) => {
       navigate("/");
     } catch (error) {
       console.log(error.response);
+      message.error("帳號或密碼輸入錯誤! 請重新嘗試", 2);
     }
   }
   return (
