@@ -1,6 +1,6 @@
   .layout-container {
     padding: 0px;
-    width: 1080px;
+    width: 80%;
     margin: 0 auto;
   }
   .site-layout-background {
@@ -11,9 +11,7 @@
     margin-bottom: 16px;
   }
   .classtitle {
-    width: 100%;
-    display: flex;
-    align-items: center;
+    margin-top: 2vh;
   }
   .class-name {
     margin-left: 4px;

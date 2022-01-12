@@ -31,18 +31,7 @@ const Homepage = ({isLogin, setIsLogin}) => {
                 >
                     <div className='hotwrapper'>
                         <div className='classtitle'>
-                            <h2 className='class-name'>熱門推薦</h2>
-                        </div>
-                        <Divider style={{
-                            height: '7px',
-                            width: '100%',
-                            display: 'inline-block',
-                            backgroundColor: '#64A1D1'}}/>
-                        <Hotcard />
-                    </div>
-                    <div className='generalwrapper'>
-                        <div className='classtitle'>
-                            <h2 className='class-name'>活動資訊</h2>
+                            <h2 className='class-name'>所有活動</h2>
                         </div>
                         <Divider style={{
                             height: '7px',
@@ -53,7 +42,7 @@ const Homepage = ({isLogin, setIsLogin}) => {
                             <Button className='filterbutton'>現正可報名</Button>
                             <Button className='filterbutton'>即將開放報名</Button>
                         </div>
-                        <Generalcard />
+                        <Hotcard />
                     </div>
                 </Content>
             </Layout>

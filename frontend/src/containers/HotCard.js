@@ -7,7 +7,7 @@ import PrevButton from "../icons/prev-button.png";
 import NextButton from "../icons/next-button.png";
 import instance from '../instance';
 
-const numEachPage = 3;
+const numEachPage = 6;
 
 
 const HotCard = () => {
@@ -65,28 +65,28 @@ const HotCard = () => {
 		if(curPage > 0) setCurPage(prev => prev - 1);
 	}
     return (
-        <>
-        	<div className="site-card-border-less-wrapper">
-			<div>{`current page: ${curPage}`}</div>
-			<div style={{width: '100px'}}>
-				<img src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
+		<>
+			<div style={{margin: '12px'}}>{`current page: ${curPage+1}`}</div>
+			<div className='allCard-wrapper'>
+				<div style={{width: '100px'}} className='stepButton'>
+					<img id="previous" src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
+				</div>
+				<div className="cardwrapper">
+					{cardArr.slice(curPage*numEachPage, curPage*numEachPage + 3).map((item) => ( 
+						<ThumbnailCard
+							name={item.name}
+							key={item.id} 
+							keyVal={item.id} 
+							src={"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"}
+							place={item.place}
+						/> 
+					))}
+				</div>
+				<div className='stepButton' style={{width: '100px'}}>
+					<img id="next"src={NextButton} style={{width: '100%'}} onClick={handleNext} alt="next-button"/>
+				</div>
 			</div>
-			<div className="cardwrapper">
-				{cardArr.slice(curPage*numEachPage, curPage*numEachPage + 3).map((item) => ( 
-					<ThumbnailCard
-						name={item.name}
-						key={item.id} 
-						keyVal={item.id} 
-						src={"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"}
-						place={item.place}
-					/> 
-				))}
-			</div>
-			<div style={{width: '100px'}}>
-				<img src={NextButton} style={{width: '100%'}} onClick={handleNext} alt="next-button"/>
-			</div>
-         	 </div>
-        </>
+		</>
     )
 }
 

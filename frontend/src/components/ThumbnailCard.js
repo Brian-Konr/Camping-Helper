@@ -2,6 +2,7 @@ import { Card } from "antd";
 import { useNavigate } from "react-router-dom";
 import '../css/card.css';
 const cardStyle = { 
+    flex:'20%',
     width: '330px',
     height: '300px',
     borderRadius: '16px',
