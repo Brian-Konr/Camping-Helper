@@ -5,6 +5,9 @@ from . import models
 
 
 class RegisterSerializer(NestedHyperlinkedModelSerializer):
+    parent_lookup_kwargs = {
+        "camp_pk": "camp__pk",
+    }
     # todo
     # define url
 
@@ -23,3 +26,5 @@ class RegisterSerializer(NestedHyperlinkedModelSerializer):
         read_only_fields = [
             "camp", "user", "is_finish",
         ]
+
+

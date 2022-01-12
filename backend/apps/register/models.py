@@ -133,3 +133,9 @@ class Registration(models.Model):
 
     class Meta:
         db_table = "registration"
+        constraints =[
+            models.UniqueConstraint(
+                fields=["camp", "user"],
+                name="unique-camp-for-user",
+            ),
+        ]
