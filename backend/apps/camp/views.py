@@ -9,8 +9,7 @@ from . import models, serializers, permissions
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
-from drf_spectacular.utils import extend_schema_view, extend_schema
-from drf_spectacular.utils import OpenApiParameter, OpenApiResponse
+from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter, OpenApiResponse
 
 
 @extend_schema_view(
