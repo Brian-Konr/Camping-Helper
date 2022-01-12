@@ -1,0 +1,25 @@
+.ant-input {
+    border-radius: 8px;
+}
+p {
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+#top-describe {
+    margin-top: -10px;
+}
+.ant-card-bordered {
+    border:0px;
+}
+.custom-card {
+    margin-left: 1vw;
+    margin-top: 1vw;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    min-height: 100vh;
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}

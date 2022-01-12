@@ -20,7 +20,7 @@ const UploadImg = ({setSrc}) => {
                 // onPreview={(file) => console.log(file.url)}
                 onChange={handleUpload}
             >
-                <Button disabled={disable} icon={<UploadOutlined />}>上傳圖片</Button>
+                <Button disabled={disable} icon={<UploadOutlined />} style={{'border-radius': '8px'}}>上傳圖片</Button>
             </Upload>
         </>
     )

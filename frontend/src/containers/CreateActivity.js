@@ -7,6 +7,8 @@ import StepController from "../components/StepController";
 import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
 import checkLogin from "../utility/checkLogin";
+import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined } from '@ant-design/icons';
+
 const {Step} = Steps;
 
 const CreateActivity = () => {
@@ -31,26 +33,47 @@ const CreateActivity = () => {
     return (
         <div>
             <Appbar />
-            <Steps current={current}>
+            <Steps size="small" className="stepwrapper" current={current}>
                 <Step title="活動頁面設計" description="讓頁面豐富精彩&#127775;"/>
                 <Step title="表單問題選擇" description="This is a description."/>
                 <Step title="確認資訊與發佈" description="This is a description." />
             </Steps>
             <div className="wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
-                <div style={{display: 'flex', flexDirection: 'column', width: '67.3vw'}}>
-                    <img src={src} width={'100%'} />
-                    <h1>營隊名稱: {activityName}</h1>
-                    <h2>From {date[0]} to {date[1]}</h2>
+                <div style={{display: 'flex', flexDirection: 'column', flex: 5}}>
+                    <img src={src} width={'100%'} style={{marginBottom: '0.5vw'}}/>
+                    <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h1>營隊名稱: {activityName}</h1>
+                        <div id="tag" style={{marginRight: '0.5em',}}>
+                            <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
+                            <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
+                        </div>
+                    </div>
+                    <div className="general-information">
+                        <div className="detail">
+                            <ClockCircleOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <h2>活動時間: {date[0]} ~ {date[1]}</h2>
+                        </div>
+                        <div className="detail">
+                            <EnvironmentOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <h2>活動地點: {place}</h2>
+                        </div>
+                        <div className="detail">
+                            <DollarOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <h2>活動費用: {fee} 元</h2>
+                        </div>
+                        <div className="detail">
+                            <TeamOutlined style={{fontSize: '25px', marginRight: '8px',}}/>
+                            <h2>活動名額: {quota} 人</h2>
+                    </div>
+                    </div>
                     <p>活動資訊:</p>
                     {/*whiteSpace 可以讓 textarea 根據換行做輸出 */}
                     <p style={{whiteSpace: 'pre-line'}}> {info} </p>
-                    <h2>活動地點: {place}</h2>
-                    <h2>活動費用: {fee}</h2>
-                    <h2>活動名額: {quota}</h2>
                     <p>注意事項:</p>
                     <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
                 </div>
                 <CreateInput
+                    className='inputcontent'
                     activityName={activityName}  
                     date={date}
                     info={info}
