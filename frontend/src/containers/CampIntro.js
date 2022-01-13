@@ -2,6 +2,8 @@ import { Button } from "antd";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import instance from "../instance";
+import "../css/campIntro.css";
+
 const CampIntro = () => {
 
     const {campId} = useParams();
@@ -18,13 +20,13 @@ const CampIntro = () => {
         }
     }, [])
     return (
-        <>
+        <div className="enterCamp-title">
             <h1>{`You are viewing ${campName}`}</h1>
             <div style={{display: 'flex'}}>
                 <Button onClick={() => {navigate('/')}}>回到主頁</Button>
                 <Button onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button>
             </div>
-        </>
+        </div>
     )
 }
 

@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar';
 import Generalcard from './Generalcard';
 import '../css/homepage.css';
 import instance from '../instance';
-const { Header, Content, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const Homepage = ({isLogin, setIsLogin}) => {
 
@@ -46,6 +46,17 @@ const Homepage = ({isLogin, setIsLogin}) => {
                     </div>
                 </Content>
             </Layout>
+            <Footer style={{ 
+                borderTop: '1px solid #e8e8e8',
+                position: 'relative',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                minHeight: '30vh',
+                backgroundColor: 'black',
+                textAlign: 'center'}} >
+                    This is footer
+            </Footer>
         </Layout>
     );
 };

@@ -64,7 +64,7 @@ h2 {
     font-size: 25px;
     margin-left: 1vw;
     margin-right: 2vw;
-    color: hsl(54, 100%, 50%)
+    color: hsl(214, 30%, 67%)
 }
 #tag {
     display: flex;
@@ -112,4 +112,12 @@ h2 {
     color: #FB8CB3;
     background-color: #fff;
     margin: 10px;
+}
+.ant-divider-horizontal {
+    margin: 10px 0;
+}
+.content-container {
+    margin: 0 1.5vw;
+    margin-bottom: 1vw;
+    padding: 5px;
 }

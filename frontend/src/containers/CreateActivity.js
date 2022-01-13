@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { message, Steps, Button } from "antd";
+import { message, Steps, Button, Divider } from "antd";
 // import Appbar from "../components/Appbar";
+import { Content } from "antd/lib/layout/layout";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import CreateInput from "../components/CreatInput";
@@ -54,7 +55,9 @@ const CreateActivity = () => {
             </Steps>
             <div className="create-wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
                 <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 7}}>
-                        <img src={src} style={{width: '100%', padding: '8px', borderRadius: '16px'}}/>
+                    <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px'}}>
+                        <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
+                    </div>
                     <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                         <h1>營隊名稱 : {activityName}</h1>
                         <div id="tag" style={{marginRight: '0.5em',}}>
@@ -85,12 +88,26 @@ const CreateActivity = () => {
                             <BulbOutlined id="info-icon"/>
                             <h2>活動資訊 :</h2>                            
                         </div>
-                        <p style={{whiteSpace: 'pre-line'}}> {info} </p>
+                        <Divider id="info-divider" style={{
+                            height: '2px',
+                            width: '100%',
+                            display: 'block',
+                            backgroundColor: 'hsl(214, 30%, 67%)'}}/>
+                        <Content className="content-container">
+                            <p style={{whiteSpace: 'pre-line'}}> {info} </p>
+                        </Content>
                         <div className="detail-in">
                             <WarningOutlined id="info-icon"/>
                             <h2>注意事項 :</h2>
                         </div>
-                        <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
+                        <Divider id="info-divider" style={{
+                            height: '2px',
+                            width: '100%',
+                            display: 'block',
+                            backgroundColor: 'hsl(214, 30%, 67%)'}}/>
+                        <Content className="content-container">
+                            <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
+                        </Content>
                     </div>
                 </div>
                 <CreateInput
