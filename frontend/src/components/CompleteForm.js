@@ -1,12 +1,19 @@
 import { useState } from "react";
 import moment from 'moment';
-import { Form, Input, Select, Button, DatePicker } from "antd";
+import { Form, Input, Select, Button, DatePicker, message } from "antd";
 import Layout, { Content } from "antd/lib/layout/layout";
 import "../css/completeForm.css"
 
 const { Option } = Select;
-const questionArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+const questionArr = [1, 2, 3, 4];
 const dateFormat = "YYYY/MM/DD";
+const rule = [
+    {
+        required: true,
+        message: "這是必填項目!"
+    }
+]
+
 const CompleteForm = () => {
 
     // TODO: Need to add temporary save, which involved in the communication with backend endpoint
@@ -20,7 +27,7 @@ const CompleteForm = () => {
                 {questionArr.includes(1) && (
                     <>
                         <h3>姓名</h3>
-                        <Form.Item name="name">
+                        <Form.Item name="name" rules={rule}>
                             {/* <h3>姓名</h3> */}
                             <Input
                                 type="text"
@@ -33,7 +40,7 @@ const CompleteForm = () => {
                 {questionArr.includes(2) && (
                     <>
                         <h3>生理性別</h3>
-                        <Form.Item name="sex">
+                        <Form.Item name="sex" rules={rule}>
                             <Select
                                 placeholder="請選擇你的生理性別"
                             >
@@ -47,7 +54,7 @@ const CompleteForm = () => {
                 {questionArr.includes(3) && (
                     <>
                         <h3>你的國籍</h3>
-                        <Form.Item name="nationality">
+                        <Form.Item name="nationality" rules={rule}>
                             <Input 
                                 type="text"
                                 placeholder="請輸入你的國籍"
@@ -59,7 +66,7 @@ const CompleteForm = () => {
                 {questionArr.includes(4) && (
                     <>
                         <h3>你的身分證字號 (開頭大寫)</h3>
-                        <Form.Item name="id_number">
+                        <Form.Item name="id_number" rules={rule}>
                             <Input 
                                 placeholder="請輸入你的身分證字號"
                             />
@@ -70,7 +77,7 @@ const CompleteForm = () => {
                 {questionArr.includes(5) && (
                     <>
                         <h3>出生年月日</h3>
-                        <Form.Item name="birth_date">
+                        <Form.Item name="birth_date" rules={rule}>
                             <DatePicker />
                         </Form.Item>
                     </>
@@ -80,13 +87,13 @@ const CompleteForm = () => {
                     <>
                         <h3>學校名稱與年級</h3>
                         <Form.Item style={{display: 'flex'}}>
-                            <Form.Item name="school">
+                            <Form.Item name="school"  rules={rule}>
                                 <Input 
                                     type="text"
                                     placeholder="請輸入你的學校"
                                 />
                             </Form.Item>
-                            <Form.Item name="grade">
+                            <Form.Item name="grade" rules={rule}>
                                 <Select
                                     placeholder="年級"
                                 >
@@ -102,7 +109,7 @@ const CompleteForm = () => {
                 {questionArr.includes(7) && (
                     <>
                         <h3>特殊疾病</h3>
-                        <Form.Item name="special_disease">
+                        <Form.Item name="special_disease" rules={rule}>
                             <Input 
                                 placeholder="疾病史"
                             />
@@ -113,7 +120,7 @@ const CompleteForm = () => {
                 {questionArr.includes(8) && (
                     <>
                         <h3>Facebook 連結</h3>
-                        <Form.Item name="fb_link">
+                        <Form.Item name="fb_link" rules={rule}>
                             <Input
                                 type="url"
                                 placeholder="Facebook 連結"
@@ -125,7 +132,7 @@ const CompleteForm = () => {
                 {questionArr.includes(9) && (
                     <>
                         <h3>飲食習慣</h3>
-                        <Form.Item name="eating_habit">
+                        <Form.Item name="eating_habit" rules={rule}>
                             <Select
                                 placeholder="請選擇你的飲食習慣"
                             >
@@ -139,7 +146,7 @@ const CompleteForm = () => {
                 {questionArr.includes(10) && (
                     <>
                         <h3>電子信箱</h3>
-                        <Form.Item name="email">
+                        <Form.Item name="email" rules={rule}>
                             <Input 
                                 type="email"
                                 placeholder="請輸入你的電子信箱"
@@ -151,7 +158,7 @@ const CompleteForm = () => {
                 {questionArr.includes(11) && (
                     <>
                         <h3>聯絡電話</h3>
-                        <Form.Item name="contact_number">
+                        <Form.Item name="contact_number" rules={rule}>
                             <Input 
                                 type="number"
                                 placeholder="請輸入你的手機號碼或其他聯絡電話"
@@ -163,7 +170,7 @@ const CompleteForm = () => {
                 {questionArr.includes(12) && (
                     <>
                         <h3>監護人姓名</h3>
-                        <Form.Item name="guardian_name">
+                        <Form.Item name="guardian_name" rules={rule}>
                             <Input 
                                 type="text"
                                 placeholder="請輸入監護人姓名"
@@ -175,7 +182,7 @@ const CompleteForm = () => {
                 {questionArr.includes(13) && (
                     <>
                         <h3>與監護人之關係</h3>
-                        <Form.Item name="guardian_relationship">
+                        <Form.Item name="guardian_relationship" rules={rule}>
                             <Input 
                                 type="text"
                                 placeholder="請輸入你與監護人的關係"
@@ -187,7 +194,7 @@ const CompleteForm = () => {
                 {questionArr.includes(14) && (
                     <>
                         <h3>監護人之聯絡電話</h3>
-                        <Form.Item name="guardian_contact_number">
+                        <Form.Item name="guardian_contact_number" rules={rule}>
                             <Input 
                                 type="number"
                                 placeholder="請輸入監護人的手機號碼或其他聯絡電話"
@@ -199,7 +206,7 @@ const CompleteForm = () => {
                 {questionArr.includes(15) && (
                     <>
                         <h3>自我介紹</h3>
-                        <Form.Item name="introduction">
+                        <Form.Item name="introduction" rules={rule}>
                             <Input.TextArea 
                                 placeholder="自我介紹 (限 500 字內)"
                                 showCount={true}
@@ -212,7 +219,7 @@ const CompleteForm = () => {
                 {questionArr.includes(16) && (
                     <>
                         <h3>特殊經歷</h3>
-                        <Form.Item name="special_experience">
+                        <Form.Item name="special_experience" rules={rule}>
                             <Input.TextArea 
                                 placeholder="特殊經歷 (限 500 字內)"
                                 showCount={true}
@@ -225,7 +232,7 @@ const CompleteForm = () => {
                 {questionArr.includes(17) && (
                     <>
                         <h3>報名動機</h3>
-                        <Form.Item name="motivation">
+                        <Form.Item name="motivation" rules={rule}>
                             <Input.TextArea 
                                 placeholder="報名動機 (限 500 字內)"
                                 showCount={true}
@@ -238,7 +245,7 @@ const CompleteForm = () => {
                 {questionArr.includes(18) && (
                     <>
                         <h3>對營隊的期許</h3>
-                        <Form.Item name="camp_anticipation">
+                        <Form.Item name="camp_anticipation" rules={rule}>
                             <Input.TextArea 
                                 placeholder="對營隊的期許 (限 500 字內)"
                                 showCount={true}
@@ -251,7 +258,7 @@ const CompleteForm = () => {
                 {questionArr.includes(19) && (
                     <>
                         <h3>其他意見</h3>
-                        <Form.Item name="other">
+                        <Form.Item name="other" rules={rule}>
                             <Input.TextArea 
                                 placeholder="其他意見 (限 500 字內)"
                                 showCount={true}
@@ -260,8 +267,11 @@ const CompleteForm = () => {
                         </Form.Item>
                     </>
                 )}
+
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" style={{alignSelf: 'center', justifyContent: 'center'}} >Submit</Button>
+                </Form.Item>
             </Form>
-            <Button type="primary" htmlType="submit" style={{alignSelf: 'center'}}>Submit</Button>
         </Layout>
         
     )
