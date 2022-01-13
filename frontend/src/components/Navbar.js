@@ -15,11 +15,10 @@ const Navbar = () => {
     const [view, setView] = useState("");
 
     const handleOnClick = (e) => {
-        let view = e.key;
-        if(view === "joined" || view === "host") {
-            setView(view);
+        if(e.key === "join" || e.key === "own") {
+            setView(e.key);
             const params = {
-                view: view,
+                view: e.key,
                 
             }
             if(searchName !== "") Object.assign(params, {name_contains: searchName});
@@ -56,8 +55,8 @@ const Navbar = () => {
                         <Menu.Item icon={<HomeOutlined />} key="home"><Link to='/'>Home</Link></Menu.Item>
                         <Menu.Item key="create"><Link to='/create'>Host an Event!</Link></Menu.Item>
                         <SubMenu key="subMenu" title="Me">
-                            <Menu.Item key="joined">我報名的活動</Menu.Item>
-                            <Menu.Item key="host">我舉辦的活動</Menu.Item>
+                            <Menu.Item key="join">我報名的活動</Menu.Item>
+                            <Menu.Item key="own">我舉辦的活動</Menu.Item>
                         </SubMenu>
                         <Menu.Item key="search">
                             <Input 

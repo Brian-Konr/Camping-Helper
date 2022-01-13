@@ -57,14 +57,7 @@ const DisplayCard = ({params}) => {
 		}
 	}
 
-	// useEffect(() => {
-	// 	console.log("card updated: ", cardArr);
-	// 	setCurOffset(cardArr.length);
-	// }, [cardArr]);
-
-	// useEffect(() => {
-	// 	console.log("current page is: ", curPage);
-	// }, [curPage])
+	console.log("totalLen", totalLen);
 
 
 	useEffect(() => {
@@ -76,9 +69,7 @@ const DisplayCard = ({params}) => {
 	}, [curPage])
 
 	const handleNext = () => {
-		// if(curOffset < totalLen) fetchData(curOffset);
-		// console.log(totalLen);
-		if(curPage < Math.floor(totalLen * 1.0 / numEachPage)) setCurPage(prev => prev + 1);
+		if((curPage + 1 ) < Math.ceil(totalLen * 1.0 / numEachPage)) setCurPage(prev => prev + 1);
 	}
 
 	const handlePrevious = () => {
@@ -87,7 +78,7 @@ const DisplayCard = ({params}) => {
 
 	return (
 		<>
-			<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.floor(totalLen * 1.0 / numEachPage) + 1}`}</div>
+			<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>
 			<div className='allCard-wrapper'>
 				<div style={{width: '100px'}} className='stepButton'>
 					<img id="previous" src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
