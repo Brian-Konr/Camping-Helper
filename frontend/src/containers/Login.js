@@ -6,12 +6,11 @@ import '../css/login.css'
 import { Link, useNavigate} from "react-router-dom";
 const { Content } = Layout;
 
-const NormalLoginForm = ({setIsLogin}) => {
+const NormalLoginForm = () => {
   const navigate = useNavigate();
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
-    setIsLogin(true);
 
     // just for test
 

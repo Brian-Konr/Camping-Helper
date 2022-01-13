@@ -2,6 +2,7 @@ import { Button } from "antd";
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import instance from "../instance";
+import Navbar from "../components/Navbar";
 const CampIntro = () => {
 
     const {campId} = useParams();
@@ -19,6 +20,7 @@ const CampIntro = () => {
     }, [])
     return (
         <>
+            <Navbar />
             <h1>{`You are viewing ${campName}`}</h1>
             <div style={{display: 'flex'}}>
                 <Button onClick={() => {navigate('/')}}>回到主頁</Button>
