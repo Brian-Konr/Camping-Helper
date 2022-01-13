@@ -80,7 +80,7 @@ const DisplayCard = ({params}) => {
 		<>
 			<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>
 			<div className='allCard-wrapper'>
-				<div style={{width: '100px'}} className='stepButton'>
+				<div className='stepButton'>
 					<img id="previous" src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
 				</div>
 				<div className="cardwrapper">
@@ -94,7 +94,7 @@ const DisplayCard = ({params}) => {
 						/> 
 					))}
 				</div>
-				<div className='stepButton' style={{width: '100px'}}>
+				<div className='stepButton'>
 					<img id="next"src={NextButton} style={{width: '100%'}} onClick={handleNext} alt="next-button"/>
 				</div>
 			</div>
