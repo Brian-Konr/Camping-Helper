@@ -39,7 +39,7 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                         <Input placeholder="Activity Name" 
                                 onChange={(e) => {setActivityName(e.target.value)}} 
                                 value={activityName} 
-                                style={{'border-radius': '8px'}}
+                                id="inputcard"
                                 ></Input>
                     </Card>
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
@@ -54,7 +54,7 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                     <Card title="活動地點">
                         <Input placeholder="Where to host the activity?"
                                 maxLength={100} onChange={(e) => {setPlace(e.target.value)}} 
-                                style={{'border-radius': '8px'}}
+                                id="inputcard"
                         ></Input>
                     </Card>
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
@@ -74,6 +74,7 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                             autoSize={{minRows: 2, maxRows: 10}}
                             maxLength={500}
                             onChange={(e) => {setInfo(e.target.value)}}
+                            id="inputcard"
                         />
                     </Card>
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
@@ -84,6 +85,7 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                             autoSize={{minRows: 2, maxRows: 10}}
                             maxLength={500}
                             onChange={(e) => {setPrecaution(e.target.value)}}
+                            id="inputcard"
                         />
                     </Card>
                 </div>

@@ -5,6 +5,13 @@ import { message } from "antd";
 import checkLogin from "../utility/checkLogin";
 import CompleteForm from "../components/CompleteForm";
 
+const titleStyle = {
+    color: '#fff',
+    fontSize: '1.5rem',
+    fontWeight: '500',
+    padding: '16px',
+    textAlign: 'center',
+}
 const questions = [1];
 const AnswerForm = () => {
     const navigate = useNavigate();
@@ -31,9 +38,12 @@ const AnswerForm = () => {
 
     return (
         <>
-            <h1>{`Answering form of ${campName}`}</h1>
+            <div style={titleStyle}>
+                <h1>{`Answering form of ${campName}`}</h1>
+            </div>
             <CompleteForm />
             {/* <FormInput value={name} setValue={setName} questionName={"姓名"} placeholder={"請輸入你的名字"} maxLength={10}/> */}
+        
         </>
     )
 }

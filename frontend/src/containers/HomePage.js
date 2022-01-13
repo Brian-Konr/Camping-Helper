@@ -2,7 +2,8 @@ import { Layout, Divider, Button } from 'antd';
 import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import '../css/homepage.css';
-const { Content } = Layout;
+import instance from '../instance';
+const { Header, Content, Footer } = Layout;
 
 const Homepage = () => {
 
@@ -42,6 +43,17 @@ const Homepage = () => {
                     </div>
                 </Content>
             </Layout>
+            <Footer style={{ 
+                borderTop: '1px solid #e8e8e8',
+                position: 'relative',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                minHeight: '30vh',
+                backgroundColor: 'black',
+                textAlign: 'center'}} >
+                    This is footer
+            </Footer>
         </Layout>
     );
 };
