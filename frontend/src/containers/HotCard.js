@@ -9,30 +9,38 @@ import instance from '../instance';
 const numEachPage = 6;
 
 
-const HotCard = ({params}) => {
+const DisplayCard = ({params}) => {
+
+	console.log(params);
 
 	const [cardArr, setCardArr] = useState([]);
 	const [totalLen, setTotalLen] = useState(3);
 	const [curPage, setCurPage] = useState(0);
 	const [curOffset, setCurOffset] = useState(0);
+	const [queryParam, setQueryParm] = useState(params);
 
-	useEffect(async () => {
-		try {
-			let res = await fetchData(curOffset);
-			console.log(res.data);
-			setTotalLen(res.data.count);
-			
-		} catch (error) {
-			console.log(error);
+
+
+	useEffect(() => {
+		setCardArr([])
+		setCurPage(0)
+		console.log('reset');
+	}, [params])
+
+	useEffect(() => {
+		if (!cardArr.length)
+		{
+			console.log('em');
+			fetchData(0)
 		}
-	}, [])
+	}, [cardArr])
 
 
 	const fetchData = async (offset) => {
 		try {
 			let originalParams = {
 				offset: offset,
-				limit: numEachPage * 2
+				limit: numEachPage
 			}
 			if(params) {
 				Object.assign(originalParams, params);
@@ -43,30 +51,41 @@ const HotCard = ({params}) => {
 			});
 			console.log(res.data);
 			setCardArr(cardArr.concat(res.data.results));
-			return res;
+			setTotalLen(res.data.count)
 		} catch (error) {
 			console.log(error.response);
 		}
 	}
 
-	useEffect(() => {
-		console.log("card updated: ", cardArr);
-		setCurOffset(cardArr.length);
-	}, [cardArr]);
+	// useEffect(() => {
+	// 	console.log("card updated: ", cardArr);
+	// 	setCurOffset(cardArr.length);
+	// }, [cardArr]);
+
+	// useEffect(() => {
+	// 	console.log("current page is: ", curPage);
+	// }, [curPage])
+
 
 	useEffect(() => {
-		console.log("current page is: ", curPage);
+		const allDefined = Array(numEachPage).fill().map((_, i) => curPage * numEachPage + i).filter(i => i < totalLen).reduce((acc, i) => cardArr[i] !== undefined && acc, true);
+		if (!allDefined)
+		{
+			fetchData(curPage * numEachPage);
+		}
 	}, [curPage])
 
 	const handleNext = () => {
-		if(curOffset < totalLen) fetchData(curOffset);
+		// if(curOffset < totalLen) fetchData(curOffset);
+		// console.log(totalLen);
 		if(curPage < Math.floor(totalLen * 1.0 / numEachPage)) setCurPage(prev => prev + 1);
 	}
 
 	const handlePrevious = () => {
 		if(curPage > 0) setCurPage(prev => prev - 1);
 	}
-    return (
+
+	return (
 		<>
 			<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.floor(totalLen * 1.0 / numEachPage) + 1}`}</div>
 			<div className='allCard-wrapper'>
@@ -92,4 +111,4 @@ const HotCard = ({params}) => {
     )
 }
 
-export default HotCard
+export default DisplayCard
