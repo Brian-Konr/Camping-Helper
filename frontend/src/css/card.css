@@ -7,6 +7,12 @@
     align-items: center;
     margin-bottom: 4vh;
 }
+.loadingwrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .detail-wrapper {
     display: flex;
     flex-direction: column;
@@ -24,4 +30,5 @@
     grid-column-gap: 10px;
     align-items: center;
     width: 100%;
+    min-height: 60vh;
 }

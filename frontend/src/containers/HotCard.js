@@ -5,6 +5,7 @@ import ThumbnailCard from '../components/ThumbnailCard';
 import PrevButton from "../icons/prev-button.png";
 import NextButton from "../icons/next-button.png";
 import instance from '../instance';
+import { Spin } from 'antd';
 
 const numEachPage = 6;
 
@@ -16,9 +17,7 @@ const DisplayCard = ({params}) => {
 	const [cardArr, setCardArr] = useState([]);
 	const [totalLen, setTotalLen] = useState(3);
 	const [curPage, setCurPage] = useState(0);
-	const [curOffset, setCurOffset] = useState(0);
-	const [queryParam, setQueryParm] = useState(params);
-
+	const [loading, setLoading] = useState(true)
 
 
 	useEffect(() => {
@@ -46,9 +45,11 @@ const DisplayCard = ({params}) => {
 				Object.assign(originalParams, params);
 				// check valid param filter
 			}
+			setLoading(true)
 			let res = await instance.get('/camp/', {
 				params: originalParams
 			});
+			setLoading(false)
 			console.log(res.data);
 			setCardArr(cardArr.concat(res.data.results));
 			setTotalLen(res.data.count)
@@ -83,17 +84,25 @@ const DisplayCard = ({params}) => {
 				<div className='stepButton'>
 					<img id="previous" src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
 				</div>
-				<div className="cardwrapper">
-					{cardArr.slice(curPage*numEachPage, curPage*numEachPage + numEachPage).map((item) => ( 
-						<ThumbnailCard
-							name={item.name}
-							key={item.id} 
-							keyVal={item.id} 
-							src={"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"}
-							place={item.place}
-						/> 
-					))}
-				</div>
+				{
+					loading ?
+					<div className='loadingwrapper'>
+						<Spin />
+					</div>
+					:
+					<div className="cardwrapper">
+						{
+								cardArr.slice(curPage*numEachPage, curPage*numEachPage + numEachPage).map((item) => ( 
+								<ThumbnailCard
+									name={item.name}
+									key={item.id} 
+									keyVal={item.id} 
+									src={"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"}
+									place={item.place}
+								/> 
+						))}
+					</div>
+				}
 				<div className='stepButton'>
 					<img id="next"src={NextButton} style={{width: '100%'}} onClick={handleNext} alt="next-button"/>
 				</div>
