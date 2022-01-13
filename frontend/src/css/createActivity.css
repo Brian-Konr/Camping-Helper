@@ -91,12 +91,12 @@ h2 {
     text-align: center;
 }
 .question-footer {
-    margin-top: 40vh;
-    position: relative;
+    position: fixed;
+    left:45%;
+    bottom: 2%;
     display: flex;
     justify-content: center; 
     align-items: center; 
-    text-align: center;
 }
 #button-form-2 {
     text-align: center;

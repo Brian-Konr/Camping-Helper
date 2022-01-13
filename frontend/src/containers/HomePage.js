@@ -34,7 +34,7 @@ const Homepage = ({isLogin, setIsLogin}) => {
                             <h2 className='class-name'>所有活動</h2>
                         </div>
                         <Divider style={{
-                            height: '7px',
+                            height: '0.7vh',
                             width: '100%',
                             display: 'block',
                             backgroundColor: '#64A1D1'}}/>
