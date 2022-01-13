@@ -20,7 +20,7 @@ const Homepage = ({isLogin, setIsLogin}) => {
                 backgroundColor: '#fff',
             }}>
             {/* <Appbar /> */}
-            <Navbar isLogin={isLogin} setIsLogin={setIsLogin}/>
+            <Navbar />
             <Layout className='layout-container'>
                 <Content
                     className="site-layout-background"

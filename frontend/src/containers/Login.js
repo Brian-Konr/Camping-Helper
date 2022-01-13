@@ -1,6 +1,6 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Layout, message } from 'antd';
-import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Layout, message } from 'antd';
+import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import instance from '../instance';
 import '../css/login.css'
 import { Link, useNavigate} from "react-router-dom";

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { message, Steps, Button } from "antd";
-import Appbar from "../components/Appbar";
+// import Appbar from "../components/Appbar";
+import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import CreateInput from "../components/CreatInput";
 import StepController from "../components/StepController";
@@ -26,17 +27,30 @@ const CreateActivity = () => {
     const [quota, setQuota] = useState(70);
     const [precaution, setPrecaution] = useState("注意事項");
 
+    const [questionArr, setQuestionArr] = useState([]);
+
+    const [submit, setSubmit] = useState(false);
+
     useEffect(() => {
-        if(checkLogin() === false) navigate('/login');
+        if(checkLogin() === false) {
+            message.warn("請先登入再創辦活動!", 1.2);
+            navigate('/login')
+        };
     }, [])
+
+    useEffect(() => {
+        if(submit) {
+            console.log(questionArr);
+        }
+    }, [submit])
 
     return (
         <div>
-            <Appbar />
+            <Navbar />
             <Steps className="stepwrapper" current={current}>
                 <Step title="活動頁面設計" description="讓頁面豐富精彩&#127775;"/>
-                <Step title="表單問題選擇" description="This is a description."/>
-                <Step title="確認資訊與發佈" description="This is a description." />
+                <Step title="表單問題選擇" description="想問學員甚麼問題呢~"/>
+                <Step title="確認資訊與送出" description="加點標籤讓活動更吸睛" />
             </Steps>
             <div className="create-wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
                 <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 7}}>
@@ -99,9 +113,9 @@ const CreateActivity = () => {
                 />
             </div>
             <div className="form-question" style={{display: current === 1 ? 'block' : 'none'}}>
-                <EditFormQuestion current={current}/>
+                <EditFormQuestion current={current} setQuestionArr={setQuestionArr}/>
             </div>
-            <StepController current={current} setCurrent={setCurrent}/>
+            <StepController current={current} setCurrent={setCurrent} setSubmit={setSubmit}/>
         </div>
     )
 }

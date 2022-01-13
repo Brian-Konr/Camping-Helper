@@ -3,7 +3,7 @@ import { Card, Select } from "antd";
 import { OPTIONS } from "../utility/questions";
 import "../css/createActivity.css"
 
-const EditFormQuestion = ({current}) => {
+const EditFormQuestion = ({current, setQuestionArr}) => {
     
     const [selectedItems, setSelectedItems] = useState([]);
 
@@ -21,6 +21,7 @@ const EditFormQuestion = ({current}) => {
         let keyArr = filteredArr.map(option => option.key);
         console.log(keyArr);
         setSelectedKeys(keyArr);
+        setQuestionArr(keyArr);
     }, [current])
 
     return (
@@ -35,7 +36,7 @@ const EditFormQuestion = ({current}) => {
                 onChange={handleSelect}
                 style={{width: '35vw'}}
                 size="large"
-                maxTagCount={5}
+                // maxTagCount={8}
                 >
                 {filteredOptions.map((curOption) => (
                     <Select.Option style={{lineHeight: '40px'}} key={curOption.key} value={curOption.title}>

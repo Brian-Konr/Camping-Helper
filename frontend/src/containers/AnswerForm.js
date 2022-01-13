@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import instance from "../instance";
 import { useNavigate, useParams } from "react-router-dom";
+import { message } from "antd";
 import checkLogin from "../utility/checkLogin";
 import CompleteForm from "../components/CompleteForm";
 
@@ -20,7 +21,10 @@ const AnswerForm = () => {
                 console.log(error);
             }
         }
-        else navigate('/login');
+        else {
+            message.warn("請先登入後再報名", 1.2);
+            navigate('/login');
+        }
     }, [])
 
     const [name, setName] = useState("");
