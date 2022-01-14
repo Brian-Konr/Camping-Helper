@@ -74,7 +74,7 @@ const CreateActivity = () => {
 			if(precaution.length !== 0) formData.append("precaution", precaution);
 			console.log(questionArr);
 			if(questionArr.length !== 0) {
-				// for(var i = 0; i < questionArr.length; i++) formData.append('questions[]', questionArr[i]);
+                console.log(JSON.stringify(questionArr));
 				formData.append('questions', JSON.stringify(questionArr));
 			}
 			if(shortDescription.length !== 0) formData.append("short_description", shortDescription);

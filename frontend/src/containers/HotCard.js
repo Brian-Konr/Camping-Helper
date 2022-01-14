@@ -17,7 +17,8 @@ const DisplayCard = ({params}) => {
 	const [cardArr, setCardArr] = useState([]);
 	const [totalLen, setTotalLen] = useState(0);
 	const [curPage, setCurPage] = useState(0);
-	const [loading, setLoading] = useState(true)
+	const [loading, setLoading] = useState(true);
+	const [empty, setEmpty] = useState(false);
 
 
 	useEffect(() => {
@@ -50,21 +51,19 @@ const DisplayCard = ({params}) => {
 			});
 			setLoading(false);
 			console.log(res.data);
-			if(res.data.count > 0) setCardArr(cardArr.concat(res.data.results));
+			if(res.data.count > 0) {
+				setCardArr(cardArr.concat(res.data.results));
+				setEmpty(false);
+			}
+			else if(res.data.count === 0) setEmpty(true);
 			setTotalLen(res.data.count)
 		} catch (error) {
 			console.log(error.response);
 		}
 	}
 
-	console.log("totalLen", totalLen);
-	console.log(cardArr);
-
-
 	useEffect(() => {
-		const allDefined = Array(numEachPage).fill().map((_, i) => curPage * numEachPage + i).filter(i => i < totalLen).reduce((acc, i) => cardArr[i] !== undefined && acc, true);
-		if (!allDefined)
-		{
+		if(cardArr.length < totalLen) {
 			fetchData(curPage * numEachPage);
 		}
 	}, [curPage])
@@ -79,7 +78,13 @@ const DisplayCard = ({params}) => {
 
 	return (
 		<>
-			<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>
+			{empty?
+				(<div>Empty!!!</div>)
+				:
+				(
+					<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>	
+				)
+			}
 			<div className='allCard-wrapper'>
 				<div className='stepButton'>
 					<img id="previous" src={PrevButton} style={{width: '90%'}} alt="prev-button" onClick={handlePrevious}/>

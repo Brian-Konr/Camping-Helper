@@ -58,7 +58,7 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const [isLogin, setIsLogin] = useState(false);
+    const [isLogin, setIsLogin] = useState(true);
     const [searchName, setSearchName] = useState("");
     const [view, setView] = useState("");
 
