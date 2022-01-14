@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { message, Steps, Button, Divider, Tag, Input, Radio } from "antd";
+import { message, Steps, Button, Divider, Tag, Input, Radio, Layout } from "antd";
 import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
@@ -139,131 +139,132 @@ const CreateActivity = () => {
     return (
         <div>
             <Navbar />
-            <Steps className="stepwrapper" current={current}>
-                <Step title="活動頁面設計" description="讓頁面豐富精彩&#127775;"/>
-                <Step title="表單問題選擇" description="想問學員甚麼問題呢~"/>
-                <Step title="確認資訊與送出" description="加點標籤讓活動更吸睛" />
-            </Steps>
-            <div className="create-wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
-                <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 7}}>
-                    <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px'}}>
-                        <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
-                    </div>
-                    <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <h1>營隊名稱 : {activityName}</h1>
-                        <div id="tag" style={{marginRight: '0.5em',}}>
-                            <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
-                            <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
+            <Layout className='layout-container'>
+                <Steps className="stepwrapper" current={current}>
+                    <Step title="活動頁面設計" description="讓頁面豐富精彩&#127775;"/>
+                    <Step title="表單問題選擇" description="想問學員甚麼問題呢~"/>
+                    <Step title="確認資訊與送出" description="加點標籤讓活動更吸睛" />
+                </Steps>
+                <div className="create-wrapper" style={{display: current === 0 ? 'flex' : 'none'}}>
+                    <div className="page-display"style={{display: 'flex', flexDirection: 'column', flex: 7}}>
+                        <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px'}}>
+                            <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
+                        </div>
+                        <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                            <h1>營隊名稱 : {activityName}</h1>
+                            <div id="tag" style={{marginRight: '0.5em',}}>
+                                <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
+                                <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
+                            </div>
+                        </div>
+                        <div>
+                            <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                                報名期間 : {moment(signupDate[0]).format(dateFormat)} ~ {moment(signupDate[1]).format(dateFormat)}
+                            </Tag>
+                        </div>
+                        <div className="general-information">
+                            <div className="detail">
+                                <ClockCircleOutlined id="create-icon"/>
+                                <h2>活動時間 : {moment(startDate[0]).format(dateFormat)} ~ {moment(startDate[1]).format(dateFormat)}</h2>
+                            </div>
+                            <div className="detail">
+                                <EnvironmentOutlined id="create-icon"/>
+                                <h2>活動地點 : {place}</h2>
+                            </div>
+                            <div className="detail">
+                                <DollarOutlined id="create-icon"/>
+                                <h2>活動費用 : {fee} 元</h2>
+                            </div>
+                            <div className="detail">
+                                <TeamOutlined id="create-icon"/>
+                                <h2>活動名額 : {quota} 人</h2>
+                            </div>
+                        </div>
+                        <div className="detail-info">
+                            <div className="detail-in">
+                                <BulbOutlined id="info-icon"/>
+                                <h2>活動資訊 :</h2>                            
+                            </div>
+                            <Divider id="info-divider" style={{
+                                height: '2px',
+                                width: '100%',
+                                display: 'block',
+                                backgroundColor: 'hsl(214, 30%, 67%)'}}/>
+                            <Content className="content-container">
+                                <p style={{whiteSpace: 'pre-line'}}> {info} </p>
+                            </Content>
+                            <div className="detail-in">
+                                <WarningOutlined id="info-icon"/>
+                                <h2>注意事項 :</h2>
+                            </div>
+                            <Divider id="info-divider" style={{
+                                height: '2px',
+                                width: '100%',
+                                display: 'block',
+                                backgroundColor: 'hsl(214, 30%, 67%)'}}/>
+                            <Content className="content-container">
+                                <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
+                            </Content>
                         </div>
                     </div>
-                    <div>
-                        <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
-                            報名期間 : {moment(signupDate[0]).format(dateFormat)} ~ {moment(signupDate[1]).format(dateFormat)}
-                        </Tag>
-                    </div>
-                    <div className="general-information">
-                        <div className="detail">
-                            <ClockCircleOutlined id="create-icon"/>
-                            <h2>活動時間 : {moment(startDate[0]).format(dateFormat)} ~ {moment(startDate[1]).format(dateFormat)}</h2>
-                        </div>
-                        <div className="detail">
-                            <EnvironmentOutlined id="create-icon"/>
-                            <h2>活動地點 : {place}</h2>
-                        </div>
-                        <div className="detail">
-                            <DollarOutlined id="create-icon"/>
-                            <h2>活動費用 : {fee} 元</h2>
-                        </div>
-                        <div className="detail">
-                            <TeamOutlined id="create-icon"/>
-                            <h2>活動名額 : {quota} 人</h2>
-                        </div>
-                    </div>
-                    <div className="detail-info">
-                        <div className="detail-in">
-                            <BulbOutlined id="info-icon"/>
-                            <h2>活動資訊 :</h2>                            
-                        </div>
-                        <Divider id="info-divider" style={{
-                            height: '2px',
-                            width: '100%',
-                            display: 'block',
-                            backgroundColor: 'hsl(214, 30%, 67%)'}}/>
-                        <Content className="content-container">
-                            <p style={{whiteSpace: 'pre-line'}}> {info} </p>
-                        </Content>
-                        <div className="detail-in">
-                            <WarningOutlined id="info-icon"/>
-                            <h2>注意事項 :</h2>
-                        </div>
-                        <Divider id="info-divider" style={{
-                            height: '2px',
-                            width: '100%',
-                            display: 'block',
-                            backgroundColor: 'hsl(214, 30%, 67%)'}}/>
-                        <Content className="content-container">
-                            <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
-                        </Content>
-                    </div>
+                    <CreateInput
+                        className='inputcontent'
+                        activityName={activityName}
+                        signupDate={signupDate}
+                        startDate={startDate}
+                        info={info}
+                        place={place}
+                        fee={fee}
+                        quota={quota}
+                        precaution={precaution}
+                        setActivityName={setActivityName}
+                        setStartDate={setStartDate}
+                        setInfo={setInfo}
+                        setPlace={setPlace}
+                        setFee={setFee}
+                        setQuota={setQuota}
+                        setPrecaution={setPrecaution}
+                        setSrc={setSrc}
+                        setSignUpDate={setSignUpDate}
+                    />
                 </div>
-                <CreateInput
-                    className='inputcontent'
-                    activityName={activityName}
-                    signupDate={signupDate}
-                    startDate={startDate}
-                    info={info}
-                    place={place}
-                    fee={fee}
-                    quota={quota}
-                    precaution={precaution}
-					setFile={setFile}
-                    setActivityName={setActivityName}
-                    setStartDate={setStartDate}
-                    setInfo={setInfo}
-                    setPlace={setPlace}
-                    setFee={setFee}
-                    setQuota={setQuota}
-                    setPrecaution={setPrecaution}
-                    setSrc={setSrc}
-                    setSignUpDate={setSignUpDate}
-                />
-            </div>
 
-            <div className="form-question" style={{display: current === 1 ? 'block' : 'none'}}>
-                <EditFormQuestion current={current} setQuestionArr={setQuestionArr}/>
-            </div>
+                <div className="form-question" style={{display: current === 1 ? 'block' : 'none'}}>
+                    <EditFormQuestion current={current} setQuestionArr={setQuestionArr}/>
+                </div>
 
-            <div style={{display: current === 2 ? 'flex': 'none'}}>
-				<Input 
-					placeholder="請簡短地敘述您的營隊!"
-					value={shortDescription}
-					onChange={(e) => {setShortDescription(e.target.value)}}
-					maxLength={20}
+				<div style={{display: current === 2 ? 'flex': 'none'}}>
+					<Input 
+						placeholder="請簡短地敘述您的營隊!"
+						value={shortDescription}
+						onChange={(e) => {setShortDescription(e.target.value)}}
+						maxLength={20}
+					/>
+					<Radio.Group onChange={(e) => {setTag(e.target.value)}} value={tag}>
+						<Radio value={1}>文法類</Radio>
+						<Radio value={2}>財經類</Radio>
+						<Radio value={3}>理工類</Radio>
+						<Radio value={4}>醫護類</Radio>
+						<Radio value={5}>其他</Radio>
+					</Radio.Group>
+					<Input 
+						type="url"
+						placeholder="相關資訊連結"
+						onChange={(e) => setLink(e.target.value)}
+						value={link}
+					/>
+				</div>
+
+				<StepController
+					setCheck={setCheck}
+					current={current} 
+					setCurrent={setCurrent} 
+					submit={submit}
+					setSubmit={setSubmit}
+					setCheck={setCheck}
+					btnDisable={btnDisable}
 				/>
-				<Radio.Group onChange={(e) => {setTag(e.target.value)}} value={tag}>
-					<Radio value={1}>文法類</Radio>
-					<Radio value={2}>財經類</Radio>
-					<Radio value={3}>理工類</Radio>
-					<Radio value={4}>醫護類</Radio>
-					<Radio value={5}>其他</Radio>
-				</Radio.Group>
-				<Input 
-					type="url"
-					placeholder="相關資訊連結"
-					onChange={(e) => setLink(e.target.value)}
-					value={link}
-				/>
-            </div>
-
-            <StepController
-                setCheck={setCheck}
-                current={current} 
-                setCurrent={setCurrent} 
-                submit={submit}
-                setSubmit={setSubmit}
-                setCheck={setCheck}
-				btnDisable={btnDisable}
-            />
+            </Layout>
         </div>
     )
 }
