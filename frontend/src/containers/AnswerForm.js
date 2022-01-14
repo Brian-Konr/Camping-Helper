@@ -11,17 +11,17 @@ const titleStyle = {
     fontSize: '1.5rem',
     fontWeight: '500',
     textAlign: 'center',
-    marginTop: '0.6vh'
+    marginTop: '0.5vh'
 }
 const questionCard = {
     margin:'auto',
-    width: '50vw',
+    width: '42vw',
     maxHeight: '10vh',
     position: 'relative',
     padding: '1vw',
     backgroundColor: '#fff',
     borderRadius: '24px',
-    boxShadow: '1px 1px 5px 3px #4faaf5bd'
+    border: '2px solid #4faaf5bd'
 }
 
 const questions = [1];

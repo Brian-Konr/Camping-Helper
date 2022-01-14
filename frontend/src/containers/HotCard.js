@@ -2,8 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import '../css/card.css';
 import ThumbnailCard from '../components/ThumbnailCard';
-import PrevButton from "../icons/prev-button.png";
-import NextButton from "../icons/next-button.png";
+import PrevButton from "../icons/angle-circle-left.png";
+import NextButton from "../icons/angle-circle-right.png";
 import instance from '../instance';
 import { Spin } from 'antd';
 
@@ -82,7 +82,7 @@ const DisplayCard = ({params}) => {
 			<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>
 			<div className='allCard-wrapper'>
 				<div className='stepButton'>
-					<img id="previous" src={PrevButton} style={{width: '100%'}} alt="prev-button" onClick={handlePrevious}/>
+					<img id="previous" src={PrevButton} style={{width: '90%'}} alt="prev-button" onClick={handlePrevious}/>
 				</div>
 				{
 					loading ?
@@ -104,7 +104,7 @@ const DisplayCard = ({params}) => {
 					</div>
 				}
 				<div className='stepButton'>
-					<img id="next"src={NextButton} style={{width: '100%'}} onClick={handleNext} alt="next-button"/>
+					<img id="next"src={NextButton} style={{width: '90%'}} onClick={handleNext} alt="next-button"/>
 				</div>
 			</div>
 		</>

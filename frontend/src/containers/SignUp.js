@@ -100,14 +100,14 @@ const RegistrationForm = () => {
                   rules={[
                   {
                       required: true,
-                      message: 'Please input your name',
+                      message: '輸入姓名',
                   },
                   ]}
                 >
                     <Input className='item'/>
                 </Form.Item>
 
-                <Form.Item label="BirthDate" style={{ marginBottom: 0 }}>
+                <Form.Item label="出生年月日" style={{ marginBottom: 0 }}>
                     <Form.Item
                     name="year"
                     rules={[{ required: true }]}
@@ -133,15 +133,15 @@ const RegistrationForm = () => {
 
                 <Form.Item
                   name="email"
-                  label="E-mail"
+                  label="電子郵件"
                   rules={[
                   {
                       type: 'email',
-                      message: 'The input is not valid E-mail!',
+                      message: '此電子郵件格式不正確',
                   },
                   {
                       required: true,
-                      message: 'Please input your E-mail!',
+                      message: '輸入電子郵件',
                   },
                   ]}
                 >
@@ -154,7 +154,7 @@ const RegistrationForm = () => {
                   rules={[
                   {
                       required: true,
-                      message: 'Please input your username!',
+                      message: '輸入使用者名稱',
                       whitespace: true,
                   },
                   ]}
@@ -164,11 +164,11 @@ const RegistrationForm = () => {
 
                 <Form.Item
                   name="password"
-                  label="Password"
+                  label="密碼"
                   rules={[
                   {
                       required: true,
-                      message: 'Please input your password!',
+                      message: '輸入密碼',
                   },
                   ]}
                   hasFeedback
@@ -178,13 +178,13 @@ const RegistrationForm = () => {
 
                 <Form.Item
                   name="re_password"
-                  label="Confirm Password"
+                  label="確認密碼"
                   dependencies={['password']}
                   hasFeedback
                   rules={[
                   {
                       required: true,
-                      message: 'Please confirm your password!',
+                      message: '請確認你的密碼',
                   },
                   ({ getFieldValue }) => ({
                       validator(_, value) {
@@ -192,7 +192,7 @@ const RegistrationForm = () => {
                           return Promise.resolve();
                       }
 
-                      return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                      return Promise.reject(new Error('Te two passwords that you entered do not match!'));
                       },
                   }),
                   ]}
