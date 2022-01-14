@@ -11,6 +11,7 @@ import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
 import checkLogin from "../utility/checkLogin";
 import totalCheck from "../utility/createInputTotalCheck";
+import axios from 'axios';
 import instance from "../instance";
 import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
@@ -57,7 +58,7 @@ const CreateActivity = () => {
         if(submit) {
 			let formData = new FormData();
 			formData.append('name', activityName);
-			if(!info.length) formData.append('information', info);
+			if(info.length !== 0) formData.append('information', info);
 			console.log(Object.keys(file).length);
 			if(Object.keys(file).length !== 0) formData.append('cover_photo', file);
 			formData.append("camp_start_date", moment(startDate[0]).format(dateFormat));
@@ -65,12 +66,12 @@ const CreateActivity = () => {
 			formData.append("register_start_date", moment(signupDate[0]).format(dateTimeFormat));
 			formData.append("register_end_date", moment(signupDate[1]).format(dateTimeFormat));
 			formData.append("place", place);
-			if(!link.length) formData.append("link", link);
+			if(link.length !== 0) formData.append("link", link);
 			formData.append("fee", fee);
 			formData.append("quota", quota);
-			if(!precaution.length) formData.append("precaution", precaution);
-			if(!questionArr.length) formData.append("questions", questionArr);
-			if(!shortDescription.length) formData.append("short_description", shortDescription);
+			if(precaution.length !== 0) formData.append("precaution", precaution);
+			if(questionArr.length !== 0) formData.append("questions", questionArr);
+			if(shortDescription.length !== 0) formData.append("short_description", shortDescription);
 			formData.append("category", tag);
 
 			for (var key of formData.entries()) {
@@ -104,16 +105,15 @@ const CreateActivity = () => {
     }, [submit])
 
 	const submitForm = async(form) => {
+		const config = {
+			headers:{
+				'Content-Type': 'multipart/form-data'
+			}
+		}
 		console.log(form);
 		try {
-			let res = await instance({
-				method: "post",
-				url: "/camp/",
-				formData: form,
-				headers: {"Content-Type": "multipart/form-data"}
-			});
-			console.log(res.data, res.status);
-			return res;
+			let res = await instance.post('/camp/', form, config);
+			console.log(res.data);
 		} catch (error) {
 			console.log(error);
 			setBtnDisable(false);
