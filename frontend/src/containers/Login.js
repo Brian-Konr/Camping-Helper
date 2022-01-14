@@ -39,6 +39,7 @@ const NormalLoginForm = () => {
   const getInfo = async () => {
     try {
       let {data} = await instance.get('/auth/users/me/');
+      localStorage.setItem("userId", data.pk);
       localStorage.setItem("username", data.username);
       localStorage.setItem("name", data.name ? data.name : data.first_name); //because backend is not deployed yet
       localStorage.setItem("email", data.email);
