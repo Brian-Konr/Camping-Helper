@@ -6,9 +6,8 @@ import PrevButton from "../icons/angle-circle-left.png";
 import NextButton from "../icons/angle-circle-right.png";
 import instance from '../instance';
 import { Spin } from 'antd';
-
+import { COVERS } from '../utility/randomCover';
 const numEachPage = 6;
-const defaultImg = "https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
 
 const DisplayCard = ({params}) => {
 
@@ -102,7 +101,7 @@ const DisplayCard = ({params}) => {
 									name={item.name}
 									key={item.id} 
 									keyVal={item.id} 
-									src={item.cover_photo === null ? defaultImg : item.cover_photo}
+									src={item.cover_photo === null ? COVERS[Math.floor(Math.random()*COVERS.length)] : item.cover_photo}
 									place={item.place}
 								/> 
 						))}
