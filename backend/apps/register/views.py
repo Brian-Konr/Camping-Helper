@@ -39,7 +39,6 @@ class RegisterViewSet(
     def get_permissions(self):
         if self.action in ["list"]:
             permission_classes = [(IsAuthenticated & permissions.IsCampOwner)]
-            pass
         elif self.action in ["retrieve"]:
             permission_classes = [(IsAuthenticated & (permissions.IsCampOwner | permissions.IsRegistrationOwner))]
         elif self.action in ["update", "delete"]:
