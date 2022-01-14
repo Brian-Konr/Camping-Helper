@@ -1,18 +1,22 @@
 import nameCheck from "./checkNoRepeatName";
+import moment from 'moment';
 
-
-const totalCheck = async(activityName) => {
+const dateFormat = "YYYY-MM-DD";
+const totalCheck = async(activityName, startDate, signupDate) => {
     /* need to check:
         1. name required and no duplicate
-        2. register_start_date, register_end_date required
         3. camp_start_date required and larger than above two dates
-        4. place required
-        5. fee required
-        6. join_user_count required 
+        6. join_user_count required
     */
     let result = true;
-    if(!activityName.length || !await nameCheck(activityName)) result = false; // 1.
 
+    // 1.
+    if(!activityName.length || !await nameCheck(activityName)) result = false;
+    
+    // 3.
+    let signupDue = moment(signupDate[1]).format(dateFormat);
+    let startDay = moment(startDate[0]).format(dateFormat);
+    if(moment(signupDue).isSameOrAfter(startDay)) result = false;
 
     return result;
 

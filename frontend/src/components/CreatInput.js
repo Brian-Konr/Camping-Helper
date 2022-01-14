@@ -10,8 +10,8 @@ import { ArrowDownOutlined } from '@ant-design/icons';
 
 const { RangePicker } = DatePicker;
 
-const CreateInput = ({activityName, date, setActivityName, setDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc, signupDate, setSignupDate}) => {
-    const dateFormat = 'YYYY-MM-DD';
+const CreateInput = ({activityName, startDate, setActivityName, setStartDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc, signupDate, setSignUpDate}) => {
+    const dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
 
     return (
@@ -27,16 +27,19 @@ const CreateInput = ({activityName, date, setActivityName, setDate, setInfo, set
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
                     <Card title="營隊名稱">
                         <Input placeholder="Activity Name" 
-                                onChange={(e) => {setActivityName(e.target.value)}} 
-                                value={activityName} 
-                                id="inputcard"
-                                ></Input>
+                            onChange={(e) => {setActivityName(e.target.value)}} 
+                            value={activityName} 
+                            id="inputcard"
+                        />
                     </Card>
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
-                    
+
                     <Card title="報名期間">
                         <RangePicker 
-                            onChange={(_, dateString) => {setSignupDate(dateString)}}
+                            onChange={(date) => {
+                                console.log(date);
+                                setSignUpDate(date)
+                            }}
                             value={[moment(signupDate[0], dateFormat), moment(signupDate[1]), dateFormat]}
                             style={{'border-radius': '8px'}}
                         />
@@ -44,8 +47,8 @@ const CreateInput = ({activityName, date, setActivityName, setDate, setInfo, set
                     
                     <Card title="營隊日期">
                         <RangePicker 
-                            onChange={(_, dateString) => {setDate(dateString)}}
-                            value={[moment(date[0], dateFormat), moment(date[1]), dateFormat]}
+                            onChange={(date) => {setStartDate(date)}}
+                            value={[moment(startDate[0], dateFormat), moment(startDate[1]), dateFormat]}
                             style={{'border-radius': '8px'}}
                         />
                     </Card>

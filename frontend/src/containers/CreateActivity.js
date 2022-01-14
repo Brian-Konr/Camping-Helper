@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { message, Steps, Button, Divider } from "antd";
+import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
 import Navbar from "../components/Navbar";
@@ -13,7 +14,7 @@ import totalCheck from "../utility/createInputTotalCheck";
 import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
 const {Step} = Steps;
-
+const dateFormat = "YYYY-MM-DD";
 const CreateActivity = () => {
 
     const navigate = useNavigate();
@@ -22,10 +23,10 @@ const CreateActivity = () => {
 
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
     const [activityName, setActivityName] = useState("請輸入您的營隊名稱");
-    const [date, setDate] = useState(['2022-03-25', '2022-03-28']);
+    const [startDate, setStartDate] = useState(['2022-03-25', '2022-03-28']);
     const [signupDate, setSignUpDate] = useState(['2022-01-17', '2022-03-05']);
-    const [info, setInfo] = useState("活動資訊");
-    const [place, setPlace] = useState("活動地點");
+    const [info, setInfo] = useState("請輸入活動資訊");
+    const [place, setPlace] = useState("請輸入活動地點");
     const [fee, setFee] = useState(2500);
     const [quota, setQuota] = useState(70);
     const [precaution, setPrecaution] = useState("注意事項");
@@ -49,13 +50,19 @@ const CreateActivity = () => {
         }
     }, [submit])
 
-    useEffect(() => {
+    useEffect(async () => {
         if(check) {
-            console.log("check");
+            let pass = true;
+            if(place === "請輸入活動地點" || !place.length) pass = false;
+            if(!await totalCheck(activityName, startDate, signupDate)) pass = false;
+            if(!pass) console.log("no no");
             setCheck(false);
-            totalCheck(activityName, );
         }
     }, [current])
+
+    useEffect(() => {
+        console.log("signupdateArr", signupDate);
+    }, [signupDate])
 
     return (
         <div>
@@ -80,7 +87,7 @@ const CreateActivity = () => {
                     <div className="general-information">
                         <div className="detail">
                             <ClockCircleOutlined id="create-icon"/>
-                            <h2>活動時間 : {date[0]} ~ {date[1]}</h2>
+                            <h2>活動時間 : {moment(startDate[0]).format(dateFormat)} ~ {moment(startDate[1]).format(dateFormat)}</h2>
                         </div>
                         <div className="detail">
                             <EnvironmentOutlined id="create-icon"/>
@@ -126,14 +133,14 @@ const CreateActivity = () => {
                     className='inputcontent'
                     activityName={activityName}
                     signupDate={signupDate}
-                    date={date}
+                    startDate={startDate}
                     info={info}
                     place={place}
                     fee={fee}
                     quota={quota}
                     precaution={precaution}
                     setActivityName={setActivityName}
-                    setDate={setDate}
+                    setStartDate={setStartDate}
                     setInfo={setInfo}
                     setPlace={setPlace}
                     setFee={setFee}
