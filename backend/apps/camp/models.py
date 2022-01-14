@@ -40,7 +40,7 @@ class Camp(models.Model):
         blank=True,
     )
     is_public = models.BooleanField(
-        default=False,
+        default=True,
         help_text="是否公開",
         db_index=True,
     )

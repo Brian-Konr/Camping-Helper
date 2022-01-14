@@ -10,6 +10,8 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import cache_page
 from django.views.decorators.vary import vary_on_headers
 from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiParameter, OpenApiResponse
+from django.contrib.auth import get_user_model
+from rest_framework.pagination import LimitOffsetPagination
 import csv
 
 
@@ -73,6 +75,7 @@ class CampViewSet(viewsets.ModelViewSet):
         "camp_start_date",
         "camp_end_date"
     ]
+    pagination_class = LimitOffsetPagination
 
     def get_queryset(self):
         if self.action in ['set_public']:
@@ -90,7 +93,7 @@ class CampViewSet(viewsets.ModelViewSet):
         elif view == "superuser":
             return models.Camp.objects.all()
         elif view == "join":
-            pass
+            return models.Camp.objects.filter(register_user__in=get_user_model().objects.get(id=self.request.user.id).register.all())
 
     def get_serializer_class(self):
         return self.serializer_classes.get(self.action, self.default_serializer_class)
