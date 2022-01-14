@@ -47,8 +47,9 @@ const CreateActivity = () => {
 	const [shortDescription, setShortDescription] = useState("");
     
 
-    useEffect(() => {
-        if(checkLogin() === false) {
+    useEffect(async() => {
+		let loginCheck = await checkLogin();
+        if(!loginCheck) {
             message.warn("請先登入再創辦活動!", 1.2);
             navigate('/login')
         };
@@ -81,26 +82,6 @@ const CreateActivity = () => {
 
 			let res = await submitForm(formData);
 
-			// console.log(moment(startDate[0]).format(dateFormat));
-			// // formData.append('camp_start_date', )
-			// console.log(startDate[0]);
-			// console.log(signupDate);
-			// setBtnDisable(true);
-            // console.log("name: ", activityName);
-			// console.log('info', info);
-			// console.log("picFile", file);
-			// console.log("start date", startDate[0]);
-			// console.log("end date", startDate[1]);
-			// console.log("signup date", signupDate[0]);
-			// console.log("sign up due", signupDate[1]);
-			// console.log("place", place);
-			// console.log("link", link);
-			// console.log("fee", fee);
-			// console.log("quota", quota);
-			// console.log("precaution", precaution);
-			// console.log("questions", questionArr);
-			// console.log("short", shortDescription);
-			// console.log("category", tag);
         }
     }, [submit])
 
@@ -226,6 +207,7 @@ const CreateActivity = () => {
                         setPrecaution={setPrecaution}
                         setSrc={setSrc}
                         setSignUpDate={setSignUpDate}
+						setFile={setFile}
                     />
                 </div>
 

@@ -14,6 +14,8 @@ const DisplayCard = ({params}) => {
 
 	console.log(params);
 
+	// TODO: if there is no page return, set loading = false and show user that the result is empty
+
 	const [cardArr, setCardArr] = useState([]);
 	const [totalLen, setTotalLen] = useState(3);
 	const [curPage, setCurPage] = useState(0);
