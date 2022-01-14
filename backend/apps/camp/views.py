@@ -56,6 +56,8 @@ import csv
 class CampViewSet(viewsets.ModelViewSet):
     serializer_classes = {
         "set_public": serializers.CampStatusSerializer,
+        "create": serializers.CampCreateSerializer,
+        "update": serializers.CampCreateSerializer,
     }
     default_serializer_class = serializers.CampSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
