@@ -100,6 +100,7 @@ const CreateActivity = () => {
 			}
 		} catch (error) {
 			console.log(error);
+            if(error.response.status === 413) message.warn("圖片檔過大，請重新挑選圖片!", 1.5);
 			setBtnDisable(false);
 		}
 	}
