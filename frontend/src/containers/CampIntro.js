@@ -15,6 +15,7 @@ const CampIntro = () => {
         try {
             let {data} = await instance.get(`/camp/${campId}`);
             console.log(data);
+            // data 都在這 如果有不懂的可以看 https://campinghelper.temp.dodofk.xyz/api/schema/swagger-ui/#/camp/camp_create 的 get camp/{id}/ schema
             setCampName(data.name);
         } catch (error) {
             console.log(error);
