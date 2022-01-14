@@ -5,7 +5,7 @@ import Layout, { Content } from "antd/lib/layout/layout";
 import "../css/completeForm.css"
 
 const { Option } = Select;
-const questionArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const questionArr = [3, 4, 5, 6, 7, 8, 9, 10];
 const dateFormat = "YYYY/MM/DD";
 const rule = [
     {
@@ -31,6 +31,7 @@ const CompleteForm = () => {
                             <Form.Item name="name" rules={rule}>
                                 {/* <h3>姓名</h3> */}
                                 <Input
+                                    size="large"
                                     className='ind-item'
                                     type="text"
                                     placeholder="請輸入你的名字"
@@ -44,6 +45,7 @@ const CompleteForm = () => {
                             <h3>生理性別</h3>
                             <Form.Item name="sex" rules={rule}>
                                 <Select
+                                    size="large"
                                     placeholder="請選擇你的生理性別"
                                     className='ind-item'
                                 >
@@ -59,6 +61,7 @@ const CompleteForm = () => {
                             <h3>你的國籍</h3>
                             <Form.Item name="nationality" rules={rule}>
                                 <Input 
+                                    size="large"
                                     className='ind-item'
                                     type="text"
                                     placeholder="請輸入你的國籍"
@@ -72,6 +75,7 @@ const CompleteForm = () => {
                             <h3>你的身分證字號 (開頭大寫)</h3>
                             <Form.Item name="id_number" rules={rule}>
                                 <Input 
+                                    size="large"
                                     placeholder="請輸入你的身分證字號"
                                     className='ind-item'
                                 />
@@ -83,7 +87,7 @@ const CompleteForm = () => {
                         <>
                             <h3>出生年月日</h3>
                             <Form.Item name="birth_date" rules={rule}>
-                                <DatePicker className='ind-item'/>
+                                <DatePicker size="large" className='ind-item'/>
                             </Form.Item>
                         </>
                     )}
@@ -94,6 +98,7 @@ const CompleteForm = () => {
                             <Form.Item style={{display: 'flex'}}>
                                 <Form.Item name="school"  rules={rule}>
                                     <Input 
+                                        size="large"
                                         type="text"
                                         placeholder="請輸入你的學校"
                                         className='ind-item'
@@ -101,6 +106,7 @@ const CompleteForm = () => {
                                 </Form.Item>
                                 <Form.Item name="grade" rules={rule}>
                                     <Select
+                                        size="large"
                                         placeholder="年級"
                                         className='ind-item'
                                     >
@@ -118,6 +124,7 @@ const CompleteForm = () => {
                             <h3>特殊疾病</h3>
                             <Form.Item name="special_disease" rules={rule}>
                                 <Input 
+                                    size="large"
                                     placeholder="疾病史"
                                     className='ind-item'
                                 />
@@ -130,6 +137,7 @@ const CompleteForm = () => {
                             <h3>Facebook 連結</h3>
                             <Form.Item name="fb_link" rules={rule}>
                                 <Input
+                                    size="large"
                                     type="url"
                                     placeholder="Facebook 連結"
                                     className='ind-item'
@@ -141,8 +149,9 @@ const CompleteForm = () => {
                     {questionArr.includes(9) && (
                         <>
                             <h3>飲食習慣</h3>
-                            <Form.Item name="eating_habit" rules={rule}>
+                            <Form.Item name="eatingm_habit" rules={rule}>
                                 <Select
+                                    size="large"
                                     placeholder="請選擇你的飲食習慣"
                                     className='ind-item'
                                 >

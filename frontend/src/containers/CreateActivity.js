@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { message, Steps, Button, Divider, Tag, Input, Radio, Layout } from "antd";
+import {Form, message, Steps, Button, Divider, Tag, Input, Radio, Layout } from "antd";
 import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
@@ -233,26 +233,48 @@ const CreateActivity = () => {
                     <EditFormQuestion current={current} setQuestionArr={setQuestionArr}/>
                 </div>
 
-				<div style={{display: current === 2 ? 'flex': 'none'}}>
-					<Input 
-						placeholder="請簡短地敘述您的營隊!"
-						value={shortDescription}
-						onChange={(e) => {setShortDescription(e.target.value)}}
-						maxLength={20}
-					/>
-					<Radio.Group onChange={(e) => {setTag(e.target.value)}} value={tag}>
-						<Radio value={1}>文法類</Radio>
-						<Radio value={2}>財經類</Radio>
-						<Radio value={3}>理工類</Radio>
-						<Radio value={4}>醫護類</Radio>
-						<Radio value={5}>其他</Radio>
-					</Radio.Group>
-					<Input 
-						type="url"
-						placeholder="相關資訊連結"
-						onChange={(e) => setLink(e.target.value)}
-						value={link}
-					/>
+				<div style={{display: current === 2 ? 'flex': 'none', flexDirection: current === 2? 'column': 'none'}}>
+                    <div className="question-title">
+                        <h2>增添營隊資訊 !</h2>
+                    </div>
+                    <div className="final-wrapper">
+                        <Form>
+                            <h3>營隊簡短敘述</h3>
+                            <Form.Item>
+                                <Input.TextArea
+                                    size="large"
+                                    placeholder="請簡短地敘述您的營隊! (至多20字)"
+                                    showCount={true}
+                                    autoSize={{minRows: 2, maxRows: 5}}
+                                    maxLength={20}
+                                    value={shortDescription}
+                                    onChange={(e) => {setShortDescription(e.target.value)}}
+                                />
+                            </Form.Item>
+                            <div>
+                                <h3>選擇營隊分類</h3>
+                                <Form.Item>
+                                    <Radio.Group buttonStyle="solid" onChange={(e) => {setTag(e.target.value)}} value={tag}>
+                                        <Radio.Button size="large" value={1}>文法類</Radio.Button>
+                                        <Radio.Button size="large" value={2}>財經類</Radio.Button>
+                                        <Radio.Button size="large" value={3}>理工類</Radio.Button>
+                                        <Radio.Button size="large" value={4}>醫護類</Radio.Button>
+                                        <Radio.Button size="large" value={5}>其他</Radio.Button>
+                                    </Radio.Group>
+                                </Form.Item>
+                            </div>
+                            <h3>相關資訊連結</h3>
+                            <Form.Item>
+                                <Input 
+                                    size="large"
+                                    type="url"
+                                    placeholder="請瑱入相關資訊連結"
+                                    onChange={(e) => setLink(e.target.value)}
+                                    value={link}
+                                />
+                            </Form.Item>
+                        </Form>
+                    </div>      
 				</div>
 
 				<StepController

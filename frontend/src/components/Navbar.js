@@ -131,6 +131,7 @@ const Navbar = () => {
                                 <Menu.Item className='navItem-signed' key="create"><Link to='/create'>刊登活動!</Link></Menu.Item>
                                 <Menu.Item className='navItem-signed' key="search">
                                     <Input 
+                                        className='search-input'
                                         onChange={(e) => setSearchName(e.target.value)} 
                                         placeholder='Search by activity name'
                                         value={searchName}

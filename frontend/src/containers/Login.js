@@ -82,6 +82,7 @@ const NormalLoginForm = () => {
                 ]}
               >
                 <Input 
+                  size="large"
                   className='item'
                   prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email Address" />
               </Form.Item>
@@ -95,6 +96,7 @@ const NormalLoginForm = () => {
                 ]}
               >
                 <Input
+                  size="large"
                   className='item'
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"

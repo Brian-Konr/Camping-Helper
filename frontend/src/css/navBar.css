@@ -15,3 +15,6 @@
     grid-template-columns: minmax(10px,1fr) minmax(10px,1fr) minmax(50px,3fr) minmax(100px,10fr) minmax(10px,1fr) minmax(10px,1fr);
     grid-column-gap: 1px;
 }
+.search-input .ant-input {
+    font-size: 14px important!
+}
