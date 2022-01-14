@@ -121,3 +121,10 @@ h2 {
     margin-bottom: 1vw;
     padding: 5px;
 }
+.ant-tag {
+    height: 5.5vh;
+    padding: 8px;
+    line-height: 20px;
+    border-radius: 4px;
+    border: 0px dashed hsl(24, 100%, 80%);
+}

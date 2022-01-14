@@ -1,9 +1,11 @@
-import { Menu, Input } from 'antd';
+import { Layout, Menu, Input } from 'antd';
 import { useState } from 'react';
 import { Link, useNavigate, createSearchParams } from 'react-router-dom';
 import checkLogin from '../utility/checkLogin';
 import { HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
+import '../css/navBar.css';
 
+const { Header } = Layout;
 const { SubMenu } = Menu;
 
 const Navbar = () => {
@@ -51,29 +53,33 @@ const Navbar = () => {
         <>
             {isLogin ? 
                 (
-                    <Menu style={{backgroundColor: '#FB8CB3', outerHeight: '20vh'}} onClick={handleOnClick} mode='horizontal'>
-                        <Menu.Item icon={<HomeOutlined />} key="home"><Link to='/'>Home</Link></Menu.Item>
-                        <Menu.Item key="create"><Link to='/create'>Host an Event!</Link></Menu.Item>
-                        <SubMenu key="subMenu" title="Me">
-                            <Menu.Item key="join">我報名的活動</Menu.Item>
-                            <Menu.Item key="own">我舉辦的活動</Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="search">
-                            <Input 
-                                onChange={(e) => setSearchName(e.target.value)} 
-                                placeholder='Search by activity name'
-                                value={searchName}
-                                onKeyDown={handleSearch}    
-                            />
-                        </Menu.Item>
-                        <Menu.Item onClick={handleLogOut} key="logout" icon={<UserSwitchOutlined />}>登出</Menu.Item>
-                    </Menu>
+                    <Header style={{backgroundColor: '#FB8CB3'}}>
+                        <Menu style={{backgroundColor: '#FB8CB3', lineHeight: '64px'}} onClick={handleOnClick} mode='horizontal'>
+                            <Menu.Item className='navItem-signed' icon={<HomeOutlined />} key="home"><Link to='/'>Home</Link></Menu.Item>
+                            <Menu.Item className='navItem-signed' key="create"><Link to='/create'>Host an Event!</Link></Menu.Item>
+                            <SubMenu className='navItem-signed' key="subMenu" title="Me">
+                                <Menu.Item key="join">我報名的活動</Menu.Item>
+                                <Menu.Item key="own">我舉辦的活動</Menu.Item>
+                            </SubMenu>
+                            <Menu.Item className='navItem-signed' key="search">
+                                <Input 
+                                    onChange={(e) => setSearchName(e.target.value)} 
+                                    placeholder='Search by activity name'
+                                    value={searchName}
+                                    onKeyDown={handleSearch}    
+                                />
+                            </Menu.Item>
+                            <Menu.Item className='navItem-signed' onClick={handleLogOut} key="logout" icon={<UserSwitchOutlined />}>登出</Menu.Item>
+                        </Menu>
+                    </Header>
                 ) :        
                 (
-                    <Menu style={{backgroundColor: '#5CB7FF'}} onClick={handleOnClick} mode='horizontal'>
-                        <Menu.Item key="login"><Link to='/login'>Login</Link></Menu.Item>
-                        <Menu.Item key="register"><Link to='/signup'>Register</Link></Menu.Item>
-                    </Menu>
+                    <Header style={{backgroundColor: '#5CB7FF'}}>
+                        <Menu style={{backgroundColor: '#5CB7FF'}} onClick={handleOnClick} mode='horizontal'>
+                            <Menu.Item key="login"><Link to='/login'>Login</Link></Menu.Item>
+                            <Menu.Item key="register"><Link to='/signup'>Register</Link></Menu.Item>
+                        </Menu>
+                    </Header>
                 )
             }
         </>

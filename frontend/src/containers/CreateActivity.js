@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { message, Steps, Button, Divider, Modal } from "antd";
+import { message, Steps, Button, Divider, Tag } from "antd";
 import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
@@ -83,6 +83,11 @@ const CreateActivity = () => {
                             <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
                             <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
                         </div>
+                    </div>
+                    <div>
+                        <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                            報名期間 : {moment(signupDate[0]).format(dateFormat)} ~ {moment(signupDate[1]).format(dateFormat)}
+                        </Tag>
                     </div>
                     <div className="general-information">
                         <div className="detail">
