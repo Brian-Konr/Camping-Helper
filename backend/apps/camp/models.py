@@ -8,6 +8,10 @@ def camp_file_path(instance, filename):
     return f'camp_{instance.name}/{filename}'
 
 
+def questions_default():
+    return {"questions": ""}
+
+
 class Camp(models.Model):
 
     class ClassCategory(models.IntegerChoices):
@@ -36,7 +40,7 @@ class Camp(models.Model):
         blank=True,
     )
     is_public = models.BooleanField(
-        default=False,
+        default=True,
         help_text="是否公開",
         db_index=True,
     )
@@ -89,12 +93,10 @@ class Camp(models.Model):
         max_length=2000,
         null=True,
     )
-    questions = ArrayField(
-        models.PositiveIntegerField(
-            verbose_name="問題 key",
-        ),
-        null=True,
-        help_text="使用之問題",
+    questions = models.JSONField(
+        "list of question",
+        default=questions_default,
+        help_text="營隊選擇問題",
     )
     short_description = models.CharField(
         max_length=200,

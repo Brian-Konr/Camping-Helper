@@ -31,7 +31,8 @@ const AnswerForm = () => {
     const [campName, setCampName] = useState("");
 
     useEffect(async () => {
-        if(checkLogin()) {
+        let result = await checkLogin();
+        if(result) {
             try {
                 let {data} = await instance.get(`/camp/${campId}`);
                 console.log(data);

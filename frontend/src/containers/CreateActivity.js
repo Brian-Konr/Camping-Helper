@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {Form, message, Steps, Button, Divider, Tag, Input, Radio, Layout } from "antd";
+import { Form, message, Steps, Button, Divider, Tag, Input, Radio, Layout, Modal } from "antd";
 import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
@@ -11,6 +11,7 @@ import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
 import checkLogin from "../utility/checkLogin";
 import totalCheck from "../utility/createInputTotalCheck";
+import axios from 'axios';
 import instance from "../instance";
 import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
@@ -22,6 +23,7 @@ const CreateActivity = () => {
     const navigate = useNavigate();
 
     const [current, setCurrent] = useState(0);
+	const [success, setSuccess] = useState(false); // true when post succeeds
 
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
 	const [file, setFile] = useState({}); // set image file
@@ -46,8 +48,9 @@ const CreateActivity = () => {
 	const [shortDescription, setShortDescription] = useState("");
     
 
-    useEffect(() => {
-        if(checkLogin() === false) {
+    useEffect(async() => {
+		let loginCheck = await checkLogin();
+        if(!loginCheck) {
             message.warn("請先登入再創辦活動!", 1.2);
             navigate('/login')
         };
@@ -57,7 +60,7 @@ const CreateActivity = () => {
         if(submit) {
 			let formData = new FormData();
 			formData.append('name', activityName);
-			if(!info.length) formData.append('information', info);
+			if(info.length !== 0) formData.append('information', info);
 			console.log(Object.keys(file).length);
 			if(Object.keys(file).length !== 0) formData.append('cover_photo', file);
 			formData.append("camp_start_date", moment(startDate[0]).format(dateFormat));
@@ -65,57 +68,39 @@ const CreateActivity = () => {
 			formData.append("register_start_date", moment(signupDate[0]).format(dateTimeFormat));
 			formData.append("register_end_date", moment(signupDate[1]).format(dateTimeFormat));
 			formData.append("place", place);
-			if(!link.length) formData.append("link", link);
+			if(link.length !== 0) formData.append("link", link);
 			formData.append("fee", fee);
 			formData.append("quota", quota);
-			if(!precaution.length) formData.append("precaution", precaution);
-			if(!questionArr.length) formData.append("questions", questionArr);
-			if(!shortDescription.length) formData.append("short_description", shortDescription);
+			if(precaution.length !== 0) formData.append("precaution", precaution);
+			console.log(questionArr);
+			if(questionArr.length !== 0) {
+                console.log(JSON.stringify(questionArr));
+				formData.append('questions', JSON.stringify(questionArr));
+			}
+			if(shortDescription.length !== 0) formData.append("short_description", shortDescription);
 			formData.append("category", tag);
 
-			for (var key of formData.entries()) {
-				console.log(key[0] + ', ' + key[1]);
-			}
-
-
-			let res = await submitForm(formData);
-
-			// console.log(moment(startDate[0]).format(dateFormat));
-			// // formData.append('camp_start_date', )
-			// console.log(startDate[0]);
-			// console.log(signupDate);
-			// setBtnDisable(true);
-            // console.log("name: ", activityName);
-			// console.log('info', info);
-			// console.log("picFile", file);
-			// console.log("start date", startDate[0]);
-			// console.log("end date", startDate[1]);
-			// console.log("signup date", signupDate[0]);
-			// console.log("sign up due", signupDate[1]);
-			// console.log("place", place);
-			// console.log("link", link);
-			// console.log("fee", fee);
-			// console.log("quota", quota);
-			// console.log("precaution", precaution);
-			// console.log("questions", questionArr);
-			// console.log("short", shortDescription);
-			// console.log("category", tag);
+			submitForm(formData);
         }
     }, [submit])
 
 	const submitForm = async(form) => {
+		const config = {
+			headers:{
+				'Content-Type': 'multipart/form-data'
+			}
+		}
 		console.log(form);
 		try {
-			let res = await instance({
-				method: "post",
-				url: "/camp/",
-				formData: form,
-				headers: {"Content-Type": "multipart/form-data"}
-			});
-			console.log(res.data, res.status);
-			return res;
+			let res = await instance.post('/camp/', form, config);
+			console.log(res.data);
+			if(res.status === 201) {
+				setBtnDisable(true);
+				setSuccess(true);
+			}
 		} catch (error) {
 			console.log(error);
+            if(error.response.status === 413) message.warn("圖片檔過大，請重新挑選圖片!", 1.5);
 			setBtnDisable(false);
 		}
 	}
@@ -226,6 +211,7 @@ const CreateActivity = () => {
                         setPrecaution={setPrecaution}
                         setSrc={setSrc}
                         setSignUpDate={setSignUpDate}
+						setFile={setFile}
                     />
                 </div>
 
@@ -286,6 +272,20 @@ const CreateActivity = () => {
 					setCheck={setCheck}
 					btnDisable={btnDisable}
 				/>
+
+				<Modal
+					visible={success}
+					footer={[
+                    <Button onClick={() => {
+						navigate('/');
+					}}>
+                        知道了!
+                    </Button>
+                	]}
+				>
+					<p>活動創建成功!</p>
+					<p>即將為您導回首頁...</p>
+				</Modal>
             </Layout>
         </div>
     )

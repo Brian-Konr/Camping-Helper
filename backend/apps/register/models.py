@@ -133,7 +133,7 @@ class Registration(models.Model):
         help_text="其他",
     )
     is_finish = models.BooleanField(
-        default=False,
+        default=True,
         null=False,
         help_text="是否完成報名填寫",
     )

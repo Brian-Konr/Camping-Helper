@@ -39,7 +39,7 @@ const Homepage = () => {
                             <Button className='filterbutton'>現正可報名</Button>
                             <Button className='filterbutton'>即將開放報名</Button>
                         </div>
-                        <Hotcard />
+                        <Hotcard params={{}}/>
                     </div>
                 </Content>
             </Layout>

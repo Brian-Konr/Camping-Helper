@@ -1,5 +1,5 @@
 import { Layout, Menu, Input } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, createSearchParams } from 'react-router-dom';
 import checkLogin from '../utility/checkLogin';
 import { HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
@@ -58,9 +58,14 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    const [isLogin, setIsLogin] = useState(checkLogin());
+    const [isLogin, setIsLogin] = useState(true);
     const [searchName, setSearchName] = useState("");
     const [view, setView] = useState("");
+
+    useEffect(async() => {
+        let login = await checkLogin();
+        setIsLogin(login);
+    }, [])
 
     const handleOnClick = (e) => {
         if(e.key === "join" || e.key === "own") {
