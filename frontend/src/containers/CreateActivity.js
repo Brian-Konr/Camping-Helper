@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { message, Steps, Button, Divider, Tag, Input, Radio, Layout } from "antd";
+import { message, Steps, Button, Divider, Tag, Input, Radio, Layout, Modal } from "antd";
 import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
@@ -23,6 +23,7 @@ const CreateActivity = () => {
     const navigate = useNavigate();
 
     const [current, setCurrent] = useState(0);
+	const [success, setSuccess] = useState(false); // true when post succeeds
 
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
 	const [file, setFile] = useState({}); // set image file
@@ -71,17 +72,15 @@ const CreateActivity = () => {
 			formData.append("fee", fee);
 			formData.append("quota", quota);
 			if(precaution.length !== 0) formData.append("precaution", precaution);
-			if(questionArr.length !== 0) formData.append("questions", questionArr);
+			console.log(questionArr);
+			if(questionArr.length !== 0) {
+				// for(var i = 0; i < questionArr.length; i++) formData.append('questions[]', questionArr[i]);
+				formData.append('questions', JSON.stringify(questionArr));
+			}
 			if(shortDescription.length !== 0) formData.append("short_description", shortDescription);
 			formData.append("category", tag);
 
-			for (var key of formData.entries()) {
-				console.log(key[0] + ', ' + key[1]);
-			}
-
-
-			let res = await submitForm(formData);
-
+			submitForm(formData);
         }
     }, [submit])
 
@@ -95,6 +94,10 @@ const CreateActivity = () => {
 		try {
 			let res = await instance.post('/camp/', form, config);
 			console.log(res.data);
+			if(res.status === 201) {
+				setBtnDisable(true);
+				setSuccess(true);
+			}
 		} catch (error) {
 			console.log(error);
 			setBtnDisable(false);
@@ -246,6 +249,20 @@ const CreateActivity = () => {
 					setCheck={setCheck}
 					btnDisable={btnDisable}
 				/>
+
+				<Modal
+					visible={success}
+					footer={[
+                    <Button onClick={() => {
+						navigate('/');
+					}}>
+                        知道了!
+                    </Button>
+                	]}
+				>
+					<p>活動創建成功!</p>
+					<p>即將為您導回首頁...</p>
+				</Modal>
             </Layout>
         </div>
     )
