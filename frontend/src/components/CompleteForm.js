@@ -16,7 +16,7 @@ const rule = [
 
 const CompleteForm = () => {
 
-    // TODO: Need to add temporary save, which involved in the communication with backend endpoint
+    /* TODO Need to add temporary save, which involved in the communication with backend endpoint */
     const onFinish = (values) => {
         console.log(values);
         console.log(moment(values.birthday).format("YYYY-MM-DD"));
