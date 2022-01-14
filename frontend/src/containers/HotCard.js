@@ -40,7 +40,7 @@ const DisplayCard = ({params}) => {
 				offset: offset,
 				limit: numEachPage
 			}
-			if(params) {
+			if(Object.keys(params).length !== 0) {
 				Object.assign(originalParams, params);
 				// check valid param filter
 			}
