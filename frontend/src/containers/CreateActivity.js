@@ -86,7 +86,7 @@ const CreateActivity = () => {
                     </div>
                     <div>
                         <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
-                            報名時間 : {date[0]} ~ {date[1]}
+                            報名期間 : {moment(signupDate[0]).format(dateFormat)} ~ {moment(signupDate[1]).format(dateFormat)}
                         </Tag>
                     </div>
                     <div className="general-information">
