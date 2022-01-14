@@ -41,10 +41,7 @@
     padding: 20px;
     align-self: center;   
 }
-.form-wrapper {
-    align-items: center;
-    justify-content: center;
-}
+
 .form-wrapper h1 {
     font-size: 2rem;
     font-weight: 700;
@@ -61,7 +58,7 @@
     position: relative;
 }
 .item {
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 16px;
 }
 .login-form-forgot {
