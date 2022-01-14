@@ -9,6 +9,7 @@ import StepController from "../components/StepController";
 import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
 import checkLogin from "../utility/checkLogin";
+import totalCheck from "../utility/createInputTotalCheck";
 import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
 const {Step} = Steps;
@@ -20,8 +21,9 @@ const CreateActivity = () => {
     const [current, setCurrent] = useState(0);
 
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-    const [activityName, setActivityName] = useState("2022 台灣大學資管營");
-    const [date, setDate] = useState(['2022-01-01', '2022-01-3']);
+    const [activityName, setActivityName] = useState("請輸入您的營隊名稱");
+    const [date, setDate] = useState(['2022-03-25', '2022-03-28']);
+    const [signupDate, setSignUpDate] = useState(['2022-01-17', '2022-03-05']);
     const [info, setInfo] = useState("活動資訊");
     const [place, setPlace] = useState("活動地點");
     const [fee, setFee] = useState(2500);
@@ -31,6 +33,8 @@ const CreateActivity = () => {
     const [questionArr, setQuestionArr] = useState([]);
 
     const [submit, setSubmit] = useState(false);
+
+    const [check, setCheck] = useState(false);
 
     useEffect(() => {
         if(checkLogin() === false) {
@@ -44,6 +48,14 @@ const CreateActivity = () => {
             console.log(questionArr);
         }
     }, [submit])
+
+    useEffect(() => {
+        if(check) {
+            console.log("check");
+            setCheck(false);
+            totalCheck(activityName, );
+        }
+    }, [current])
 
     return (
         <div>
@@ -112,7 +124,8 @@ const CreateActivity = () => {
                 </div>
                 <CreateInput
                     className='inputcontent'
-                    activityName={activityName}  
+                    activityName={activityName}
+                    signupDate={signupDate}
                     date={date}
                     info={info}
                     place={place}
@@ -127,12 +140,22 @@ const CreateActivity = () => {
                     setQuota={setQuota}
                     setPrecaution={setPrecaution}
                     setSrc={setSrc}
+                    setSignUpDate={setSignUpDate}
                 />
             </div>
+
             <div className="form-question" style={{display: current === 1 ? 'block' : 'none'}}>
                 <EditFormQuestion current={current} setQuestionArr={setQuestionArr}/>
             </div>
-            <StepController current={current} setCurrent={setCurrent} setSubmit={setSubmit}/>
+
+            <StepController
+                setCheck={setCheck}
+                current={current} 
+                setCurrent={setCurrent} 
+                submit={submit} 
+                setSubmit={setSubmit}
+                setCheck={setCheck}
+            />
         </div>
     )
 }

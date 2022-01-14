@@ -10,19 +10,9 @@ import { ArrowDownOutlined } from '@ant-design/icons';
 
 const { RangePicker } = DatePicker;
 
-const CreateInput = ({activityName, date, info, place, fee, quota, precaution, setActivityName, setDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc}) => {
+const CreateInput = ({activityName, date, setActivityName, setDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc, signupDate, setSignupDate}) => {
     const dateFormat = 'YYYY-MM-DD';
-    const [modalVisible, setModalVisible] = useState(false);
 
-
-    const store = () => {
-        // how to determine post and patch
-    }
-
-    const submit = () => {
-        console.log('hello submit')
-        // make it public
-    }
 
     return (
         <>
@@ -43,6 +33,15 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                                 ></Input>
                     </Card>
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
+                    
+                    <Card title="報名期間">
+                        <RangePicker 
+                            onChange={(_, dateString) => {setSignupDate(dateString)}}
+                            value={[moment(signupDate[0], dateFormat), moment(signupDate[1]), dateFormat]}
+                            style={{'border-radius': '8px'}}
+                        />
+                    </Card>
+                    
                     <Card title="營隊日期">
                         <RangePicker 
                             onChange={(_, dateString) => {setDate(dateString)}}
@@ -50,6 +49,8 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                             style={{'border-radius': '8px'}}
                         />
                     </Card>
+
+                    
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
                     <Card title="活動地點">
                         <Input placeholder="Where to host the activity?"
@@ -90,20 +91,6 @@ const CreateInput = ({activityName, date, info, place, fee, quota, precaution, s
                     </Card>
                 </div>
                 
-                <div style={{display: 'flex', marginBottom: '2vh'}}>
-                    <Button onClick={store} style={{borderRadius: '12px', margin: '2vw'}}>暫時儲存</Button>
-                    <Button type="primary" style={{borderRadius: '12px', margin: '2vw'}} onClick={() => setModalVisible(true)}>確認送出</Button>
-                </div>
-                <Modal
-                    visible={modalVisible}
-                    onOk={() => {
-                        setModalVisible(false);
-                        submit();
-                    }}
-                    onCancel={() => setModalVisible(false)}
-                >
-                    <p>請確認資料是否正確，一旦送出後即會將活動公開，並不得修改。</p>
-                </Modal>
             </div>
         </>
     )
