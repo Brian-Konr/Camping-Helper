@@ -8,31 +8,28 @@ import instance from '../instance';
 import { Spin } from 'antd';
 
 const numEachPage = 6;
-
+const defaultImg = "https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
 
 const DisplayCard = ({params}) => {
 
-	console.log(params);
-
-	// TODO: if there is no page return, set loading = false and show user that the result is empty
+	// TODO: when the data is empty, set icon
 
 	const [cardArr, setCardArr] = useState([]);
-	const [totalLen, setTotalLen] = useState(3);
+	const [totalLen, setTotalLen] = useState(0);
 	const [curPage, setCurPage] = useState(0);
 	const [loading, setLoading] = useState(true)
 
 
 	useEffect(() => {
-		setCardArr([])
-		setCurPage(0)
+		setCardArr([]);
+		setCurPage(0);
 		console.log('reset');
 	}, [params])
 
 	useEffect(() => {
-		if (!cardArr.length)
+		if (cardArr.length === 0)
 		{
-			console.log('em');
-			fetchData(0)
+			fetchData(0);
 		}
 	}, [cardArr])
 
@@ -51,9 +48,9 @@ const DisplayCard = ({params}) => {
 			let res = await instance.get('/camp/', {
 				params: originalParams
 			});
-			setLoading(false)
+			setLoading(false);
 			console.log(res.data);
-			setCardArr(cardArr.concat(res.data.results));
+			if(res.data.count > 0) setCardArr(cardArr.concat(res.data.results));
 			setTotalLen(res.data.count)
 		} catch (error) {
 			console.log(error.response);
@@ -61,6 +58,7 @@ const DisplayCard = ({params}) => {
 	}
 
 	console.log("totalLen", totalLen);
+	console.log(cardArr);
 
 
 	useEffect(() => {
@@ -99,7 +97,7 @@ const DisplayCard = ({params}) => {
 									name={item.name}
 									key={item.id} 
 									keyVal={item.id} 
-									src={"https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"}
+									src={item.cover_photo === null ? defaultImg : item.cover_photo}
 									place={item.place}
 								/> 
 						))}

@@ -84,7 +84,7 @@ const CreateInput = ({activityName, startDate, setFile, setActivityName, setStar
                             placeholder="輸入活動資訊"
                             showCount={true}
                             autoSize={{minRows: 2, maxRows: 10}}
-                            maxLength={500}
+                            maxLength={1500}
                             onChange={(e) => {setInfo(e.target.value)}}
                             id="inputcard"
                         />
@@ -95,7 +95,7 @@ const CreateInput = ({activityName, startDate, setFile, setActivityName, setStar
                             placeholder="輸入注意事項"
                             showCount={true}
                             autoSize={{minRows: 2, maxRows: 10}}
-                            maxLength={500}
+                            maxLength={1000}
                             onChange={(e) => {setPrecaution(e.target.value)}}
                             id="inputcard"
                         />

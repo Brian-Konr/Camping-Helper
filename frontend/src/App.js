@@ -8,6 +8,9 @@ import CampIntro from './containers/CampIntro';
 import AnswerForm from './containers/AnswerForm';
 import FilterPage from './containers/FilterPage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+// TODO: set style, y-axis overflow or x-axis overflow make the screen is fixed
+
 const App = () => {
 
 	
