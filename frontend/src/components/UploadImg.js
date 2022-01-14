@@ -2,13 +2,14 @@ import { useState } from "react";
 import { UploadOutlined } from '@ant-design/icons';
 import {Button, Upload} from 'antd';
 
-const UploadImg = ({setSrc}) => {
+const UploadImg = ({setSrc, setFile}) => {
     const [disable, setDisable] = useState(false);
     
     const handleUpload = async (info) => {
         if(info.fileList.length == 0) setDisable(false);
         else {
             setDisable(true);
+            setFile(info.file);
             setSrc(URL.createObjectURL(info.file));
         }
     }

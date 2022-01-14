@@ -1,8 +1,8 @@
 import { Button, Modal } from "antd";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import '../css/createActivity.css'
 
-const StepController = ({current, setCurrent, setSubmit, setCheck}) => {
+const StepController = ({current, setCurrent, setSubmit, setCheck, submit, btnDisable}) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -25,11 +25,19 @@ const StepController = ({current, setCurrent, setSubmit, setCheck}) => {
         <>
             <div className="question-footer">
                 <Button id="button-form-1" disabled={current === 0} onClick={() => setCurrent(current - 1) }>上一步</Button>
-                <Button id="button-form-2" onClick={handleNext} type="primary">{current === 2 ? "確認送出" : "下一步"}</Button>
+                <Button id="button-form-2" disabled={btnDisable} onClick={handleNext} type="primary">{current === 2 ? "確認送出" : "下一步"}</Button>
             </div>
             <Modal
                 visible={visible}
-                onOk={() => {setSubmit(true)}}
+                onOk={() => {
+                    console.log("ok");
+                    setSubmit(true);
+                    setVisible(false);
+                    setTimeout(() => {
+                        setSubmit(false);
+                    }, 3000);
+                    // start loading (state should be in createActivity)
+                }}
                 onCancel={() => {setVisible(false)}}
             >
                 <p>確定要發布活動了嗎？</p>

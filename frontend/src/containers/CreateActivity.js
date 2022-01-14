@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { message, Steps, Button, Divider, Tag } from "antd";
+import { message, Steps, Button, Divider, Tag, Input, Radio } from "antd";
 import moment from 'moment';
 // import Appbar from "../components/Appbar";
 import { Content } from "antd/lib/layout/layout";
@@ -11,10 +11,12 @@ import "../css/createActivity.css"
 import EditFormQuestion from "../components/EditFormQuestion";
 import checkLogin from "../utility/checkLogin";
 import totalCheck from "../utility/createInputTotalCheck";
+import instance from "../instance";
 import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
 const {Step} = Steps;
 const dateFormat = "YYYY-MM-DD";
+const dateTimeFormat = "YYYY-MM-DD HH:mm:ss"
 const CreateActivity = () => {
 
     const navigate = useNavigate();
@@ -22,22 +24,27 @@ const CreateActivity = () => {
     const [current, setCurrent] = useState(0);
 
     const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-    const [activityName, setActivityName] = useState("請輸入您的營隊名稱");
-    const [startDate, setStartDate] = useState(['2022-03-25', '2022-03-28']);
+	const [file, setFile] = useState({}); // set image file
+    const [activityName, setActivityName] = useState("");
+    const [startDate, setStartDate] = useState(['2022-03-28', '2022-03-30']);
     const [signupDate, setSignUpDate] = useState(['2022-01-17', '2022-03-05']);
-    const [info, setInfo] = useState("請輸入活動資訊");
-    const [place, setPlace] = useState("請輸入活動地點");
+    const [info, setInfo] = useState("");
+    const [place, setPlace] = useState("");
     const [fee, setFee] = useState(2500);
     const [quota, setQuota] = useState(70);
-    const [precaution, setPrecaution] = useState("注意事項");
+    const [precaution, setPrecaution] = useState("");
+	const [link, setLink] = useState("");
 
     const [questionArr, setQuestionArr] = useState([]);
 
     const [submit, setSubmit] = useState(false);
+	const [btnDisable, setBtnDisable] = useState(false);
 
     const [check, setCheck] = useState(false);
-    const [modalVisible, setModalVisible] = useState(false);
-    const [validPost, setValidPost] = useState(false);
+
+	const [tag, setTag] = useState(5); // default 其他類別
+	const [shortDescription, setShortDescription] = useState("");
+    
 
     useEffect(() => {
         if(checkLogin() === false) {
@@ -46,11 +53,76 @@ const CreateActivity = () => {
         };
     }, [])
 
-    useEffect(() => {
+    useEffect(async() => {
         if(submit) {
-            console.log(questionArr);
+			let formData = new FormData();
+			formData.append('name', activityName);
+			if(!info.length) formData.append('information', info);
+			console.log(Object.keys(file).length);
+			if(Object.keys(file).length !== 0) formData.append('cover_photo', file);
+			formData.append("camp_start_date", moment(startDate[0]).format(dateFormat));
+			formData.append("camp_end_date", moment(startDate[1]).format(dateFormat));
+			formData.append("register_start_date", moment(signupDate[0]).format(dateTimeFormat));
+			formData.append("register_end_date", moment(signupDate[1]).format(dateTimeFormat));
+			formData.append("place", place);
+			if(!link.length) formData.append("link", link);
+			formData.append("fee", fee);
+			formData.append("quota", quota);
+			if(!precaution.length) formData.append("precaution", precaution);
+			if(!questionArr.length) formData.append("questions", questionArr);
+			if(!shortDescription.length) formData.append("short_description", shortDescription);
+			formData.append("category", tag);
+
+			for (var key of formData.entries()) {
+				console.log(key[0] + ', ' + key[1]);
+			}
+
+
+			let res = await submitForm(formData);
+
+			// console.log(moment(startDate[0]).format(dateFormat));
+			// // formData.append('camp_start_date', )
+			// console.log(startDate[0]);
+			// console.log(signupDate);
+			// setBtnDisable(true);
+            // console.log("name: ", activityName);
+			// console.log('info', info);
+			// console.log("picFile", file);
+			// console.log("start date", startDate[0]);
+			// console.log("end date", startDate[1]);
+			// console.log("signup date", signupDate[0]);
+			// console.log("sign up due", signupDate[1]);
+			// console.log("place", place);
+			// console.log("link", link);
+			// console.log("fee", fee);
+			// console.log("quota", quota);
+			// console.log("precaution", precaution);
+			// console.log("questions", questionArr);
+			// console.log("short", shortDescription);
+			// console.log("category", tag);
         }
     }, [submit])
+
+	const submitForm = async(form) => {
+		console.log(form);
+		try {
+			let res = await instance({
+				method: "post",
+				url: "/camp/",
+				formData: form,
+				headers: {"Content-Type": "multipart/form-data"}
+			});
+			console.log(res.data, res.status);
+			return res;
+		} catch (error) {
+			console.log(error);
+			setBtnDisable(false);
+		}
+	}
+
+	useEffect(() => {
+		console.log(file);
+	}, [file])
 
     useEffect(async () => {
         if(check) {
@@ -61,8 +133,8 @@ const CreateActivity = () => {
     }, [check])
 
     useEffect(() => {
-        console.log("signupdateArr", signupDate);
-    }, [signupDate])
+        console.log("startDateArr", startDate);
+    }, [startDate])
 
     return (
         <div>
@@ -144,6 +216,7 @@ const CreateActivity = () => {
                     fee={fee}
                     quota={quota}
                     precaution={precaution}
+					setFile={setFile}
                     setActivityName={setActivityName}
                     setStartDate={setStartDate}
                     setInfo={setInfo}
@@ -160,13 +233,36 @@ const CreateActivity = () => {
                 <EditFormQuestion current={current} setQuestionArr={setQuestionArr}/>
             </div>
 
+            <div style={{display: current === 2 ? 'flex': 'none'}}>
+				<Input 
+					placeholder="請簡短地敘述您的營隊!"
+					value={shortDescription}
+					onChange={(e) => {setShortDescription(e.target.value)}}
+					maxLength={20}
+				/>
+				<Radio.Group onChange={(e) => {setTag(e.target.value)}} value={tag}>
+					<Radio value={1}>文法類</Radio>
+					<Radio value={2}>財經類</Radio>
+					<Radio value={3}>理工類</Radio>
+					<Radio value={4}>醫護類</Radio>
+					<Radio value={5}>其他</Radio>
+				</Radio.Group>
+				<Input 
+					type="url"
+					placeholder="相關資訊連結"
+					onChange={(e) => setLink(e.target.value)}
+					value={link}
+				/>
+            </div>
+
             <StepController
                 setCheck={setCheck}
                 current={current} 
                 setCurrent={setCurrent} 
-                submit={submit} 
+                submit={submit}
                 setSubmit={setSubmit}
                 setCheck={setCheck}
+				btnDisable={btnDisable}
             />
         </div>
     )

@@ -10,7 +10,7 @@ import { ArrowDownOutlined } from '@ant-design/icons';
 
 const { RangePicker } = DatePicker;
 
-const CreateInput = ({activityName, startDate, setActivityName, setStartDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc, signupDate, setSignUpDate}) => {
+const CreateInput = ({activityName, startDate, setFile, setActivityName, setStartDate, setInfo, setPlace, setFee, setQuota, setPrecaution, setSrc, signupDate, setSignUpDate}) => {
     const dateFormat = 'YYYY-MM-DD HH:mm:ss';
 
 
@@ -22,7 +22,10 @@ const CreateInput = ({activityName, startDate, setActivityName, setStartDate, se
                         輸入活動資訊 !
                     </div>
                     <Card title="營隊封面圖片">
-                        <UploadImg setSrc={setSrc}/>
+                        <UploadImg 
+                            setSrc={setSrc}
+                            setFile={setFile}
+                            />
                     </Card>
                     <ArrowDownOutlined style={{color: 'hsl(214, 30%, 67%)', fontSize: '22px'}}/>
                     <Card title="營隊名稱">
@@ -37,8 +40,10 @@ const CreateInput = ({activityName, startDate, setActivityName, setStartDate, se
                     <Card title="報名期間">
                         <RangePicker 
                             onChange={(date) => {
-                                console.log(date);
-                                setSignUpDate(date)
+                                if(date !== null) {
+                                    console.log(date);
+                                    setSignUpDate(date)
+                                }
                             }}
                             value={[moment(signupDate[0], dateFormat), moment(signupDate[1]), dateFormat]}
                             style={{'border-radius': '8px'}}
@@ -47,8 +52,11 @@ const CreateInput = ({activityName, startDate, setActivityName, setStartDate, se
                     
                     <Card title="營隊日期">
                         <RangePicker 
-                            onChange={(date) => {setStartDate(date)}}
-                            value={[moment(startDate[0], dateFormat), moment(startDate[1]), dateFormat]}
+                            onChange={(date) => {
+                                console.log(date);
+                                if(date !== null) setStartDate(date);
+                            }}
+                            value={[moment(startDate[0], dateFormat), moment(startDate[1], dateFormat)]}
                             style={{'border-radius': '8px'}}
                         />
                     </Card>
