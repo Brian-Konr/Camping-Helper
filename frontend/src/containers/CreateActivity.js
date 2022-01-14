@@ -36,6 +36,8 @@ const CreateActivity = () => {
     const [submit, setSubmit] = useState(false);
 
     const [check, setCheck] = useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
+    const [validPost, setValidPost] = useState(false);
 
     useEffect(() => {
         if(checkLogin() === false) {
@@ -52,13 +54,11 @@ const CreateActivity = () => {
 
     useEffect(async () => {
         if(check) {
-            let pass = true;
-            if(place === "請輸入活動地點" || !place.length) pass = false;
-            if(!await totalCheck(activityName, startDate, signupDate)) pass = false;
-            if(!pass) console.log("no no");
-            setCheck(false);
+
+            let pass = await totalCheck(activityName, startDate, signupDate, place);
+            if(pass) setCurrent(prev => prev + 1);
         }
-    }, [current])
+    }, [check])
 
     useEffect(() => {
         console.log("signupdateArr", signupDate);

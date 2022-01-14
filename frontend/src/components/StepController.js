@@ -2,7 +2,7 @@ import { Button, Modal } from "antd";
 import { useState } from "react";
 import '../css/createActivity.css'
 
-const StepController = ({submit, current, setCurrent, setSubmit, setCheck}) => {
+const StepController = ({current, setCurrent, setSubmit, setCheck}) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -10,6 +10,10 @@ const StepController = ({submit, current, setCurrent, setSubmit, setCheck}) => {
         if(current === 0) {
             // on first page and is going to move to second page, thus need to check
             setCheck(true);
+            setTimeout(() => {
+                setCheck(false);
+            }, 1000);
+            return;
         }
         if(current < 2) setCurrent(current + 1);
         else if(current === 2) {
