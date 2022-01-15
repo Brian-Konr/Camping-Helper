@@ -42,7 +42,7 @@ const FilterPage = () => {
                 >
                     <div className='hotwrapper'>
                         <div className='classtitle'>
-                            <h2>搜尋結果</h2>
+                            <h2>{view === "join" ? "我報名的活動" : view === "own" ? "我舉辦的活動" : "搜尋結果"}</h2>
                         </div>
                         <Divider style={{
                             marginBottom: '3vh',

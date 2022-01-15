@@ -196,7 +196,7 @@ const CompleteForm = ({questionArr, campId, setSuccess}) => { // pass {questionA
                     {questionArr.includes(9) && (
                         <>
                             <h3>飲食習慣</h3>
-                            <Form.Item name="eatingm_habit" rules={rule}>
+                            <Form.Item name="eating_habit" rules={rule}>
                                 <Select
                                     size="large"
                                     placeholder="請選擇你的飲食習慣"
