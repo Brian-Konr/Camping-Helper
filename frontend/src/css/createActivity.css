@@ -24,6 +24,9 @@
 h1 {
     margin: 0.5em;
 }
+h1 span {
+    color: #8c8e8f;
+}
 h2 {
     margin: 0.1em;
 }
@@ -71,8 +74,28 @@ h2 {
     flex-direction: row;
     align-items: center;
 }
-
-
+#home-button {
+    text-align: center;
+    border-radius: 20px;
+    border-color: #FB8CB3;
+    color: #fff;
+    background-color: #FB8CB3;
+}
+#ok-button {
+    text-align: center;
+    border-radius: 20px;
+    border-color: #FB8CB3;
+    color: #fff;
+    background-color: #FB8CB3;
+}
+#cancel-button {
+    margin-left: 70%;
+    text-align: center;
+    border-radius: 20px;
+    border-color: #FB8CB3;
+    color: #FB8CB3;
+    background-color: #fff;
+}
 .questionWrapper {
     display: flex;
     flex-direction: column;

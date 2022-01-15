@@ -121,14 +121,16 @@ const CampManage = () => {
         <>
             <Navbar />
             <Layout className='table-container'>
-                <h1>Hi ! 活動管理者</h1>
                 {empty ? 
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '10vh'}}>
 						<WarningOutlined id='warning-icon'/>
-						<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty!!!</div>
+						<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty ! ! !</div>
 					</div>
                     :
                     <>
+                        <div className='classtitle'>
+                            <h2>報名狀況</h2>
+                        </div>
                         <Button onClick={handleDownload} id="download-button">下載表單</Button>
                         <Table 
                             className="table"

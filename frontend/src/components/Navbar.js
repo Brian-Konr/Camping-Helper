@@ -108,7 +108,6 @@ const Navbar = ({setLogin}) => {
 
     return (
         <>
-            <div style={{height: '64px'}}></div>
             {isLogin ? 
                 (
                     <Header className='headnav'>
@@ -129,8 +128,8 @@ const Navbar = ({setLogin}) => {
                                 <SubMenu className='navItem-signed' key="subMenu" icon={<UserOutlined style={{fontSize: '20px', marginLeft: '0.5vw'}}/>}>
                                     <Menu.Item key="join">我報名的活動</Menu.Item>
                                     <Menu.Item key="own">我舉辦的活動</Menu.Item>
+                                    <Menu.Item onClick={handleLogOut} icon={<UserSwitchOutlined style={{fontSize: '20px'}} />} key="logout">登出</Menu.Item>
                                 </SubMenu>
-                                <Menu.Item className='navItem-signed' onClick={handleLogOut} key="logout" icon={<UserSwitchOutlined style={{fontSize: '20px'}}/>}>登出</Menu.Item>
                             </Menu>
                         </div>
                     </Header>
@@ -159,6 +158,7 @@ const Navbar = ({setLogin}) => {
                     </Header>
                 )
             }
+            <div style={{height: '64px'}}></div>
         </>
     )
 }
