@@ -54,9 +54,13 @@ const rightBarStyle_lock = {
 }
 
 
-const Navbar = () => {
+const Navbar = ({setLogin}) => {
 
     const navigate = useNavigate();
+
+    console.log(setLogin);
+    console.log(setLogin === undefined);
+    console.log(setLogin === null);
 
     const [isLogin, setIsLogin] = useState(true);
     const [searchName, setSearchName] = useState("");
@@ -65,6 +69,7 @@ const Navbar = () => {
     useEffect(async() => {
         let login = await checkLogin();
         setIsLogin(login);
+        if(setLogin !== undefined) setLogin(login);
     }, [])
 
     const handleOnClick = (e) => {
@@ -85,6 +90,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         localStorage.clear();
         setIsLogin(false);
+        if(setLogin !== undefined) setLogin(false);
     }
 
     const handleSearch = (e) => {
