@@ -8,6 +8,7 @@ import instance from '../instance';
 import { Spin, Pagination } from 'antd';
 import { COVERS } from '../utility/randomCover';
 import { WarningOutlined } from '@ant-design/icons';
+import moment from 'moment';
 const numEachPage = 6;
 
 const DisplayCard = ({params}) => {
@@ -118,7 +119,9 @@ const DisplayCard = ({params}) => {
 									key={item.id} 
 									keyVal={item.id} 
 									src={item.cover_photo === null ? COVERS[Math.floor(Math.random()*COVERS.length)] : item.cover_photo}
-									place={item.place}
+									tag={item.category}
+									startDate={[moment(item.camp_start_date), moment(item.camp_end_date)]}
+									info={item.short_description}
 								/> 
 						))}
 					</div>

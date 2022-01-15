@@ -124,7 +124,7 @@ const Navbar = ({setLogin}) => {
                                 <SubMenu className='navItem-signed' key="subMenu" icon={<UserOutlined style={{fontSize: '20px', marginLeft: '0.5vw'}}/>}>
                                     <Menu.Item key="join">我報名的活動</Menu.Item>
                                     <Menu.Item key="own">我舉辦的活動</Menu.Item>
-                                    <Menu.Item onClick={handleLogOut} icon={<UserSwitchOutlined style={{fontSize: '20px'}} />} key="logout">登出</Menu.Item>
+                                    <Menu.Item onClick={handleLogOut} key="logout">登出</Menu.Item>
                                 </SubMenu>
                             </Menu>
                         </div>

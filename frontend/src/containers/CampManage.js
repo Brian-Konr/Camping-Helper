@@ -6,6 +6,7 @@ import instance from "../instance";
 import { OPTIONS } from "../utility/questions";
 import "../css/campManagement.css";
 import { WarningOutlined } from '@ant-design/icons';
+import ButtomFooter from '../components/ButtomFooter';
 
 const {Footer} = Layout;
 const numberPerPage = 8;
@@ -148,7 +149,7 @@ const CampManage = () => {
                 }
             </Layout>
             <Button id="home" onClick={() => navigate('/')}>返回首頁</Button>
-            <Footer style={{outerHeight: '20%', marginTop: '5vh', backgroundColor: 'white'}}></Footer>
+            <ButtomFooter />
         </>
     )
 }

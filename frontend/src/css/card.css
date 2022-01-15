@@ -14,9 +14,12 @@
     justify-content: center;
 }
 .detail-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    display: grid;
+    grid-template-rows: 0.8fr 2.4fr 0.8fr;
+    max-height: 180px;
+}
+.detail-wrapper p {
+    color: rgb(95, 106, 116);
 }
 #pagination {
     margin-left: 47%;
