@@ -16,13 +16,13 @@
 {% endblock text_body %}
 
 {% block html_body %}
-<p>{% blocktrans %}You're receiving this email because you need to finish activation process on {{ site_name }}.{% endblocktrans %}</p>
+<p>Welcome to Camping Helper! Well, almost ... You are just one click away from full access to your Camping Helper account.</p>
 
-<p>{% trans "Please go to the following page to activate account:" %}</p>
-<p><a href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}</a></p>
+<!-- <p>{% trans "Please go to the following page to activate account:" %}</p> -->
 
+<p>Link not working? Try copying this url <a href="{{ protocol }}://{{ domain }}/{{ url|safe }}">{{ protocol }}://{{ domain }}/{{ url|safe }}</a></p>
 <p>{% trans "Thanks for using our site!" %}</p>
 
-<p>{% blocktrans %}The {{ site_name }} team{% endblocktrans %}</p>
+<p><i>Sincerely, Camping Helper</i></p>
 
 {% endblock html_body %}
