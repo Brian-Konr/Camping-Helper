@@ -111,10 +111,6 @@ class CampViewSet(viewsets.ModelViewSet):
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
 
-    @method_decorator(cache_page(60*10), vary_on_headers("Authorization", ))
-    def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
-
     def perform_create(self, serializer):
         serializer.save(host=self.request.user)
 
@@ -178,8 +174,8 @@ class CampViewSet(viewsets.ModelViewSet):
     @action(
         detail=False,
         methods=["get"],
-        url_path="check-name",
-        url_name="camp-checkname"
+        url_path="download",
+        url_name="download",
     )
     def download(self, request):
         pass

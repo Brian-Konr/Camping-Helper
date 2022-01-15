@@ -14,7 +14,7 @@ class RegisterSerializer(NestedHyperlinkedModelSerializer):
     class Meta:
         model = models.Registration
         fields = [
-            "id", "user", "camp", "name", "sex",
+            "id", "url", "user", "camp", "name", "sex",
             "nationality", "id_number", "birth_date",
             "school", "grade", "special_disease", "fb_link",
             "eating_habit", "email", "contact_number",
