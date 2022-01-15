@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Login from "./containers/Login";
 import SignUp from './containers/SignUp';
 import HomePage from './containers/HomePage';
@@ -14,7 +14,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
 
-	
+	useEffect(() => {
+        document.title = "Camping-Helper";
+    }, [])
     return (
         <div className='App'>
             <Router>

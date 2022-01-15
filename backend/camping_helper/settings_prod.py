@@ -143,7 +143,6 @@ REST_FRAMEWORK = {
 SITE_NAME = "Camping Helper"
 DOMAIN = "campinghelper.dodofk.xyz"
 
-# todo: email template
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'google.com/{uid}/{token}',
     # 不開放改Email

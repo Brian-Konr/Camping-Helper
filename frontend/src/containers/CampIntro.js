@@ -30,8 +30,7 @@ const CampIntro = () => {
 
 
     useEffect(async () => {
-
-
+        
         try {
             let res = await instance.get(`/camp/${campId}/`);
             const loginCheck = await checkLogin();

@@ -101,6 +101,7 @@ celerybeat-schedule.*
 .env
 .env.dev
 .env.prod
+.env.dev.ta.defaults
 .env.prod.proxy-companion
 .venv
 env/
