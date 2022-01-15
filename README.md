@@ -38,10 +38,10 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     ```
 3. Set up environment files
 
-    ```
+    ```console
     cp .env.dev.defaults .env.dev
 
-    # we'll give the required env files which will names .env.dev.ta.defaults
+    # we will give the required env files named .env.dev.ta.defaults
     # you could copy paste the .env.dev.ta.defaults to .env.dev or use the following commands
     cp .env.dev.ta.defaults .env.dev
     ```
@@ -72,9 +72,9 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     ```
     Ensure that the server run at port 8000
     
-    For admin page: localhost:8000/admin
+    For admin page: `localhost:8000/admin` (You could get, create, update, delete data in the admin page)
 
-    For API documentation: localhost:8000/api/schema/swagger-ui/
+    For API documentation: `localhost:8000/api/schema/swagger-ui/`
 
     Use (Ctrl+C or Ctrl+D) to stop the server
 
