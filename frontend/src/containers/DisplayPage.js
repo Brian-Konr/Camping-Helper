@@ -22,7 +22,7 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                     <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
                 </div>
                 {<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <h1>營隊名稱 ( 展示用 ) : <span>{activityName}</span></h1>
+                    <h1><span>營隊名稱 : </span>{activityName}</h1>
                     <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
                         類組分類 ( optional )
                     </Tag>

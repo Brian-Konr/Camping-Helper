@@ -24,6 +24,13 @@ const questionCard = {
     borderRadius: '24px',
     border: '2px solid #4faaf5bd'
 }
+const homeButton = {
+    textAlign: 'center',
+    borderRadius: '20px',
+    borderColor: '#FB8CB3',
+    color: '#fff',
+    backgroundColor: '#FB8CB3',
+}
 
 const questions = [1];
 const AnswerForm = () => {
@@ -67,9 +74,12 @@ const AnswerForm = () => {
             />
             <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
             <Modal
+                style={{borderRadius: '20px'}}
                 visible={success}
-                footer={[
-                <Button onClick={() => {
+                footer={[ 
+                <Button 
+                    style={homeButton}
+                    onClick={() => {
                     setSuccess(false);
                     navigate('/');
                 }}>

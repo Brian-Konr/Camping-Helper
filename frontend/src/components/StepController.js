@@ -28,7 +28,25 @@ const StepController = ({current, setCurrent, setSubmit, setCheck, submit, btnDi
                 <Button id="button-form-2" disabled={btnDisable} onClick={handleNext} type="primary">{current === 2 ? "確認送出" : "下一步"}</Button>
             </div>
             <Modal
+                style={{borderRadius: '20px'}}
                 visible={visible}
+                footer={[
+                    <div style={{display: 'flex', alignItems: 'end'}}>
+                        <Button id="cancel-button" onClick={() => {setVisible(false)}}>
+                            Cancel
+                        </Button>
+                        <Button id="ok-button" onClick={() => {
+                            console.log("ok");
+                            setSubmit(true);
+                            setVisible(false);
+                            setTimeout(() => {
+                                setSubmit(false);
+                            }, 3000);
+                            }}>
+                            OK
+                        </Button>
+                    </div>
+                ]}
                 onOk={() => {
                     console.log("ok");
                     setSubmit(true);

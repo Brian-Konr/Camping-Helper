@@ -98,7 +98,8 @@ const DisplayCard = ({params}) => {
 					:
 					(
 						<div className='stepButton'>
-							<img id="previous" src={PrevButton} style={{width: '90%'}} alt="prev-button" onClick={handlePrevious}/>
+							{curPage === 0? <img src={PrevButton} style={{ width: '90%', opacity: '50%'}} alt="prev-button"/>
+								: <img id="previous" src={PrevButton} style={{ width: '90%'}} alt="prev-button" onClick={handlePrevious}/>}
 						</div>
 					)
 				}
@@ -127,7 +128,8 @@ const DisplayCard = ({params}) => {
 					:
 					(
 						<div className='stepButton'>
-							<img id="next"src={NextButton} style={{width: '90%'}} onClick={handleNext} alt="next-button"/>
+							{(curPage + 1) === (Math.ceil(totalLen * 1.0 / numEachPage)) ? <img src={NextButton} style={{ width: '90%', opacity: '50%'}} alt="next-button" onClick={handlePrevious}/>
+								: <img id="next"src={NextButton} style={{width: '90%'}} onClick={handleNext} alt="next-button"/>}
 						</div>
 					)
 				}

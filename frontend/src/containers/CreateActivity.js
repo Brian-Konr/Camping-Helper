@@ -232,9 +232,10 @@ const CreateActivity = () => {
 				/>
 
 				<Modal
+                    style={{borderRadius: '20px'}}
 					visible={success}
 					footer={[
-                    <Button onClick={() => {
+                    <Button id="home-button" onClick={() => {
 						navigate('/');
 					}}>
                         知道了!
