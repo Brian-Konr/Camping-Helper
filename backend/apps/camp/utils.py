@@ -1,3 +1,4 @@
+# make models.py more clear
 question_dict = {
     1: {
         "verbose_name": "姓名",

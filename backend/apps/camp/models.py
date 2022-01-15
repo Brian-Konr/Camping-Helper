@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.postgres.fields import ArrayField
 from .. storage_backends import PublicMediaStorage, PrivateMediaStorage
-
+from . import utils
 
 def camp_file_path(instance, filename):
     return f'camp_{instance.name}/{filename}'
@@ -115,3 +115,7 @@ class Camp(models.Model):
 
     class Meta:
         db_table = "camp"
+
+    class CustomMeta:
+        question_dict = utils.question_dict
+
