@@ -69,6 +69,7 @@ class CampViewSet(viewsets.ModelViewSet):
         "name": ["contains"],
         "camp_start_date": ["gte", "lte", "exact"],
         "camp_end_date": ["gte", "lte", "exact"],
+        "category": ["exact"],
     }
     search_fields = [
         "@name",
