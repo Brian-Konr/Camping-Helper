@@ -26,8 +26,11 @@ const CampIntro = () => {
     const [precaution, setPrecaution] = useState("");
     const [tag, setTag] = useState(5); // default 其他類別
 	const [link, setLink] = useState("");
+    const [login, setLogin] = useState(true);
+
 
     useEffect(async () => {
+
 
         try {
             let res = await instance.get(`/camp/${campId}/`);
@@ -54,7 +57,6 @@ const CampIntro = () => {
             else setView("guest");
             console.log("status", res.status);
 
-            // data 都在這 如果有不懂的可以看 https://campinghelper.temp.dodofk.xyz/api/schema/swagger-ui/#/camp/camp_create 的 get camp/{id}/ schema
             setActivityName(res.data.name);
             setSrc(res.data.cover_photo);
             setStartDate([moment(res.data.camp_start_date), moment(res.data.camp_end_date)]);
@@ -71,9 +73,10 @@ const CampIntro = () => {
             console.log(error);
         }
     }, [])
+
     return (
         <>
-            <Navbar />
+            <Navbar setLogin={setLogin}/>
             <div style={{height: '3vh'}}></div>
             <Layout className='layout-container'>
                 <DisplayPage 
@@ -93,7 +96,7 @@ const CampIntro = () => {
                 <div className="enterCamp-title">
                     <Button id="home-button" onClick={() => {navigate('/')}}>回到主頁</Button>
                     {view === "guest" ? <Button id="switch-button" onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button> : <></>}
-                    {view === "host" ? <Button id="switch-button" onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
+                    {(view === "host" && login) ? <Button id="switch-button" onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
                 </div>
             </Layout>
             <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
