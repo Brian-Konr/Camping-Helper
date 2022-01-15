@@ -21,7 +21,7 @@ question_dict = {
     },
     6: {
         "verbose_name": "學校_年級",
-        "field": "school",
+        "field": "school_grade",
     },
     7: {
         "verbose_name": "特殊疾病",

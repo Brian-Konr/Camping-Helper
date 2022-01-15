@@ -42,19 +42,12 @@ class Registration(models.Model):
         null=True,
         help_text="出生年月日",
     )
-    school = models.CharField(
-        verbose_name="School name",
+    school_grade = models.CharField(
+        verbose_name="School_and_grade",
         max_length=200,
         blank=True,
         default="",
-        help_text="學校名稱",
-    )
-    grade = models.CharField(
-        verbose_name="Grade",
-        max_length=20,
-        blank=True,
-        default="",
-        help_text="年級",
+        help_text="學校名稱和年級",
     )
     special_disease = models.CharField(
         max_length=500,
@@ -146,3 +139,6 @@ class Registration(models.Model):
                 name="unique-camp-for-user",
             ),
         ]
+
+    def __str__(self):
+        return f'營隊_{self.camp.name}_用戶_{self.user.name}'
