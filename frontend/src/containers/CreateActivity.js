@@ -55,10 +55,16 @@ const CreateActivity = () => {
             message.warn("請先登入再創辦活動!", 1.2);
             navigate('/login')
         };
-    }, [])
+    }, [current])
 
     useEffect(async() => {
         if(submit) {
+            let loginCheck = await checkLogin();
+            if(!loginCheck) {
+                message.warn("請先登入再創辦活動!", 1.2);
+                navigate('/login');
+                return;
+            }
 			let formData = new FormData();
 			formData.append('name', activityName);
 			if(info.length !== 0) formData.append('information', info);

@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import { Table, Button } from "antd";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import instance from "../instance";
 import { OPTIONS } from "../utility/questions";
 
 const numberPerPage = 8;
 
 const CampManage = () => {
+
+    const navigate = useNavigate();
 
     const {campId} = useParams();
 
@@ -17,6 +19,7 @@ const CampManage = () => {
     const [offset, setOffset] = useState(0);
     const [current, setCurrent] = useState(1);
     const [totalLen, setTotalLen] = useState(0);
+    const [empty, setEmpty] = useState(true);
 
     useEffect(() => {
         setOffset(0);
@@ -61,6 +64,10 @@ const CampManage = () => {
 
             if(res.data.next === null) setNext(false);
             setTotalLen(res.data.count);
+
+            if(res.data.count === 0) setEmpty(true);
+            else setEmpty(false);
+
             setDataSource(dataSource.concat(res.data.results));
 
         } catch (error) {
@@ -101,7 +108,7 @@ const CampManage = () => {
             reader.readAsText(res.data);
             // let newData = '\ufeff' + res.data;
         } catch (error) {
-            
+            console.log(error);
         }
     }
 
@@ -110,17 +117,22 @@ const CampManage = () => {
         <>
             <h1>hello camp manage</h1>
             <p>{`Welcome camp ${campId}`}</p>
-            <Table 
-                dataSource={dataSource}
-                columns={columns}
-                pagination={{
-                    defaultPageSize: numberPerPage,
-                    current: current,
-                    total: totalLen,
-                    onChange: (page, pageSize) => {setCurrent(page)}
-                }}
-            />
-            <Button onClick={handleDownload}>下載表單</Button>
+            {empty ? <div>Empty!!</div> :
+                <>
+                    <Table 
+                        dataSource={dataSource}
+                        columns={columns}
+                        pagination={{
+                            defaultPageSize: numberPerPage,
+                            current: current,
+                            total: totalLen,
+                            onChange: (page) => {setCurrent(page)}
+                        }}
+                    />
+                    <Button onClick={handleDownload}>下載表單</Button>
+                </>
+            }
+            <Button onClick={() => navigate('/')}>返回首頁</Button>
         </>
     )
 }
