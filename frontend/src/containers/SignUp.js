@@ -96,7 +96,6 @@ const RegistrationForm = () => {
                 >
                 <Form.Item
                   name="name"
-                  label="姓名"
                   rules={[
                   {
                       required: true,
@@ -104,10 +103,10 @@ const RegistrationForm = () => {
                   },
                   ]}
                 >
-                    <Input className='item'/>
+                    <Input className='item' placeholder="姓名"/>
                 </Form.Item>
 
-                <Form.Item label="出生年月日" style={{ marginBottom: 0 }}>
+                <Form.Item style={{ marginBottom: 0 }}>
                     <Form.Item
                     name="year"
                     rules={[{ required: true }]}
@@ -133,7 +132,6 @@ const RegistrationForm = () => {
 
                 <Form.Item
                   name="email"
-                  label="電子郵件"
                   rules={[
                   {
                       type: 'email',
@@ -145,12 +143,11 @@ const RegistrationForm = () => {
                   },
                   ]}
                 >
-                    <Input className='item'/>
+                    <Input className='item' placeholder="電子郵件"/>
                 </Form.Item>
 
                 <Form.Item
                   name="username"
-                  label="使用者名稱"
                   rules={[
                   {
                       required: true,
@@ -159,12 +156,11 @@ const RegistrationForm = () => {
                   },
                   ]}
                 >
-                    <Input className='item'/>
+                    <Input className='item' placeholder="使用者名稱"/>
                 </Form.Item>
 
                 <Form.Item
-                  name="password"
-                  label="密碼"
+                  name="password"            
                   rules={[
                   {
                       required: true,
@@ -173,12 +169,11 @@ const RegistrationForm = () => {
                   ]}
                   hasFeedback
                 >
-                    <Input.Password className='item'/>
+                    <Input.Password className='item' placeholder="密碼"/>
                 </Form.Item>
 
                 <Form.Item
                   name="re_password"
-                  label="確認密碼"
                   dependencies={['password']}
                   hasFeedback
                   rules={[
@@ -197,10 +192,9 @@ const RegistrationForm = () => {
                   }),
                   ]}
                 >
-                    <Input.Password className='item' />
+                    <Input.Password className='item' placeholder="確認密碼"/>
                 </Form.Item>
-
-
+                <div className='button-wrapper'>
                 <Form.Item
                   name="if_agree"
                   valuePropName="checked"
@@ -228,6 +222,7 @@ const RegistrationForm = () => {
                       </Button>
                     </div>
                 </Form.Item>
+              </div>
             </Form>
           </div>
         </div>
