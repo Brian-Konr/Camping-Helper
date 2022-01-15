@@ -1,20 +1,21 @@
 import { Layout, Divider, Button } from 'antd';
 import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
+import { useEffect, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import '../css/homepage.css';
 import instance from '../instance';
+import CategoryFilterBar from '../components/CategoryFilterBar';
 const { Footer, Header, Content } = Layout;
 
 const Homepage = () => {
 
-    /*
-        TODO: Home page has to be styled, which have 6 (can be discussed later) cards in every page.
-        And when click next or prev button, we can realize page switching
-    */
-    const handleTagFilter = (tag) => {
-        console.log(tag);
-    }
+    const [category, setCategory] = useState(100);
+
+    useEffect(() => {
+        console.log(category);
+    }, [category])
+
     return (
         <Layout 
             style={{
@@ -41,12 +42,13 @@ const Homepage = () => {
                             display: 'block',
                             backgroundColor: '#64A1D1'}}/>
                         <div className='filter-home'>
-                            {/* <Button className='filterbutton'>所有類別</Button> */}
+                            {/* <Button className='filterbutton'>所有類別</Button>
                             <Button className='filterbutton' onClick={handleTagFilter(1)}>文法類</Button>
                             <Button className='filterbutton' onClick={handleTagFilter(2)}>財經類</Button>
                             <Button className='filterbutton' onClick={handleTagFilter(3)}>理工類</Button>
                             <Button className='filterbutton' onClick={handleTagFilter(4)}>醫護類</Button>
-                            <Button className='filterbutton' onClick={handleTagFilter(5)}>其他</Button>
+                            <Button className='filterbutton' onClick={handleTagFilter(5)}>其他</Button> */}
+                            <CategoryFilterBar home_or_filter={"home"} />
                         </div>
                         <Hotcard params={{}}/>
                     </div>
