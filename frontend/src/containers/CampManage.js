@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { Table, Button } from "antd";
-import { useParams, useNavigate } from "react-router-dom";
+import { Table, Button,Layout } from "antd";
+import { useParams, useNavigate } from "react-router-dom"; 
+import  Navbar from "../components/Navbar";
 import instance from "../instance";
 import { OPTIONS } from "../utility/questions";
+import "../css/campManagement.css";
+import { WarningOutlined } from '@ant-design/icons';
 
+const {Footer} = Layout;
 const numberPerPage = 8;
 
 const CampManage = () => {
@@ -115,24 +119,34 @@ const CampManage = () => {
 
     return (
         <>
-            <h1>hello camp manage</h1>
-            <p>{`Welcome camp ${campId}`}</p>
-            {empty ? <div>Empty!!</div> :
-                <>
-                    <Table 
-                        dataSource={dataSource}
-                        columns={columns}
-                        pagination={{
-                            defaultPageSize: numberPerPage,
-                            current: current,
-                            total: totalLen,
-                            onChange: (page) => {setCurrent(page)}
-                        }}
-                    />
-                    <Button onClick={handleDownload}>下載表單</Button>
-                </>
-            }
-            <Button onClick={() => navigate('/')}>返回首頁</Button>
+            <Navbar />
+            <Layout className='table-container'>
+                <h1>Hi ! 活動管理者</h1>
+                {empty ? 
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+						<WarningOutlined id='warning-icon'/>
+						<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty!!!</div>
+					</div>
+                    :
+                    <>
+                        <Button onClick={handleDownload} id="download-button">下載表單</Button>
+                        <Table 
+                            className="table"
+                            dataSource={dataSource}
+                            columns={columns}
+                            pagination={{
+                                position: ["bottomCenter"],
+                                defaultPageSize: numberPerPage,
+                                current: current,
+                                total: totalLen,
+                                onChange: (page) => {setCurrent(page)}
+                            }}
+                        />
+                    </>
+                }
+            </Layout>
+            <Button id="home" onClick={() => navigate('/')}>返回首頁</Button>
+            <Footer style={{outerHeight: '20%', marginTop: '5vh', backgroundColor: 'white'}}></Footer>
         </>
     )
 }

@@ -89,7 +89,7 @@ const DisplayCard = ({params}) => {
 					</div>)
 				:
 				(
-					<div id='pagination'>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>	
+					<div id='pagination'>{`page : ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>	
 				)
 			}
 			<div className='allCard-wrapper'>
