@@ -108,9 +108,10 @@ const Navbar = ({setLogin}) => {
 
     return (
         <>
+            <div style={{height: '64px'}}></div>
             {isLogin ? 
                 (
-                    <Header style={{backgroundColor: '#FB8CB3'}}>
+                    <Header className='headnav'>
                         <div style={BarStyle}>
                             <Menu style={leftBarStyle} onClick={handleOnClick} mode='horizontal'>
                                 <Menu.Item className='navItem-signed' icon={<HomeOutlined style={{fontSize: '20px'}}/>} key="home"><Link to='/'>主頁</Link></Menu.Item>
@@ -135,7 +136,7 @@ const Navbar = ({setLogin}) => {
                     </Header>
                 ) :        
                 (
-                    <Header style={{backgroundColor: '#5CB7FF'}}>
+                    <Header className='headnav_lock'>
                         <div style={BarStyle}>
                             <Menu style={leftBarStyle_lock} onClick={handleOnClick} mode='horizontal'>
                                 <Menu.Item className='navItem-signed' icon={<HomeOutlined />} key="home"><Link to='/'>主頁</Link></Menu.Item>
