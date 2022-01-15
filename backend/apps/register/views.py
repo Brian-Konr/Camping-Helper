@@ -70,6 +70,7 @@ class RegisterViewSet(
         questions = camp.questions
 
         fields = [question_dict[question]["field"] for question in questions]
+        fields += ["id", "url", "camp", "user"]
 
         if page is not None:
             serializer = self.get_serializer(page, many=True, fields=fields)
