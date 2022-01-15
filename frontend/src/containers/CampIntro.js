@@ -26,6 +26,14 @@ const CampIntro = () => {
                 }
                 else {
                     // need to check if the user has joined or not
+                    try {
+                        let joinRes = await instance.get(`/camp/${campId}/registration/me/`);
+                        if(joinRes.status === 200) setView("joined");
+                        else setView("guest");
+                    } catch (error) {
+                        setView("guest");
+                    }
+                    
                 }
             }
             else setView("guest");
@@ -44,7 +52,8 @@ const CampIntro = () => {
                 <h1>{`You are viewing ${campName}`}</h1>
                 <div style={{display: 'flex'}}>
                     <Button onClick={() => {navigate('/')}}>回到主頁</Button>
-                    <Button onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button>
+                    {view === "guest" ? <Button onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button> : <></>}
+                    {view === "host" ? <Button onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
                 </div>
             </div>
         </>

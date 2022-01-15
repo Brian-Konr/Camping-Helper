@@ -7,6 +7,7 @@ import CreateActivity from './containers/CreateActivity';
 import CampIntro from './containers/CampIntro';
 import AnswerForm from './containers/AnswerForm';
 import FilterPage from './containers/FilterPage';
+import CampManage from './containers/CampManage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // TODO: set style, y-axis overflow or x-axis overflow make the screen is fixed
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path="/create" element={<CreateActivity />} />
                     <Route path="/camping_info/:campId" element={<CampIntro />} />
                     <Route path="/answer_form/:campId" element={<AnswerForm />} />
+                    <Route path="/manage/:campId" element={<CampManage />} />
                 </Routes>
             </Router>
         </div>
