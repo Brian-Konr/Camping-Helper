@@ -3,7 +3,7 @@ import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import '../css/homepage.css';
 import instance from '../instance';
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 const { TabPane } = Tabs;
 
 const Homepage = () => {
@@ -29,7 +29,7 @@ const Homepage = () => {
                 >
                     <div className='hotwrapper'>
                         <div className='classtitle'>
-                            <h2>所有活動</h2>
+                            <h2>所有刊登活動</h2>
                         </div>
                         <Divider style={{
                             marginBottom: '3vh',
@@ -38,7 +38,7 @@ const Homepage = () => {
                             display: 'block',
                             backgroundColor: '#64A1D1'}}/>
                         <div className='filter'>
-                            <Button className='filterbutton'>所有</Button>
+                            <Button className='filterbutton'>所有類別</Button>
                             <Button className='filterbutton'>文法類</Button>
                             <Button className='filterbutton'>財經類</Button>
                             <Button className='filterbutton'>理工類</Button>
@@ -49,17 +49,6 @@ const Homepage = () => {
                     </div>
                 </Content>
             </Layout>
-            <Footer style={{ 
-                borderTop: '1px solid #e8e8e8',
-                position: 'relative',
-                left: 0,
-                bottom: 0,
-                width: '100%',
-                minHeight: '30vh',
-                backgroundColor: 'black',
-                textAlign: 'center'}} >
-                    This is footer
-            </Footer>
         </Layout>
     );
 };

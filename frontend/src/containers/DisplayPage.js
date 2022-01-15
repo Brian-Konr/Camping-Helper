@@ -11,6 +11,10 @@ import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined,
 const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee, quota, precaution, tag, link, type}) => {
     const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
     const dateFormat = 'YYYY-MM-DD';
+    const [tagName, setTagName] = useState('其他類別');
+    
+    console.log(tagName)
+
     return (
         type === 'edit' ? 
             <div style={{display: 'flex', flexDirection: 'column', flex: 7,backgroundColor: 'rgb(255, 255, 255)'}}>
@@ -18,11 +22,10 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                     <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
                 </div>
                 {<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <h1>營隊名稱 : {activityName}</h1>
-                    {/* <div id="tag" style={{marginRight: '0.5em',}}>
-                        <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
-                        <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
-                    </div> */}
+                    <h1>營隊名稱 ( 展示用 ) : <span>{activityName}</span></h1>
+                    <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                        類組分類 ( optional )
+                    </Tag>
                 </div>}
                 <div>
                     <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
@@ -79,11 +82,12 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                     <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
                 </div>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <h1>營隊名稱 : {activityName}</h1>
-                    <div id="tag" style={{marginRight: '0.5em',}}>
-                        <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
-                        <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>{tag}</Button>
+                    <div>
+                        <h1>{activityName}</h1>
                     </div>
+                    <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                        {tagName}
+                    </Tag>
                 </div>
                 <div>
                     <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
@@ -134,7 +138,7 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                         <p style={{whiteSpace: 'pre-line'}}> {precaution} </p>
                     </Content>
                 </div>
-            </div>
+        </div>
     )
 }
 

@@ -9,6 +9,7 @@ import "../css/campIntro.css";
 import checkLogin from "../utility/checkLogin";
 import { COVERS } from "../utility/randomCover";
 import moment from 'moment';
+import { Header, Footer } from "antd/lib/layout/layout";
 const CampIntro = () => {
 
     const {campId} = useParams();
@@ -73,6 +74,7 @@ const CampIntro = () => {
     return (
         <>
             <Navbar />
+            <div style={{height: '3vh'}}></div>
             <Layout className='layout-container'>
                 <DisplayPage 
                     activityName={activityName}
@@ -88,14 +90,13 @@ const CampIntro = () => {
                     link={link}
                     type='display'
                 />
-            </Layout>
-            <div className="enterCamp-title">
-                <div style={{display: 'flex'}}>
-                    <Button onClick={() => {navigate('/')}}>回到主頁</Button>
-                    {view === "guest" ? <Button onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button> : <></>}
-                    {view === "host" ? <Button onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
+                <div className="enterCamp-title">
+                    <Button id="home-button" onClick={() => {navigate('/')}}>回到主頁</Button>
+                    {view === "guest" ? <Button id="switch-button" onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button> : <></>}
+                    {view === "host" ? <Button id="switch-button" onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
                 </div>
-            </div>
+            </Layout>
+            <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
         </>
     )
 }

@@ -1,42 +1,34 @@
-  .layout-container {
+.layout-container {
     background: #fff;
     padding: 0px;
     width: 80%;
     margin: 0 auto;
-  }
-  .site-layout-background {
+}
+.site-layout-background {
     background: #fff;
-  }
-  .hotwrapper {
+}
+.hotwrapper {
     position: relative;
     margin-bottom: 16px;
-  }
-  .classtitle {
+}
+.classtitle {
     margin-top: 2vh;
-  }
-  .classtitle h2 {
+}
+.classtitle h2 {
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
-  }
-  .classtitle-element {
-    position: relative;
-    margin-left: auto;
-    margin-right: 0;
-    display: 'flex';
-    align-items: 'center';
-  }
-  .filter {
-    max-width: 35%;
+}
+.filter {
+    max-width: 60%;
     display: flex;
-    align-items: center;
     margin:auto;
-    position: relative;
-  }
-  .filterbutton {
+    text-align: center;
+    justify-content: space-between;
+}
+.filterbutton {
     font-size: 16px;
-    margin:auto;
     display: flex;
     align-items: center;
     border-radius: 16px;
-  }
+}
