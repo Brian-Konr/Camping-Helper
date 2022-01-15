@@ -95,7 +95,7 @@ When viewing an activity and feeling interested in it, an user can click on the 
 ### Host an activity
 An organizer can host his . her own activity on the platform by entering the host event button. After clicking on it, the user can fill in the activity information through detailed instructions. The information includes activity name, activity sign up interval, activity date, form questions and more. Organizer could also download the csv file of registration result for further usage.
 
-### Roles of the Team
+### Contirbution
 
 郭子麟: FE/PM
 
