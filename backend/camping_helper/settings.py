@@ -70,7 +70,7 @@ ROOT_URLCONF = 'camping_helper.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -162,7 +162,8 @@ REST_FRAMEWORK = {
 }
 
 # todo: email template
-DOMAIN = 'localhost:3000'
+DOMAIN = "localhost:3000"
+SITE_NAME = "Camping Helper"
 
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'google.com/{uid}/{token}',

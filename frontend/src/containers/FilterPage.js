@@ -5,7 +5,9 @@ import Navbar from '../components/Navbar';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import CategoryFilterBar from '../components/CategoryFilterBar';
 import '../css/homepage.css';
-const { Content } = Layout;
+import { SearchOutlined } from '@ant-design/icons';
+
+const { Content, Footer } = Layout;
 
 const FilterPage = () => {
 
@@ -42,7 +44,16 @@ const FilterPage = () => {
                 >
                     <div className='hotwrapper'>
                         <div className='classtitle'>
-                            <h2>{view === "join" ? "我報名的活動" : view === "own" ? "我舉辦的活動" : "搜尋結果"}</h2>
+                            {view === "join" ?
+                                <h2>我報名的活動</h2>
+                                : view === "own" ?
+                                    <h2>我舉辦的活動</h2>
+                                    : 
+                                    <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                                        <SearchOutlined style={{fontSize: '3vw',color: 'hsl(0, 1%, 50%)', marginTop: '1vh'}}/>
+                                        <h2>搜尋結果</h2>
+                                    </div>
+                            }
                         </div>
                         <Divider style={{
                             marginBottom: '3vh',
@@ -62,6 +73,7 @@ const FilterPage = () => {
                         <Hotcard params={params}/>
                     </div>
                 </Content>
+                <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
             </Layout>
         </Layout>
     );

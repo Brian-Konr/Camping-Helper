@@ -2,7 +2,7 @@ import { Layout, Menu, Input } from 'antd';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, createSearchParams } from 'react-router-dom';
 import checkLogin from '../utility/checkLogin';
-import { HomeOutlined, UserSwitchOutlined } from '@ant-design/icons';
+import { HomeOutlined, UserSwitchOutlined, UserOutlined, NotificationOutlined } from '@ant-design/icons';
 import '../css/navBar.css';
 
 const { Header } = Layout;
@@ -104,13 +104,14 @@ const Navbar = ({setLogin}) => {
 
     return (
         <>
+            <div style={{height: '64px'}}></div>
             {isLogin ? 
                 (
-                    <Header style={{backgroundColor: '#FB8CB3'}}>
+                    <Header className='headnav'>
                         <div style={BarStyle}>
                             <Menu style={leftBarStyle} onClick={handleOnClick} mode='horizontal'>
-                                <Menu.Item className='navItem-signed' icon={<HomeOutlined />} key="home"><Link to='/'>主頁</Link></Menu.Item>
-                                <Menu.Item className='navItem-signed' key="create"><Link to='/create'>刊登活動!</Link></Menu.Item>
+                                <Menu.Item className='navItem-signed' icon={<HomeOutlined style={{fontSize: '20px'}}/>} key="home"><Link to='/'>主頁</Link></Menu.Item>
+                                <Menu.Item className='navItem-signed' key="create" icon={<NotificationOutlined style={{fontSize: '20px'}}/>}><Link to='/create'>刊登活動 !</Link></Menu.Item>
                                 <Menu.Item className='navItem-signed' key="search">
                                     <Input 
                                         onChange={(e) => setSearchName(e.target.value)} 
@@ -121,17 +122,17 @@ const Navbar = ({setLogin}) => {
                                 </Menu.Item>
                             </Menu>
                             <Menu style={rightBarStyle} onClick={handleOnClick} mode='horizontal'>
-                                <SubMenu className='navItem-signed' key="subMenu" title="我的帳戶">
+                                <SubMenu className='navItem-signed' key="subMenu" icon={<UserOutlined style={{fontSize: '20px', marginLeft: '0.5vw'}}/>}>
                                     <Menu.Item key="join">我報名的活動</Menu.Item>
                                     <Menu.Item key="own">我舉辦的活動</Menu.Item>
                                 </SubMenu>
-                                <Menu.Item className='navItem-signed' onClick={handleLogOut} key="logout" icon={<UserSwitchOutlined />}>登出</Menu.Item>
+                                <Menu.Item className='navItem-signed' onClick={handleLogOut} key="logout" icon={<UserSwitchOutlined style={{fontSize: '20px'}}/>}>登出</Menu.Item>
                             </Menu>
                         </div>
                     </Header>
                 ) :        
                 (
-                    <Header style={{backgroundColor: '#5CB7FF'}}>
+                    <Header className='headnav_lock'>
                         <div style={BarStyle}>
                             <Menu style={leftBarStyle_lock} onClick={handleOnClick} mode='horizontal'>
                                 <Menu.Item className='navItem-signed' icon={<HomeOutlined />} key="home"><Link to='/'>主頁</Link></Menu.Item>
