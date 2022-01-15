@@ -6,7 +6,7 @@ import instance from "../instance";
 import { OPTIONS } from "../utility/questions";
 import "../css/campManagement.css";
 import { WarningOutlined } from '@ant-design/icons';
-import ButtomFooter from '../components/ButtomFooter';
+import BottomFooter from '../components/BottomFooter';
 
 const {Footer} = Layout;
 const numberPerPage = 8;
@@ -123,9 +123,9 @@ const CampManage = () => {
             <Navbar />
             <Layout className='table-container'>
                 {empty ? 
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '10vh'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '15vh'}}>
 						<WarningOutlined id='warning-icon'/>
-						<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty ! ! !</div>
+						<div id='pagination' style={{fontSize: '18px', marginTop: '5vh', color: 'hsl(0, 10%, 60%)'}}>Empty ! ! !</div>
 					</div>
                     :
                     <>
@@ -149,7 +149,7 @@ const CampManage = () => {
                 }
             </Layout>
             <Button id="home" onClick={() => navigate('/')}>返回首頁</Button>
-            <ButtomFooter />
+            <BottomFooter />
         </>
     )
 }

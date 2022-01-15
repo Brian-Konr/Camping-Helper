@@ -1,13 +1,13 @@
 import { Layout, Divider, Button } from 'antd';
 import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
-import ButtomFooter from '../components/ButtomFooter';
+import BottomFooter from '../components/BottomFooter';
 import { useEffect, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import '../css/homepage.css';
 import instance from '../instance';
 import CategoryFilterBar from '../components/CategoryFilterBar';
-const { Footer, Header, Content } = Layout;
+const { Content } = Layout;
 
 
 const Homepage = () => {
@@ -56,7 +56,7 @@ const Homepage = () => {
                     </div>
                 </Content>
             </Layout>
-            <ButtomFooter />
+            <BottomFooter />
         </Layout>
     );
 };

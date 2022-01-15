@@ -134,8 +134,8 @@ const Navbar = ({setLogin}) => {
                     <Header className='headnav_lock'>
                         <div style={BarStyle}>
                             <Menu style={leftBarStyle_lock} onClick={handleOnClick} mode='horizontal'>
-                                <Menu.Item className='navItem-signed' icon={<HomeOutlined />} key="home"><Link to='/'>主頁</Link></Menu.Item>
-                                <Menu.Item className='navItem-signed' key="create"><Link to='/create'>刊登活動!</Link></Menu.Item>
+                            <Menu.Item className='navItem-signed' icon={<HomeOutlined style={{fontSize: '20px'}}/>} key="home"><Link to='/'>主頁</Link></Menu.Item>
+                                <Menu.Item className='navItem-signed' key="create" icon={<NotificationOutlined style={{fontSize: '20px'}}/>}><Link to='/create'>刊登活動!</Link></Menu.Item>
                                 <Menu.Item className='navItem-signed' key="search">
                                     <Input 
                                         className='search-input'
@@ -147,8 +147,8 @@ const Navbar = ({setLogin}) => {
                                 </Menu.Item>
                             </Menu>
                             <Menu style={rightBarStyle_lock} onClick={handleOnClick} mode='horizontal'>
-                                <Menu.Item key="login"><Link to='/login'>登入</Link></Menu.Item>
-                                <Menu.Item key="register"><Link to='/signup'>註冊</Link></Menu.Item>
+                                <Menu.Item className='navItem-signed' key="login"><Link to='/login'>登入</Link></Menu.Item>
+                                <Menu.Item className='navItem-signed' key="register"><Link to='/signup'>註冊</Link></Menu.Item>
                             </Menu>
                         </div>
                     </Header>

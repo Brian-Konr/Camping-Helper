@@ -88,3 +88,19 @@
     color: #FB8CB3;
     background-color: #fff;
 }
+#backhome {
+    position: absolute;
+    top: 2vw;
+    left: 3vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#backhome:hover {
+    cursor: pointer;
+}
+#homeIcon {
+    font-size: 26px;
+    color: #fff;
+    margin-right: 0.5vw;
+}

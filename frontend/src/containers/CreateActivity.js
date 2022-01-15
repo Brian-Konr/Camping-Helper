@@ -14,7 +14,7 @@ import checkLogin from "../utility/checkLogin";
 import totalCheck from "../utility/createInputTotalCheck";
 import axios from 'axios';
 import instance from "../instance";
-import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
+import BottomFooter from '../components/BottomFooter';
 
 const {Step} = Steps;
 const dateFormat = "YYYY-MM-DD";
@@ -246,6 +246,7 @@ const CreateActivity = () => {
 					<p>即將為您導回首頁...</p>
 				</Modal>
             </Layout>
+            <BottomFooter />
         </div>
     )
 }

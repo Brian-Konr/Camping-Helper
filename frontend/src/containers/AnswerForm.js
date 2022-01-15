@@ -5,7 +5,7 @@ import { Card, message, Divider, Modal, Button } from "antd";
 import checkLogin from "../utility/checkLogin";
 import CompleteForm from "../components/CompleteForm";
 import Navbar from '../components/Navbar';
-import { Footer } from "antd/lib/layout/layout";
+import BottomFooter from '../components/BottomFooter';
 
 const titleStyle = {
     color: 'black',
@@ -72,7 +72,6 @@ const AnswerForm = () => {
                 campId={campId}
                 setSuccess={setSuccess}
             />
-            <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
             <Modal
                 style={{borderRadius: '20px'}}
                 visible={success}
@@ -91,7 +90,7 @@ const AnswerForm = () => {
                 <p>即將為您導回首頁...</p>
             </Modal>
             {/* <FormInput value={name} setValue={setName} questionName={"姓名"} placeholder={"請輸入你的名字"} maxLength={10}/> */}
-        
+            <BottomFooter />   
         </>
     )
 }

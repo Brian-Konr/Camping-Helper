@@ -4,6 +4,7 @@ import { LockOutlined, MailOutlined } from '@ant-design/icons';
 import instance from '../instance';
 import '../css/login.css'
 import { Link, useNavigate} from "react-router-dom";
+import { HomeOutlined } from '@ant-design/icons';
 const { Content } = Layout;
 
 const NormalLoginForm = () => {
@@ -53,6 +54,10 @@ const NormalLoginForm = () => {
   return (
     <Layout className='page'>
         <div className='Leftside-login'>
+          <div id="backhome" onClick={() => navigate('/')}>
+            <HomeOutlined id='homeIcon'/>
+            <p style={{fontSize: '1.6em', color: '#fff'}}>主頁</p>
+          </div>
           <div className='title'>
             歡迎回來!
           </div>

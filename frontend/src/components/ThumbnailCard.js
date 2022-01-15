@@ -10,7 +10,6 @@ const {Meta} = Card;
 const ThumbnailCard = ({name, keyVal, src, startDate, tag, info}) => {
     const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
     const navigate = useNavigate();
-    const [tagName, setTagName] = useState('其他類別');
 
     return (
         <Card
@@ -24,7 +23,7 @@ const ThumbnailCard = ({name, keyVal, src, startDate, tag, info}) => {
                     alt="cover"
                     src={src}
                     width='100%'
-                    height='210px'
+                    height='180px'
                 />
             }
             bodyStyle={{backgroundColor: '#d2f1ff', height: '180px', padding: '8px 12px'}}
@@ -42,7 +41,10 @@ const ThumbnailCard = ({name, keyVal, src, startDate, tag, info}) => {
                         display: 'block',
                         backgroundColor: '#64A1D1'}}/>
                     <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '14px', marginLeft: '0.5vw', marginBottom: '3vh', size: 'median'}}>
-                        {tagName}
+                        {tag === 1? "文法類" : 
+                                tag === 2? "財經類" :
+                                    tag === 3? "理工類" :
+                                        tag === 4? "醫護類" : "其他類別"}
                     </Tag>
                 </div>
             </div>

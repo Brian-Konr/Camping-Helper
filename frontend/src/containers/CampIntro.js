@@ -9,7 +9,7 @@ import "../css/campIntro.css";
 import checkLogin from "../utility/checkLogin";
 import { COVERS } from "../utility/randomCover";
 import moment from 'moment';
-import { Header, Footer } from "antd/lib/layout/layout";
+import BottomFooter from '../components/BottomFooter';
 const CampIntro = () => {
 
     const {campId} = useParams();
@@ -98,7 +98,7 @@ const CampIntro = () => {
                     {(view === "host" && login) ? <Button id="switch-button" onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
                 </div>
             </Layout>
-            <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
+            <BottomFooter />
         </>
     )
 }

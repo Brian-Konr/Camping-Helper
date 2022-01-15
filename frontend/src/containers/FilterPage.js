@@ -6,6 +6,7 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import CategoryFilterBar from '../components/CategoryFilterBar';
 import '../css/homepage.css';
 import { SearchOutlined } from '@ant-design/icons';
+import BottomFooter from '../components/BottomFooter';
 
 const { Content, Footer } = Layout;
 
@@ -73,8 +74,8 @@ const FilterPage = () => {
                         <Hotcard params={params}/>
                     </div>
                 </Content>
-                <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
             </Layout>
+            <BottomFooter />
         </Layout>
     );
 };

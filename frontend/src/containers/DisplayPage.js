@@ -11,9 +11,6 @@ import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined,
 const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee, quota, precaution, tag, link, type}) => {
     const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
     const dateFormat = 'YYYY-MM-DD';
-    const [tagName, setTagName] = useState('其他類別');
-    
-    console.log(tagName)
 
     return (
         type === 'edit' ? 
@@ -86,7 +83,10 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                         <h1>{activityName}</h1>
                     </div>
                     <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
-                        {tagName}
+                        {tag === 1? "文法類" : 
+                            tag === 2? "財經類" :
+                                tag === 3? "理工類" :
+                                    tag === 4? "醫護類" : "其他類別"}
                     </Tag>
                 </div>
                 <div>
