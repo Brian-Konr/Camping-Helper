@@ -171,7 +171,15 @@ class CampViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_200_OK)
 
     @extend_schema(
-        description="下載所有報名資料",
+        description= "Permission: "
+                     "只有此活動的創辦人可以使用此endpoint <br/><br/>"
+                     "下載所有報名資料<br/>"
+                     "若此camp中的question形式錯誤會導致500無法獲得CSV檔<br/>",
+        responses={
+            "200": OpenApiResponse(description="Return with text/csv attachment"),
+            "500": OpenApiResponse(description="May occurs by invalid questions in Camp model<br/>"
+                                               "Valid Questions field example: [1,2,3,4]")
+        }
     )
     @action(
         detail=True,
