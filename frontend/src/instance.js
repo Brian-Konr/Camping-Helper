@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: "https://campinghelper.temp.dodofk.xyz",
+    baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 instance.interceptors.request.use(

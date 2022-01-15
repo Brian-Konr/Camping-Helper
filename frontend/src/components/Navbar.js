@@ -58,10 +58,6 @@ const Navbar = ({setLogin}) => {
 
     const navigate = useNavigate();
 
-    console.log(setLogin);
-    console.log(setLogin === undefined);
-    console.log(setLogin === null);
-
     const [isLogin, setIsLogin] = useState(true);
     const [searchName, setSearchName] = useState("");
     const [view, setView] = useState("");
