@@ -140,7 +140,8 @@ REST_FRAMEWORK = {
     # },
 }
 
-DOMAIN = "localhost:3000"
+SITE_NAME = "Camping Helper"
+DOMAIN = "campinghelper.dodofk.xyz"
 
 # todo: email template
 DJOSER = {
@@ -157,6 +158,7 @@ DJOSER = {
     'USER_CREATE_PASSWORD_RETYPE': True,
     'TOKEN_MODEL': None,
     'USER_ID_FIELD': 'pk',
+    'activation': ""
 }
 
 SIMPLE_JWT = {
