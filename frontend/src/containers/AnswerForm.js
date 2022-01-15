@@ -29,6 +29,7 @@ const AnswerForm = () => {
     const navigate = useNavigate();
     const {campId} = useParams();
     const [campName, setCampName] = useState("");
+    const [questionArr, setQuestionArr] = useState([]);
 
     useEffect(async () => {
         let result = await checkLogin();
@@ -37,6 +38,7 @@ const AnswerForm = () => {
                 let {data} = await instance.get(`/camp/${campId}`);
                 console.log(data);
                 setCampName(data.name);
+                setQuestionArr(data.questions);
             } catch (error) {
                 console.log(error);
             }
@@ -57,7 +59,9 @@ const AnswerForm = () => {
                 <h1 style={titleStyle}>{`${campName}報名表單`}</h1>
             </div>
             <div style={{minHeight: '4vh', backgroundColor: '#fff'}}></div>
-            <CompleteForm />
+            <CompleteForm 
+                questionArr={questionArr}
+            />
             {/* <FormInput value={name} setValue={setName} questionName={"姓名"} placeholder={"請輸入你的名字"} maxLength={10}/> */}
         
         </>

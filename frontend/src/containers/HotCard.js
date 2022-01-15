@@ -44,10 +44,12 @@ const DisplayCard = ({params}) => {
 				Object.assign(originalParams, params);
 				// check valid param filter
 			}
+			console.log(originalParams);
 			setLoading(true)
 			let res = await instance.get('/camp/', {
 				params: originalParams
 			});
+			// let res = await instance.get('/camp/');
 			setLoading(false);
 			console.log(res.data);
 			if(res.data.count > 0) {
@@ -58,11 +60,12 @@ const DisplayCard = ({params}) => {
 			setTotalLen(res.data.count)
 		} catch (error) {
 			console.log(error.response);
+			setLoading(false);
 		}
 	}
 
 	useEffect(() => {
-		if(cardArr.length < totalLen) {
+		if(cardArr.length < totalLen && cardArr !== 0) {
 			fetchData(curPage * numEachPage);
 		}
 	}, [curPage])
