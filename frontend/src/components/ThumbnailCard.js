@@ -1,12 +1,6 @@
 import { Card } from "antd";
 import { useNavigate } from "react-router-dom";
 import '../css/card.css';
-const cardStyle = { 
-    borderRadius: '16px',
-    boxShadow: '2px 4px 6px 2px rgba(83, 83, 83, 0.3)',
-    overflow: "hidden",
-    margin: '0px 16px 0',
-}
 
 const {Meta} = Card;
 const ThumbnailCard = ({name, keyVal, src, startDate, place}) => {
@@ -14,11 +8,11 @@ const ThumbnailCard = ({name, keyVal, src, startDate, place}) => {
 
     return (
         <Card
+            className="show-card"
             key={keyVal}
             onClick={() => {navigate(`/camping_info/${keyVal}`)}}
             hoverable={true}
             bordered={false}
-            style={cardStyle}
             cover={
                 <img 
                     alt="cover"
