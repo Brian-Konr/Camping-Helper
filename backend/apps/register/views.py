@@ -60,6 +60,24 @@ class RegisterViewSet(
             user=self.request.user,
         )
 
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        page = self.paginate_queryset(queryset)
+
+        camp = models.Registration._meta.get_field("camp").remote_field.model.objects.get(id=self.kwargs["camp_pk"])
+        question_dict = models.Registration._meta.get_field("camp").remote_field.model.CustomMeta.question_dict
+        questions = camp.questions
+
+        fields = [question_dict[question]["field"] for question in questions]
+
+        if page is not None:
+            serializer = self.get_serializer(page, many=True, fields=fields)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True, fields=fields)
+        return Response(serializer.data)
+
     @extend_schema(
         description="Get My Registration in the camp",
         responses={

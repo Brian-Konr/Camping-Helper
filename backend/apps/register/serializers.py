@@ -1,11 +1,32 @@
 from rest_framework_nested.serializers import NestedHyperlinkedModelSerializer
+from rest_framework import serializers
 from . import models
 
 
-class RegisterSerializer(NestedHyperlinkedModelSerializer):
+class DynamicFieldsNestedHyperlinkedModelSerializer(NestedHyperlinkedModelSerializer):
+    def __init__(self, *args, **kwargs):
+        # Don't pass the 'fields' arg up to the superclass
+        fields = kwargs.pop('fields', None)
+
+        # Instantiate the superclass normally
+        super().__init__(*args, **kwargs)
+
+        if fields is not None:
+            # Drop any fields that are not specified in the `fields` argument.
+            allowed = set(fields)
+            existing = set(self.fields)
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
+
+class RegisterSerializer(DynamicFieldsNestedHyperlinkedModelSerializer):
     parent_lookup_kwargs = {
         "camp_pk": "camp__pk",
     }
+    user = serializers.PrimaryKeyRelatedField(
+        many=False,
+        read_only=True,
+    )
 
     class Meta:
         model = models.Registration

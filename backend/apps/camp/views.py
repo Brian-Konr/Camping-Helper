@@ -14,7 +14,6 @@ from django.contrib.auth import get_user_model
 from rest_framework.pagination import LimitOffsetPagination
 import csv
 from django.http import HttpResponse
-from . import utils
 
 
 @extend_schema_view(
@@ -195,7 +194,7 @@ class CampViewSet(viewsets.ModelViewSet):
 
         questions = instance.questions
 
-        field_names = [utils.question_dict[question]["verbose_name"] for question in questions]
+        field_names = [models.Camp.CustomMeta.question_dict[question]["verbose_name"] for question in questions]
 
         writer = csv.DictWriter(response, fieldnames=field_names)
 
@@ -204,8 +203,8 @@ class CampViewSet(viewsets.ModelViewSet):
         for register in instance.register_user.all():
             row_dict = dict()
             for question in questions:
-                field_name = utils.question_dict[question]["field"]
-                row_dict[utils.question_dict[question]["verbose_name"]] = getattr(register, field_name)
+                field_name = models.Camp.CustomMeta.question_dict[question]["field"]
+                row_dict[models.Camp.CustomMeta.question_dict[question]["verbose_name"]] = getattr(register, field_name)
 
             writer.writerow(row_dict)
 
