@@ -9,7 +9,8 @@ import "../css/createActivity.css"
 import { ClockCircleOutlined, EnvironmentOutlined, DollarOutlined, TeamOutlined, TagOutlined, BulbOutlined, WarningOutlined } from '@ant-design/icons';
 
 const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee, quota, precaution, tag, link, type}) => {
-    const dateFormat = 'YYYY-MM-DD HH:mm:ss';
+    const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
+    const dateFormat = 'YYYY-MM-DD';
     return (
         type === 'edit' ? 
             <div style={{display: 'flex', flexDirection: 'column', flex: 7,backgroundColor: 'rgb(255, 255, 255)'}}>
@@ -18,20 +19,20 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                 </div>
                 {<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                     <h1>營隊名稱 : {activityName}</h1>
-                    <div id="tag" style={{marginRight: '0.5em',}}>
+                    {/* <div id="tag" style={{marginRight: '0.5em',}}>
                         <TagOutlined style={{fontSize: '25px', marginRight: '8px', color: '#eb2f96'}}/>
                         <Button type="dashed" style={{borderRadius: '6px', borderColor: '#eb2f96'}}>第一類組</Button>
-                    </div>
+                    </div> */}
                 </div>}
                 <div>
                     <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
-                        報名期間 : {moment(signupDate[0]).format(dateFormat)} ~ {moment(signupDate[1]).format(dateFormat)}
+                        報名期間 : {moment(signupDate[0]).format(datetimeFormat)} ~ {moment(signupDate[1]).format(datetimeFormat)}
                     </Tag>
                 </div>
                 <div className="general-information">
                     <div className="detail">
                         <ClockCircleOutlined id="create-icon"/>
-                        <h2>活動時間 : {moment(startDate[0]).format(dateFormat)} ~ {moment(startDate[1]).format(dateFormat)}</h2>
+                        <h2>活動時間 : {moment(startDate[0]).format(datetimeFormat)} ~ {moment(startDate[1]).format(datetimeFormat)}</h2>
                     </div>
                     <div className="detail">
                         <EnvironmentOutlined id="create-icon"/>
@@ -86,7 +87,7 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                 </div>
                 <div>
                     <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
-                        報名期間 : {moment(signupDate[0]).format(dateFormat)} ~ {moment(signupDate[1]).format(dateFormat)}
+                        報名期間 : {moment(signupDate[0]).format(datetimeFormat)} ~ {moment(signupDate[1]).format(datetimeFormat)}
                     </Tag>
                 </div>
                 <div className="general-information">

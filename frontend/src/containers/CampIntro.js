@@ -7,13 +7,14 @@ import DisplayPage from "./DisplayPage";
 import Navbar from "../components/Navbar";
 import "../css/campIntro.css";
 import checkLogin from "../utility/checkLogin";
+import { COVERS } from "../utility/randomCover";
+import moment from 'moment';
 const CampIntro = () => {
 
     const {campId} = useParams();
     const navigate = useNavigate();
-    const [campName, setCampName] = useState("");
     const [view, setView] = useState(""); // 3 views. Own, Joined, and Guest
-    const [src, setSrc] = useState('https://images.unsplash.com/photo-1638913662529-1d2f1eb5b526?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    const [src, setSrc] = useState("");
     const [activityName, setActivityName] = useState("");
     const [startDate, setStartDate] = useState(['2022-03-28', '2022-03-30']);
     const [signupDate, setSignUpDate] = useState(['2022-01-17', '2022-03-05']);
@@ -53,10 +54,10 @@ const CampIntro = () => {
             console.log("status", res.status);
 
             // data 都在這 如果有不懂的可以看 https://campinghelper.temp.dodofk.xyz/api/schema/swagger-ui/#/camp/camp_create 的 get camp/{id}/ schema
-            setCampName(res.data.name);
+            setActivityName(res.data.name);
             setSrc(res.data.cover_photo);
-            setStartDate(res.data.camp_start_date);
-            setSignUpDate(res.data.register_start_date);
+            setStartDate([moment(res.data.camp_start_date), moment(res.data.camp_end_date)]);
+            setSignUpDate([moment(res.data.register_start_date), moment(res.data.register_end_date)]);
             setInfo(res.data.information);
             setFee(res.data.fee);
             setQuota(res.data.quota);
@@ -82,7 +83,7 @@ const CampIntro = () => {
                     fee={fee}
                     quota={quota}
                     precaution={precaution}
-                    src={src}
+                    src={src === null ? COVERS[Math.floor(Math.random()*COVERS.length)] : src}
                     tag={tag}
                     link={link}
                     type='display'

@@ -5,7 +5,6 @@ import Layout, { Content } from "antd/lib/layout/layout";
 import "../css/completeForm.css"
 
 const { Option } = Select;
-const questionArr = [3, 4, 5, 6, 7, 8, 9, 10];
 const dateFormat = "YYYY/MM/DD";
 const rule = [
     {
@@ -14,7 +13,30 @@ const rule = [
     }
 ]
 
-const CompleteForm = () => {
+const CompleteForm = ({questionArr}) => {
+
+    const [formAns, setFormAns] = useState({
+        name: "",
+        sex: "",
+        nationality: "",
+        id_number: "",
+        birth_date: "", // date
+        school: "",
+        grade: "",
+        special_disease: "",
+        fb_link: "",
+        eating_habit: "",
+        email: "",
+        contact_number: "",
+        guardian_name: "",
+        guardian_relationship: "",
+        guardian_contact_number: "",
+        introduction: "",
+        special_experience: "",
+        motivation: "",
+        camp_anticipation: "",
+        other: ""
+    });
 
     // TODO: Need to add temporary save, which involved in the communication with backend endpoint
     const onFinish = (values) => {
