@@ -16,6 +16,67 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 5. You should see your app being launched in your default browser.
 
 ### Backend
+1. `cd backend`
+2. start virtual environment and load the required package
+    - using python venv for example (of course you could use conda, pipenv, or something else):
+    - you could type python if you sure the python your system have is python3
+    - only test on python3.9.7 and on mac and ubuntu 18.0.4
+    ```
+    python3 -m venv be_env
+
+    # for mac/linux
+    source be_env/bin/activate
+
+    # for windows(cmd.exe)
+    be_env/Scripts/activate.bat
+
+    # for windows(powershell)
+    be_env/Scripts/Activate.ps1
+
+    # install required pacakges
+    pip3 install -r requirements.txt
+    ```
+3. Set up environment files
+
+    ```
+    cp .env.dev.defaults .env.dev
+
+    # we'll give the required env files which will names .env.dev.ta.defaults
+    # you could copy paste the .env.dev.ta.defaults to .env.dev or use the following commands
+    cp .env.dev.ta.defaults .env.dev
+    ```
+
+    Some explain for the .env.dev
+    - you could change the secret key, we are using another key in production
+    - the email is my own email, please don't use it to do other things
+    - we've use a different s3 bucket for testing, so it's kind to contact us after testing so that we could close the service and save cost
+
+4. Set up Database and set up static files
+    ```console
+    python3 manage.py migrate
+
+    python3 manage.py collectstatic --no-input --clear
+    ```
+    - Set up sqlite3 for local test to reduce opportunity of errors, we use postgresql in production
+    - after this two command, a db.sqlite3 file will create at backend/, and the static files will store at s3
+
+5. create superuser (optional)
+- To use the django admin page, you need to create a superuser account
+    ``` console
+        python3 manage.py createsuperuser
+        # type the corresponding value to create superuser
+    ```
+6. start server:
+    ``` console
+        python3 manage.py runserver
+    ```
+    Ensure that the server run at port 8000
+    
+    For admin page: localhost:8000/admin
+
+    For API documentation: localhost:8000/api/schema/swagger-ui/
+
+    Use (Ctrl+C or Ctrl+D) to stop the server
 
 ## Account for Test usage
 Email: b08705038@ntu.edu.tw  
