@@ -13,6 +13,8 @@ from drf_spectacular.utils import extend_schema_view, extend_schema, OpenApiPara
 from django.contrib.auth import get_user_model
 from rest_framework.pagination import LimitOffsetPagination
 import csv
+from django.http import HttpResponse
+from . import utils
 
 
 @extend_schema_view(
@@ -105,7 +107,7 @@ class CampViewSet(viewsets.ModelViewSet):
             permission_classes = [AllowAny]
         elif self.action in ['create']:
             permission_classes = [IsAuthenticated, permissions.IsHostUser]
-        elif self.action in ['delete', 'update', 'set_public']:
+        elif self.action in ['delete', 'update', 'set_public', "download"]:
             permission_classes = [IsAuthenticated, permissions.IsOwner]
         else:
             permission_classes = [IsAuthenticated]
@@ -169,16 +171,44 @@ class CampViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_200_OK)
 
     @extend_schema(
-        description="下載所有報名資料",
+        description= "Permission: "
+                     "只有此活動的創辦人可以使用此endpoint <br/><br/>"
+                     "下載所有報名資料<br/>"
+                     "若此camp中的question形式錯誤會導致500無法獲得CSV檔<br/>",
+        responses={
+            "200": OpenApiResponse(description="Return with text/csv attachment"),
+            "500": OpenApiResponse(description="May occurs by invalid questions in Camp model<br/>"
+                                               "Valid Questions field example: [1,2,3,4]")
+        }
     )
     @action(
-        detail=False,
+        detail=True,
         methods=["get"],
         url_path="download",
         url_name="download",
     )
-    def download(self, request):
-        pass
+    def download(self, request, *args, **kwargs):
+        instance = self.get_object()
+        response = HttpResponse(content_type="text/csv")
+        response['Content-Disposition'] = 'attachment; filename="{instance.name}_報名資料.csv"'
+
+        questions = instance.questions
+
+        field_names = [utils.question_dict[question]["verbose_name"] for question in questions]
+
+        writer = csv.DictWriter(response, fieldnames=field_names)
+
+        writer.writeheader()
+
+        for register in instance.register_user.all():
+            row_dict = dict()
+            for question in questions:
+                field_name = utils.question_dict[question]["field"]
+                row_dict[utils.question_dict[question]["verbose_name"]] = getattr(register, field_name)
+
+            writer.writerow(row_dict)
+
+        return response
 
 
 

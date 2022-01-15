@@ -17,7 +17,7 @@ export const OPTIONS = [
     {title: '特殊經歷', key: 16},
     {title: '報名動機', key: 17},
     {title: '對營隊的期許', key: 18},
-    {title: '其他意見', key: 19}
+    {title: '其他意見', key: 19},
 ]
 
 export default {

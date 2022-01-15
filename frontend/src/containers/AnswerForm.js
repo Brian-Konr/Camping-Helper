@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import instance from "../instance";
 import { useNavigate, useParams } from "react-router-dom";
-import { Card, message, Divider } from "antd";
+import { Card, message, Divider, Modal, Button } from "antd";
 import checkLogin from "../utility/checkLogin";
 import CompleteForm from "../components/CompleteForm";
 import Navbar from '../components/Navbar';
@@ -30,8 +30,10 @@ const AnswerForm = () => {
     const {campId} = useParams();
     const [campName, setCampName] = useState("");
     const [questionArr, setQuestionArr] = useState([]);
+    const [success, setSuccess] = useState(false);
 
     useEffect(async () => {
+        setSuccess(false);
         let result = await checkLogin();
         if(result) {
             try {
@@ -49,8 +51,6 @@ const AnswerForm = () => {
         }
     }, [])
 
-    const [name, setName] = useState("");
-
     return (
         <>
             <Navbar />
@@ -61,7 +61,23 @@ const AnswerForm = () => {
             <div style={{minHeight: '4vh', backgroundColor: '#fff'}}></div>
             <CompleteForm 
                 questionArr={questionArr}
+                campId={campId}
+                setSuccess={setSuccess}
             />
+            <Modal
+                visible={success}
+                footer={[
+                <Button onClick={() => {
+                    setSuccess(false);
+                    navigate('/');
+                }}>
+                    知道了!
+                </Button>
+                ]}
+            >
+                <p>活動報名成功!</p>
+                <p>即將為您導回首頁...</p>
+            </Modal>
             {/* <FormInput value={name} setValue={setName} questionName={"姓名"} placeholder={"請輸入你的名字"} maxLength={10}/> */}
         
         </>
