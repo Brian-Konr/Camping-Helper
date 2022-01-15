@@ -5,6 +5,7 @@ import { Card, message, Divider, Modal, Button } from "antd";
 import checkLogin from "../utility/checkLogin";
 import CompleteForm from "../components/CompleteForm";
 import Navbar from '../components/Navbar';
+import { Footer } from "antd/lib/layout/layout";
 
 const titleStyle = {
     color: 'black',
@@ -64,6 +65,7 @@ const AnswerForm = () => {
                 campId={campId}
                 setSuccess={setSuccess}
             />
+            <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
             <Modal
                 visible={success}
                 footer={[

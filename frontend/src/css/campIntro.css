@@ -10,11 +10,19 @@
 #home-button #switch-button {
     flex: 1;
 }
-#home-buttun {
+#home-button {
+    margin: 3px;
+    text-align: center;
+    border-color: #FB8CB3;
+    color: #FB8CB3;
+    background-color: #fff;
+    border-radius: 20px;
+}
+#switch-button {
+    margin: 3px;
     text-align: center;
     border-radius: 20px;
     border-color: #FB8CB3;
     color: #fff;
     background-color: #FB8CB3;
-    margin: 10px;
 }

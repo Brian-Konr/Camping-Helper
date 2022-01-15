@@ -20,15 +20,25 @@
     text-align: center;
 }
 .filter {
-    max-width: 60%;
+    max-width: 55%;
     display: flex;
+    flex-wrap: wrap;
     margin:auto;
     text-align: center;
-    justify-content: space-between;
+    justify-content: center;
+}
+.filter-home {
+    max-width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
+    text-align: center;
+    justify-content: center;
 }
 .filterbutton {
     font-size: 16px;
     display: flex;
     align-items: center;
     border-radius: 16px;
+    margin: 3px;
 }

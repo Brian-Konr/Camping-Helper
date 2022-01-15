@@ -31,16 +31,21 @@ const FilterPage = () => {
                 >
                     <div className='hotwrapper'>
                         <div className='classtitle'>
-                            <h2 className='class-name'>搜尋結果</h2>
+                            <h2>搜尋結果</h2>
                         </div>
                         <Divider style={{
-                            height: '7px',
+                            marginBottom: '3vh',
+                            height: '0.4vh',
                             width: '100%',
                             display: 'block',
                             backgroundColor: '#64A1D1'}}/>
                         <div className='filter'>
-                            <Button className='filterbutton'>現正可報名</Button>
-                            <Button className='filterbutton'>即將開放報名</Button>
+                            <Button className='filterbutton'>所有類別</Button>
+                            <Button className='filterbutton'>文法類</Button>
+                            <Button className='filterbutton'>財經類</Button>
+                            <Button className='filterbutton'>理工類</Button>
+                            <Button className='filterbutton'>醫護類</Button>
+                            <Button className='filterbutton'>其他</Button>
                         </div>
                         <Hotcard params={{
                             view: view,

@@ -3,7 +3,7 @@ import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import '../css/homepage.css';
 import instance from '../instance';
-const { Header, Content } = Layout;
+const { Footer, Header, Content } = Layout;
 const { TabPane } = Tabs;
 
 const Homepage = () => {
@@ -37,8 +37,7 @@ const Homepage = () => {
                             width: '100%',
                             display: 'block',
                             backgroundColor: '#64A1D1'}}/>
-                        <div className='filter'>
-                            <Button className='filterbutton'>所有類別</Button>
+                        <div className='filter-home'>
                             <Button className='filterbutton'>文法類</Button>
                             <Button className='filterbutton'>財經類</Button>
                             <Button className='filterbutton'>理工類</Button>
@@ -49,6 +48,7 @@ const Homepage = () => {
                     </div>
                 </Content>
             </Layout>
+            <Footer style={{outerHeight: '20%', marginTop: '5vh'}}></Footer>
         </Layout>
     );
 };
