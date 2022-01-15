@@ -97,10 +97,10 @@ An organizer can host his . her own activity on the platform by entering the hos
 
 ### Contirbution
 
-郭子麟: FE/PM
+[郭子麟](github.com/Brian-Konr): FE/PM
 
-劉鈺祥: BE/DevOps
+[劉鈺祥](github.com/dodofk): BE/DevOps
 
-劉智心: FE/UI/uX
+[劉智心](github.com/Cyalisonliu): FE/UIUX
 
 
