@@ -17,13 +17,20 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
 ### Backend
 
-## Account for Test usage
-Email: b08705038@ntu.edu.tw  
-Password: aaa
-
 ## Features
 
-### Register / Activation / Login
+### Register / Activate / Login
 An user can register for the app service by entering their Email and password. After submitting a registration request, the password is encrypted and stored in the database. And the server will send an Email to the requested user's Email for account activation. When the account is activated, the user can login and host or join activities on the platform.
 
+### View activities through different filters
+The home page displays all activities, and by clicking on different filters or searching by specific activity name, the page will automatically render corresponding results.
+
+### View activity detailed information
+An user can view the detailed description of activities he / she is interested in by clicking on the activity card. After clicking on it, the page will be led to the intro of the activity.
+
+### Join an activity
+When viewing an activity and feeling interested in it, an user can click on the sign up button and fill in the form required by the activity. After filling the form, the user can click on the submit button and complete the activation registration process. At the same time, organizers of the activity can see new registration information by looking up registration situations on the platform.
+
+### Host an activity
+An organizer can host his . her own activity on the platform by entering the host event button. After clicking on it, the user can fill in the activity information through detailed instructions. The information includes activity name, activity sign up interval, activity date, form questions and more.
 
