@@ -74,9 +74,9 @@ class Registration(models.Model):
         help_text="飲食習慣",
     )
     email = models.EmailField(
-        null=False,
-        blank=False,
-        help_text="E-mail 必填",
+        null=True,
+        blank=True,
+        help_text="E-mail",
     )
     contact_number = models.CharField(
         max_length=20,
