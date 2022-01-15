@@ -2,11 +2,12 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import '../css/card.css';
 import ThumbnailCard from '../components/ThumbnailCard';
-import PrevButton from "../icons/angle-circle-left.png";
-import NextButton from "../icons/angle-circle-right.png";
+import PrevButton from "../icons/caret-left.png";
+import NextButton from "../icons/caret-right.png";
 import instance from '../instance';
-import { Spin } from 'antd';
+import { Spin, Pagination } from 'antd';
 import { COVERS } from '../utility/randomCover';
+import { WarningOutlined } from '@ant-design/icons';
 const numEachPage = 6;
 
 const DisplayCard = ({params}) => {
@@ -81,16 +82,27 @@ const DisplayCard = ({params}) => {
 	return (
 		<>
 			{empty?
-				(<div>Empty!!!</div>)
+				(
+					<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+						<WarningOutlined id='warning-icon'/>
+						<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty!!!</div>
+					</div>)
 				:
 				(
-					<div style={{margin: '12px'}}>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>	
+					<div id='pagination'>{`page: ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>	
 				)
 			}
 			<div className='allCard-wrapper'>
-				<div className='stepButton'>
-					<img id="previous" src={PrevButton} style={{width: '90%'}} alt="prev-button" onClick={handlePrevious}/>
-				</div>
+				{empty?
+					<></>
+					:
+					(
+						<div className='stepButton'>
+							<img id="previous" src={PrevButton} style={{width: '90%'}} alt="prev-button" onClick={handlePrevious}/>
+						</div>
+					)
+				}
+
 				{
 					loading ?
 					<div className='loadingwrapper'>
@@ -110,9 +122,15 @@ const DisplayCard = ({params}) => {
 						))}
 					</div>
 				}
-				<div className='stepButton'>
-					<img id="next"src={NextButton} style={{width: '90%'}} onClick={handleNext} alt="next-button"/>
-				</div>
+				{empty?
+					<></>
+					:
+					(
+						<div className='stepButton'>
+							<img id="next"src={NextButton} style={{width: '90%'}} onClick={handleNext} alt="next-button"/>
+						</div>
+					)
+				}
 			</div>
 		</>
     )

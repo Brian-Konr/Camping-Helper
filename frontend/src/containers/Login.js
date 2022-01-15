@@ -52,7 +52,6 @@ const NormalLoginForm = () => {
   }
   return (
     <Layout className='page'>
-      <Content className='wrapper'>
         <div className='Leftside-login'>
           <div className='title'>
             歡迎回來!
@@ -64,6 +63,7 @@ const NormalLoginForm = () => {
         <div className='Rightside-login'>
           <div className='form-wrapper'>
             <h1>登入</h1>
+          </div>
             <Form
               name="normal_login"
               className="login-form"
@@ -123,9 +123,7 @@ const NormalLoginForm = () => {
                 </div>
               </Form.Item>
             </Form>
-          </div>
         </div>
-      </Content>
     </Layout>
   );
 };

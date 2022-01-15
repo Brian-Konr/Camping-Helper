@@ -1,7 +1,4 @@
 .page {
-    height: 100%;
-}
-.wrapper {
     display: flex;
     flex-direction: row;
     color: rgb(51, 51, 51);
@@ -12,10 +9,11 @@
 }
 .Leftside-signup {
     flex-basis: 55%;
-    min-height: 80vh;
-    padding: 20px;
+    min-height: 100vh;
+    padding: 5vh;
     background-color: #fff;
-    align-self: center; 
+    text-align: center; 
+    justify-content: center;
 }
 .Rightside-signup {
     min-height: 100vh;
@@ -28,20 +26,6 @@
     justify-content: center;
     position: relative;
 }
-.title {
-    color: #fff;
-    font-size: 3rem;
-    font-weight: 500;
-    padding: 16px;
-    text-align: center;
-}
-.intro {
-    color: #fff;
-    font-size: 2rem;
-    font-weight: 300;
-    padding: 16px;
-    text-align: center;
-}
 .item {
     font-size: 16px;
     border-radius: 16px;
@@ -49,12 +33,18 @@
 .signup-form {
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin-left: 13vw;
     max-width: 550px;
-    max-height: 100px;
+    max-height: 70vh;
     text-align: center;
     position: relative;
     align-self: center; 
+}
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: -35vw;
 }
 .SignUp-form-button {
     display: inline-flex;
@@ -74,11 +64,25 @@
 }
 .sign-up-check {
     margin-top: -10px;
-
 }
 .alter-button {
     margin-left: 6px;
     border-color: #FB8CB3;
     color: #FB8CB3;
     background-color: #fff;
+}
+
+.title {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 500;
+    padding: 16px;
+    text-align: center;
+}
+.intro {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 300;
+    padding: 16px;
+    text-align: center;
 }
