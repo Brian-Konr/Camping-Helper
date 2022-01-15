@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# have a different secret key in enviorment files
 SECRET_KEY = os.environ.get("SECRET_KEY", "3%shon=klkpnlfe4k$=r@40==6sn5!zd$2406!fqxc*=^fe5q=")
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -211,6 +211,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:5432",
     "http://localhost:3000",
+    "https://campinghelper.dodofk.xyz",
 ]
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")

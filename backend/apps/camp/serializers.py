@@ -50,6 +50,7 @@ class CampCreateSerializer(serializers.HyperlinkedModelSerializer):
             "place": {"required": True},
         }
 
+
 class CampStatusSerializer(serializers.HyperlinkedModelSerializer):
     host = serializers.PrimaryKeyRelatedField(
         many=False,
