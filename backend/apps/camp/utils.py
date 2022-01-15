@@ -20,7 +20,7 @@ question_dict = {
         "field": "birth_date",
     },
     6: {
-        "verbose_name": "學校名稱",
+        "verbose_name": "學校_年級",
         "field": "school",
     },
     7: {
