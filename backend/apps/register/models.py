@@ -25,6 +25,7 @@ class Registration(models.Model):
         max_length=50,
         default="",
         help_text="生理性別",
+        blank=True,
     )
     nationality = models.CharField(
         max_length=100,
@@ -58,6 +59,7 @@ class Registration(models.Model):
     fb_link = models.URLField(
         verbose_name="Facebook Link",
         null=True,
+        blank=True,
         help_text="臉書連結",
     )
     eating_habit = models.CharField(
