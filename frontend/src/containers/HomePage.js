@@ -1,9 +1,10 @@
-import { Layout, Divider, Button } from 'antd';
+import { Tabs, Layout, Divider, Button } from 'antd';
 import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import '../css/homepage.css';
 import instance from '../instance';
 const { Header, Content, Footer } = Layout;
+const { TabPane } = Tabs;
 
 const Homepage = () => {
 
@@ -28,16 +29,21 @@ const Homepage = () => {
                 >
                     <div className='hotwrapper'>
                         <div className='classtitle'>
-                            <h2 className='class-name'>所有活動</h2>
+                            <h2>所有活動</h2>
                         </div>
                         <Divider style={{
-                            height: '0.7vh',
+                            marginBottom: '3vh',
+                            height: '0.4vh',
                             width: '100%',
                             display: 'block',
                             backgroundColor: '#64A1D1'}}/>
                         <div className='filter'>
-                            <Button className='filterbutton'>現正可報名</Button>
-                            <Button className='filterbutton'>即將開放報名</Button>
+                            <Button className='filterbutton'>所有</Button>
+                            <Button className='filterbutton'>文法類</Button>
+                            <Button className='filterbutton'>財經類</Button>
+                            <Button className='filterbutton'>理工類</Button>
+                            <Button className='filterbutton'>醫護類</Button>
+                            <Button className='filterbutton'>其他</Button>
                         </div>
                         <Hotcard params={{}}/>
                     </div>
