@@ -89,19 +89,25 @@ WSGI_APPLICATION = 'camping_helper.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# 減少助教測試錯誤
 DATABASES = {
     'default': {
-        'ENGINE': dev_config.get("SQL_ENGINE", "django.db.backends.postgresql_psycopg2"),
-        'NAME': dev_config.get("SQL_DATABASE", ""),
-        'USER': dev_config.get("SQL_USER", ""),
-        'PASSWORD': dev_config.get("SQL_PASSWORD", ""),
-        'HOST': dev_config.get("SQL_HOST", "localhost"),
-        'PORT': dev_config.get("SQL_PORT", "5432"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 # DATABASES = {
-#     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
+#     'default': {
+#         'ENGINE': dev_config.get("SQL_ENGINE", "django.db.backends.postgresql_psycopg2"),
+#         'NAME': dev_config.get("SQL_DATABASE", ""),
+#         'USER': dev_config.get("SQL_USER", ""),
+#         'PASSWORD': dev_config.get("SQL_PASSWORD", ""),
+#         'HOST': dev_config.get("SQL_HOST", "localhost"),
+#         'PORT': dev_config.get("SQL_PORT", "5432"),
+#     }
 # }
+
 
 AUTH_USER_MODEL = 'user.User'
 
