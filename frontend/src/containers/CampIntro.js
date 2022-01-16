@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { useEffect, useState } from "react";
 import { Layout} from "antd";
 import { useParams, useNavigate } from "react-router-dom";
@@ -10,6 +10,9 @@ import checkLogin from "../utility/checkLogin";
 import { COVERS } from "../utility/randomCover";
 import moment from 'moment';
 import BottomFooter from '../components/BottomFooter';
+
+const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
+const now = moment().format(datetimeFormat);
 const CampIntro = () => {
 
     const {campId} = useParams();
@@ -94,7 +97,26 @@ const CampIntro = () => {
                 />
                 <div className="enterCamp-title">
                     <Button id="home-button" onClick={() => {navigate('/')}}>回到主頁</Button>
-                    {view === "guest" ? <Button id="switch-button" onClick={() => {navigate(`/answer_form/${campId}`)}} type="primary">我要報名</Button> : <></>}
+
+                    {view === "guest" ? 
+                    <Button 
+                        id="switch-button" 
+                        onClick={() => {
+                            let signupStart = signupDate[0].format(datetimeFormat);
+                            let signupDue = signupDate[1].format(datetimeFormat);
+                            let afterStart = moment(now).isAfter(signupStart);
+                            let beforeDue = moment(now).isBefore(signupDue);
+                            if(afterStart && beforeDue) navigate(`/answer_form/${campId}`);
+                            else if(!afterStart) message.warn("活動尚未開放報名!", 1.5);
+                            else if(!beforeDue) message.warn("活動已無法進行報名!", 1.5);
+                        }} 
+                        type="primary"
+                    >
+                        我要報名
+                    </Button>
+                    : <></>
+                    }
+                    
                     {(view === "host" && login) ? <Button id="switch-button" onClick={() => {navigate(`/manage/${campId}`)}} type="primary">查看報名狀況</Button> : <></>}
                 </div>
             </Layout>
