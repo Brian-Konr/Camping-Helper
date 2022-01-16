@@ -7,8 +7,8 @@ import { TagOutlined } from '@ant-design/icons';
 import '../css/card.css';
 
 const {Meta} = Card;
+const dateFormat = 'YYYY-MM-DD';
 const ThumbnailCard = ({name, keyVal, src, startDate, tag, info}) => {
-    const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
     const navigate = useNavigate();
 
     return (
@@ -29,7 +29,7 @@ const ThumbnailCard = ({name, keyVal, src, startDate, tag, info}) => {
             bodyStyle={{backgroundColor: '#d2f1ff', height: '180px', padding: '8px 12px'}}
         >
             <div className='detail-wrapper'>
-                <p>{moment(startDate[0]).format(datetimeFormat)} ~ {moment(startDate[1]).format(datetimeFormat)}</p>
+                <p>{moment(startDate[0]).format(dateFormat)} ~ {moment(startDate[1]).format(dateFormat)}</p>
                 <Meta
                   title={name}
                   description={info}

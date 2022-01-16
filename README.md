@@ -107,12 +107,14 @@ An organizer can view, examine, and download detailed registration information o
 
 ### Frontend
 
-#### User Interface
-* Ant Design for React
-* Icons in Flaticon / Ant Design Icons
+#### User Interface / User Experience
+* [Ant Design of React](https://ant.design/docs/react/introduce)
+* Icons in [Flaticon](https://www.flaticon.com/) / [Ant Design Icons](https://ant.design/docs/spec/icon)
+* Random pictures and backgrounds on [Unsplash](https://unsplash.com/) 
 #### Web Services
-* react-router-dom
-* axios
+* [React](https://reactjs.org/)
+* [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+* [Axios](https://axios-http.com/docs/intro)
 
 
 ### Backend
