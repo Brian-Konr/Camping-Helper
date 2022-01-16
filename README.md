@@ -117,6 +117,22 @@ An organizer can view, examine, and download detailed registration information o
 
 ### Backend
 
+#### Web Framework
+* Django
+* Django REST framework
+
+#### Auth
+* Djoser
+* Simple JWT
+* Django-Templated-Email
+
+#### File Storge
+* boto3
+* django-storages
+
+#### Database
+* psycopg2
+
 
 ## Contirbutors
 
