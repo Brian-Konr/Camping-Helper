@@ -17,7 +17,7 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
 ### Backend
 1. `cd backend`
-2. start virtual environment and load the required package
+2. Start virtual environment and load the required package
     - using python venv for example (of course you could use conda, pipenv, or something else):
     - you could type python if you sure the python your system have is python3
     - only test on python3.9.7 and on mac and ubuntu 18.0.4
@@ -48,25 +48,25 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
     Some explain for the .env.dev
     - you could change the secret key, we are using another key in production
-    - the email is my own email, please don't use it to do other things
-    - we've use a different s3 bucket for testing, so it's kind to contact us after testing so that we could close the service and save cost
+    - the Email is one of our team member's own Email, and please don't use it for other purposes
+    - we've use a different s3 bucket for testing, so it's encouraged to contact us after testing so that we could close the service and save some unnecessary costs.
 
-4. Set up Database and set up static files
+4. Set up Database and Set up static files
     ```console
     python3 manage.py migrate
 
     python3 manage.py collectstatic --no-input --clear
     ```
-    - Set up sqlite3 for local test to reduce opportunity of errors, we use postgresql in production
+    - Set up sqlite3 for local test to reduce opportunity of causing errors, we use postgresql in production
     - after this two command, a db.sqlite3 file will create at backend/, and the static files will store at s3
 
-5. create superuser (optional)
+5. Create superuser (optional)
 - To use the django admin page, you need to create a superuser account
     ``` console
         python3 manage.py createsuperuser
         # type the corresponding value to create superuser
     ```
-6. start server:
+6. Start server:
     ``` console
         python3 manage.py runserver
     ```
@@ -76,7 +76,7 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
     For API documentation: `localhost:8000/api/schema/swagger-ui/`
 
-    Use (Ctrl+C or Ctrl+D) to stop the server
+    Use (Ctrl+C or Ctrl+D) to shut down the server
 
 ## Features
 
@@ -89,18 +89,33 @@ The home page displays all activities, and by clicking on different filters or s
 ### View activity detailed information
 An user can view the detailed description of activities he / she is interested in by clicking on the activity card. After clicking on it, the page will be led to the intro of the activity.
 
-### Join an activity
+### Join an activity (As a participant)
 When viewing an activity and feeling interested in it, an user can click on the sign up button and fill in the form required by the activity. After filling the form, the user can click on the submit button and complete the activation registration process. At the same time, organizers of the activity can see new registration information by looking up registration situations on the platform.
 
-### Host an activity
-An organizer can host his . her own activity on the platform by entering the host event button. After clicking on it, the user can fill in the activity information through detailed instructions. The information includes activity name, activity sign up interval, activity date, form questions and more. Organizer could also download the csv file of registration result for further usage.
+### Host an activity (As an organizer)
+An organizer can host his / her own activity on the platform by entering the host event button. After clicking on it, the user can fill in the activity information through detailed instructions. The information includes activity name, activity sign up interval, activity date, form questions and more. After filling the required information, the organizer can submit and post his / her own activity. The activity will now be displayed on the platform and participants can submit the registration information in allowed sign up intervals.
 
-### Contirbution
+### Examine / Download all registration information (As an organizer)
+An organizer can view, examine, and download detailed registration information on the platform. The registration information will be displayed using table form, the organizer can view directly on the platform. And if he / she wants to download the information, just click on the download button, then the file is downloaded. What deserves to be noticed is that the downloaded csv file has solved the UTF-8 encoding problem, any Chinese letter can now be viewed properly even when opening the file using Excel.
 
-[郭子麟](https://github.com/Brian-Konr): FE/PM
+###
 
-[劉鈺祥](https://github.com/dodofk): BE/DevOps
+## Dependencies / Resources
 
-[劉智心](https://github.com/Cyalisonliu): FE/UIUX
+### Frontend
+
+### Backend
+
+
+## Contirbution
+
+資管三 B08705038 郭子麟 
+> [Brian Konr](https://github.com/Brian-Konr), Frontend / Project Manager
+
+資管三 B08705024 劉鈺祥
+> [Ricky Liu](https://github.com/dodofk), Backend / DevOps
+
+資管二 B09705024 劉智心
+> [Alison Liu](https://github.com/Cyalisonliu), Frontend / UI / UX
 
 
