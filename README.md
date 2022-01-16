@@ -163,7 +163,7 @@ Only listing the main package, otherwise it'll be too long
 資管二 B09705024 劉智心
 > [Alison Liu](https://github.com/Cyalisonliu), Frontend / User Interface / User Experience
 
-## Deploy Link
+## Deployment Link
 [Camping-Helper](https://campinghelper.dodofk.xyz/)
 
 *Thanks for using Camping-Helper, a convenient platform for displaying your activities.*
