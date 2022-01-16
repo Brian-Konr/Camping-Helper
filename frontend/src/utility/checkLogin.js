@@ -12,6 +12,7 @@ const checkLogin = async () => {
 
         } catch (error) {
             console.log(error);
+            localStorage.removeItem('token');
             return false;
         }
     }

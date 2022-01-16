@@ -18,6 +18,7 @@ const DisplayCard = ({params}) => {
 	const [cardArr, setCardArr] = useState([]);
 	const [totalLen, setTotalLen] = useState(0);
 	const [curPage, setCurPage] = useState(0);
+	const [offset, setOffset] = useState(0);
 	const [loading, setLoading] = useState(true);
 	const [empty, setEmpty] = useState(false);
 
@@ -25,7 +26,7 @@ const DisplayCard = ({params}) => {
 	useEffect(() => {
 		setCardArr([]);
 		setCurPage(0);
-		console.log('reset');
+		setOffset(0);
 	}, [params])
 
 	useEffect(() => {
@@ -65,10 +66,11 @@ const DisplayCard = ({params}) => {
 			setLoading(false);
 		}
 	}
+	
 
 	useEffect(() => {
 		if(cardArr.length < totalLen && cardArr !== 0) {
-			fetchData(curPage * numEachPage);
+			fetchData(cardArr.length);
 		}
 	}, [curPage])
 
