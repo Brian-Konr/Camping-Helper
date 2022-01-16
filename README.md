@@ -17,12 +17,11 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
 ### Backend
 1. `cd backend`
-2. Start virtual environment and load the required package
+2. Start virtual environment and load the required packages
     - using python venv for example (of course you could use conda, pipenv, or something else):
     - you could type python if you sure the python your system have is python3
     - only test on python3.9.7 and on mac and ubuntu 18.0.4
     ```
-
     # for mac/linux
     python3 -m venv be_env
     source be_env/bin/activate
@@ -34,10 +33,9 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     # for windows(powershell)
     python3 -m venv be_env
     be_env/Scripts/Activate.ps1
-
-    # install required pacakges
-    pip3 install -r requirements.txt
     ```
+    Make sure you are now in the virtual environment, then you can install required packages by typing the following command:  
+    `pip3 install -r requirements.txt`
 3. Set up environment files
 
     ```console
@@ -48,7 +46,7 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     cp .env.dev.ta.defaults .env.dev
     ```
 
-    Some explain for the .env.dev
+    Explanations and precautions for the .env.dev
     - you could change the secret key, we are using another key in production
     - the Email is one of our team member's own Email, and please don't use it for other purposes
     - we've use a different s3 bucket for testing, so it's encouraged to contact us after testing so that we could close the service and save some unnecessary costs.
