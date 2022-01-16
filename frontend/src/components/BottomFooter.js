@@ -3,6 +3,7 @@ import "../css/campManagement.css";
 import Alison from '../icons/Alison.JPG';
 import Ricky from '../icons/Ricky.JPG';
 import Brain from '../icons/Brain.jpg';
+import DevOpsGod from '../icons/DevOps_God.jpg';
 
 const {Footer} = Layout;
 const footerStyle = {
@@ -19,9 +20,10 @@ const BottomFooter = () => {
             <div style={{minWidth: '50px'}}></div>
             <p style={{color: '#fff'}}>Camping-Helper Copyright © 2021</p>
             <div style={{display: 'flex', flexDirection: 'row'}}>
-                <a href="https://github.com/Cyalisonliu"><img src={Alison} style={{width:'3em', borderRadius: '50%', margin: '1vh'}} alt="a-button"></img></a>
-                <a href="https://github.com/dodofk"><img src={Ricky} style={{width:'3em', borderRadius: '50%', margin: '1vh'}} alt="r-button"></img></a>
-                <a href="https://github.com/Brian-Konr"><img src={Brain} style={{ width:'3em',borderRadius: '50%', margin: '1vh'}} alt="r-button"></img></a>
+                <a href="https://github.com/Cyalisonliu" target="_blank"><img src={Alison} style={{width:'3em', borderRadius: '50%', margin: '1vh'}} alt="a-button"></img></a>
+                <a href="https://github.com/dodofk" target="_blank"><img src={Ricky} style={{width:'3em', borderRadius: '50%', margin: '1vh'}} alt="r-button"></img></a>
+                <a href="https://github.com/Brian-Konr" target="_blank"><img src={Brain} style={{ width:'3em',borderRadius: '50%', margin: '1vh'}} alt="r-button"></img></a>
+                <a href="https://github.com/fredred375" target="_blank"><img src={DevOpsGod} style={{ width:'3em',borderRadius: '50%', margin: '1vh'}} alt="r-button"></img></a>
             </div>
         </Footer>
     )
