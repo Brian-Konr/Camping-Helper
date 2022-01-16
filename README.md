@@ -112,8 +112,9 @@ An organizer can view, examine, and download detailed registration information o
 * Icons in [Flaticon](https://www.flaticon.com/) / [Ant Design Icons](https://ant.design/docs/spec/icon)
 * Random pictures and backgrounds on [Unsplash](https://unsplash.com/) 
 #### Web Services
+* [React](https://reactjs.org/)
 * [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
-* [axios](https://axios-http.com/docs/intro)
+* [Axios](https://axios-http.com/docs/intro)
 
 
 ### Backend
