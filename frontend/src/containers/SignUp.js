@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { DatePicker, Form, Input, Select, Checkbox, Button, Layout, Modal } from 'antd';
 import '../css/signup.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import instance from '../instance';
+import { HomeOutlined } from '@ant-design/icons';
 const { Content } = Layout;
 
 const { Option } = Select;
@@ -38,6 +39,7 @@ const tailFormItemLayout = {
 };
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const monthDayCheck = (month, day) => {
     let checkedMonth = month, checkedDay = day;
@@ -195,7 +197,7 @@ const RegistrationForm = () => {
                     <Input.Password className='item' placeholder="確認密碼"/>
                 </Form.Item>
                 <div className='button-wrapper'>
-                <Form.Item
+                {/*<Form.Item
                   name="if_agree"
                   valuePropName="checked"
                   rules={[
@@ -209,7 +211,7 @@ const RegistrationForm = () => {
                     <Checkbox className='sign-up-check'>
                       我同意此網站的<a href="">《服務條款》、《資料政策》</a>
                     </Checkbox>
-                </Form.Item>
+                </Form.Item>*/}
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit" className="SignUp-form-button">
@@ -227,8 +229,12 @@ const RegistrationForm = () => {
           </div>
         </div>
         <div className='Rightside-signup'>
+          <div id="backhome-right" onClick={() => navigate('/')}>
+            <HomeOutlined id='homeIcon'/>
+            <p style={{fontSize: '1.3em', color: '#fff'}}>主頁</p>
+          </div>
           <div className='title'>
-            歡迎加入!
+            歡迎加入 !
           </div>
           <div className='intro'>
             介紹

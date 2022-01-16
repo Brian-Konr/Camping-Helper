@@ -7,8 +7,9 @@ import { TagOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import '../css/card.css';
 
 const {Meta} = Card;
+
+const datetimeFormat = 'YYYY-MM-DD';
 const ThumbnailCard = ({name, keyVal, src, startDate, tag, info, place}) => {
-    const datetimeFormat = 'YYYY-MM-DD';
     const navigate = useNavigate();
 
     return (
