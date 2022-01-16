@@ -118,23 +118,36 @@ An organizer can view, examine, and download detailed registration information o
 
 
 ### Backend
-
+Only listing the main package, otherwise it'll be too long
 #### Web Framework
-* Django
-* Django REST framework
+* [Django](https://www.djangoproject.com)
+* [Django REST framework](https://www.django-rest-framework.org)
 
-#### Auth
-* Djoser
-* Simple JWT
-* Django-Templated-Email
+#### Autheentication
+* [Djoser](https://djoser.readthedocs.io/en/latest/)
+* [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+* [Django-Templated-Email](https://github.com/vintasoftware/django-templated-email)
 
 #### File Storge
-* boto3
-* django-storages
+* [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+* [django-storages](https://django-storages.readthedocs.io/en/latest/)
 
 #### Database
-* psycopg2
+* [psycopg2](https://www.psycopg.org)
 
+#### OpenAPI generation
+* [drf-spectacular](https://drf-spectacular.readthedocs.io/en/latest/)
+
+#### utils
+* [django-cors-headers](https://github.com/adamchainz/django-cors-headers)
+* [python-dotenv](https://github.com/theskumar/python-dotenv)
+
+### DevOps
+* Docker/docker-compose
+* Nginx
+
+### Third Party Service
+* Digital Ocean Droplet Space Database DNS
 
 ## Contirbutors
 
