@@ -37,6 +37,7 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     ```
     Make sure you are now in the virtual environment, then you can install required packages by typing the following command:  
     `pip3 install -r requirements.txt`
+    (using pip3 if use have python2 and python3 on your system, otherwise, use pip)
 3. Set up environment files
 
     ```console
