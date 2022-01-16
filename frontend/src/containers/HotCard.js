@@ -1,17 +1,20 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import '../css/card.css';
+import { useParams, useNavigate } from "react-router-dom";
 import ThumbnailCard from '../components/ThumbnailCard';
 import PrevButton from "../icons/caret-left.png";
 import NextButton from "../icons/caret-right.png";
 import instance from '../instance';
-import { Spin, Pagination } from 'antd';
+import { Spin, Button } from 'antd';
 import { COVERS } from '../utility/randomCover';
 import { WarningOutlined } from '@ant-design/icons';
 import moment from 'moment';
+import '../css/card.css';
 const numEachPage = 6;
 
 const DisplayCard = ({params}) => {
+
+	const navigate = useNavigate();
 
 	// TODO: when the data is empty, set icon
 
@@ -84,10 +87,14 @@ const DisplayCard = ({params}) => {
 		<>
 			{empty?
 				(
-					<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-						<WarningOutlined id='warning-icon'/>
-						<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty!!!</div>
-					</div>)
+					<>
+						<div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '5vh'}}>
+							<WarningOutlined id='warning-icon'/>
+							<div id='pagination' style={{fontSize: '18px', marginTop: '2vh', color: 'hsl(0, 10%, 60%)'}}>Empty ! ! !</div>
+						</div>
+						<Button id="home-nav" onClick={() => navigate('/')}>返回首頁</Button>
+					</>
+				)
 				:
 				(
 					<div id='pagination'>{`page : ${curPage+1} / ${Math.ceil(totalLen * 1.0 / numEachPage)}`}</div>	
@@ -122,6 +129,7 @@ const DisplayCard = ({params}) => {
 									tag={item.category}
 									startDate={[moment(item.camp_start_date), moment(item.camp_end_date)]}
 									info={item.short_description}
+									place={item.place}
 								/> 
 						))}
 					</div>

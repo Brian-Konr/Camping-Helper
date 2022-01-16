@@ -2,6 +2,7 @@ import { Layout, Divider, Button } from 'antd';
 import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import BottomFooter from '../components/BottomFooter';
+import Background from "../icons/background.png";
 import { useEffect, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import '../css/homepage.css';
@@ -21,7 +22,8 @@ const Homepage = () => {
     return (
         <Layout 
             style={{
-                backgroundColor: '#fff',
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
             }}>
             {/* <Appbar /> */}
             <Navbar />

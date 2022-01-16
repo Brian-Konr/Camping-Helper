@@ -4,6 +4,7 @@ import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import CategoryFilterBar from '../components/CategoryFilterBar';
+import Background from "../icons/background.png";
 import '../css/homepage.css';
 import { SearchOutlined } from '@ant-design/icons';
 import BottomFooter from '../components/BottomFooter';
@@ -31,7 +32,8 @@ const FilterPage = () => {
     return (
         <Layout 
             style={{
-                backgroundColor: '#fff',
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
             }}>
             {/* <Appbar /> */}
             <Navbar />

@@ -61,6 +61,8 @@ const Navbar = ({setLogin}) => {
     const [isLogin, setIsLogin] = useState(true);
     const [searchName, setSearchName] = useState("");
     const [view, setView] = useState("");
+    const [username, serUsername] = useState("");
+
 
     useEffect(async() => {
         let login = await checkLogin();

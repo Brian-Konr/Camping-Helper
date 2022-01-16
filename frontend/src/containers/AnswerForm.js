@@ -6,23 +6,15 @@ import checkLogin from "../utility/checkLogin";
 import CompleteForm from "../components/CompleteForm";
 import Navbar from '../components/Navbar';
 import BottomFooter from '../components/BottomFooter';
+import Layout from "antd/lib/layout/layout";
+import Background from "../icons/background.png";
 
 const titleStyle = {
     color: 'black',
     fontSize: '1.5rem',
     fontWeight: '500',
     textAlign: 'center',
-    marginTop: '0.5vh'
-}
-const questionCard = {
-    margin:'auto',
-    width: '42vw',
-    maxHeight: '10vh',
-    position: 'relative',
-    padding: '1vw',
-    backgroundColor: '#fff',
-    borderRadius: '24px',
-    border: '2px solid #4faaf5bd'
+    marginTop: '0.5vh',
 }
 const homeButton = {
     textAlign: 'center',
@@ -60,18 +52,27 @@ const AnswerForm = () => {
     }, [])
 
     return (
-        <>
+        <Layout
+            style={{
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
+            }}>
             <Navbar />
-            <div style={{minHeight: '4vh', backgroundColor: '#fff'}}></div>
-            <div style={questionCard}>
-                <h1 style={titleStyle}>{`${campName}報名表單`}</h1>
-            </div>
-            <div style={{minHeight: '4vh', backgroundColor: '#fff'}}></div>
-            <CompleteForm 
-                questionArr={questionArr}
-                campId={campId}
-                setSuccess={setSuccess}
-            />
+            <Layout style={{width: '43%', margin: '0 auto', backgroundColor: 'rgba(255, 255, 255, 0)'}}>
+                <div style={{minHeight: '4vh', backgroundColor: 'rgba(255, 255, 255, 0)'}}></div>
+                    <h1 style={titleStyle}>{`${campName}報名表單`}</h1>
+                <Divider style={{
+                            marginBottom: '5vh',
+                            height: '0.2vh',
+                            width: '100%',
+                            display: 'block',
+                            backgroundColor: 'rgba(201, 186, 168, 0.795)'}}/>
+                <CompleteForm 
+                    questionArr={questionArr}
+                    campId={campId}
+                    setSuccess={setSuccess}
+                />
+            </Layout>
             <Modal
                 style={{borderRadius: '20px'}}
                 visible={success}
@@ -91,7 +92,7 @@ const AnswerForm = () => {
             </Modal>
             {/* <FormInput value={name} setValue={setName} questionName={"姓名"} placeholder={"請輸入你的名字"} maxLength={10}/> */}
             <BottomFooter />   
-        </>
+        </Layout>
     )
 }
 
