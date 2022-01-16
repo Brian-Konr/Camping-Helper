@@ -22,15 +22,17 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     - you could type python if you sure the python your system have is python3
     - only test on python3.9.7 and on mac and ubuntu 18.0.4
     ```
-    python3 -m venv be_env
 
     # for mac/linux
+    python3 -m venv be_env
     source be_env/bin/activate
 
     # for windows(cmd.exe)
+    python3 -m venv be_env
     be_env/Scripts/activate.bat
 
     # for windows(powershell)
+    python3 -m venv be_env
     be_env/Scripts/Activate.ps1
 
     # install required pacakges
@@ -78,6 +80,7 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
     Use (Ctrl+C or Ctrl+D) to shut down the server
 
+
 ## Features
 
 ### Register / Activate / Login
@@ -104,10 +107,18 @@ An organizer can view, examine, and download detailed registration information o
 
 ### Frontend
 
+#### User Interface
+* Ant Design for React
+* Icons in Flaticon / Ant Design Icons
+#### Web Services
+* react-router-dom
+* axios
+
+
 ### Backend
 
 
-## Contirbution
+## Contirbutors
 
 資管三 B08705038 郭子麟 
 > [Brian Konr](https://github.com/Brian-Konr), Frontend / Project Manager
@@ -116,6 +127,11 @@ An organizer can view, examine, and download detailed registration information o
 > [Ricky Liu](https://github.com/dodofk), Backend / DevOps
 
 資管二 B09705024 劉智心
-> [Alison Liu](https://github.com/Cyalisonliu), Frontend / UI / UX
+> [Alison Liu](https://github.com/Cyalisonliu), Frontend / User Interface / User Experience
+
+## Deploy Link
+[Camping-Helper](https://campinghelper.dodofk.xyz/)
+
+*Thanks for using Camping-Helper, a convenient platform for displaying your activities.*
 
 
