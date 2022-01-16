@@ -32,6 +32,7 @@ INTERNAL_APPS = [
 ]
 
 EXTERNAL_APPS = [
+    'corsheaders',
     # 'social_django',
     'rest_framework',
     'rest_framework_simplejwt',
@@ -56,6 +57,7 @@ DJANGO_APPS = [
 INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS + DJANGO_APPS
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -236,3 +238,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = dev_config.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = dev_config.get('EMAIL_HOST_PASSWORD')
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:8000",
+    "http://localhost:5432",
+    "http://localhost:3000",
+    "https://campinghelper.dodofk.xyz",
+]
