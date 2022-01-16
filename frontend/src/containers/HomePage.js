@@ -44,7 +44,7 @@ const Homepage = () => {
                             height: '0.4vh',
                             width: '100%',
                             display: 'block',
-                            backgroundColor: '#64A1D1'}}/>
+                            backgroundColor: 'rgba(201, 186, 168, 0.795)'}}/>
                         <div className='filter-home'>
                             {/* <Button className='filterbutton'>所有類別</Button>
                             <Button className='filterbutton' onClick={handleTagFilter(1)}>文法類</Button>

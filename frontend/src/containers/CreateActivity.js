@@ -183,7 +183,7 @@ const CreateActivity = () => {
                 </div>
 
 				<div style={{display: current === 2 ? 'flex': 'none', flexDirection: current === 2? 'column': 'none'}}>
-                    <div className="final-title">
+                    <div className="question-title">
                         <h2>增添營隊資訊 !</h2>
                     </div>
                     <div className="final-wrapper">

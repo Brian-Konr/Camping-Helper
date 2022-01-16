@@ -14,7 +14,7 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
 
     return (
         type === 'edit' ? 
-            <div style={{display: 'flex', flexDirection: 'column', flex: 7, backgroundColor: '#fff'}}>
+            <div style={{display: 'flex', flexDirection: 'column', flex: 7, backgroundColor: '#fff', borderRadius: '16px 0px 0px 16px'}}>
                 <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px 0px 0px 0px'}}>
                     <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px 0px 0px 0px'}}/>
                 </div>

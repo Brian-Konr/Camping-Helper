@@ -18,9 +18,7 @@ const CreateInput = ({activityName, startDate, setFile, setActivityName, setStar
         <>
             <div className="custom-card">
                 <div>
-                    <div className='inputTitle'>
-                        輸入活動資訊 !
-                    </div>
+                    <h2>輸入活動資訊 !</h2>
                     <Card title="營隊封面圖片">
                         <UploadImg 
                             setSrc={setSrc}
