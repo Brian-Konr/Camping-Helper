@@ -39,10 +39,13 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 3. Set up environment files
 
     ```console
+    # use the following command when you don't have the env files provided by us
+    # you should change the value with your own s3
     cp .env.dev.defaults .env.dev
 
-    # we will give the required env files named .env.dev.ta.defaults
-    # you could copy paste the .env.dev.ta.defaults to .env.dev or use the following commands
+    # Or you having the environment files provied by us
+    # We will give the required env files named .env.dev.ta.defaults
+    # you could copy paste the .env.dev.ta.defaults content to .env.dev or use the following commands by first adding the .env.dev.ta.defaults to the backend/ directory
     cp .env.dev.ta.defaults .env.dev
     ```
 
