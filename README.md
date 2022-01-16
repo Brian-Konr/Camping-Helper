@@ -17,12 +17,12 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 
 ### Backend
 1. `cd backend`
-2. Start virtual environment and load the required package
+2. Start virtual environment and load the required packages
     - using python venv for example (of course you could use conda, pipenv, or something else):
-    - you could type python if you sure the python your system have is python3
-    - only test on python3.9.7 and on mac and ubuntu 18.0.4
+    - type python3 or python according to your own machine (Since I'm using old Mac, I should use python3)
+    - if using python3 getting error in the following step, you might want to use python, we've occured this error on our Windows laptop
+    - only test on python3.9.7 and on mac and ubuntu 20.0.4
     ```
-
     # for mac/linux
     python3 -m venv be_env
     source be_env/bin/activate
@@ -34,21 +34,24 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     # for windows(powershell)
     python3 -m venv be_env
     be_env/Scripts/Activate.ps1
-
-    # install required pacakges
-    pip3 install -r requirements.txt
     ```
+    Make sure you are now in the virtual environment, then you can install required packages by typing the following command:  
+    `pip3 install -r requirements.txt`
+    (using pip3 if use have python2 and python3 on your system, otherwise, use pip)
 3. Set up environment files
 
     ```console
+    # use the following command when you don't have the env files provided by us
+    # you should change the value with your own s3
     cp .env.dev.defaults .env.dev
 
-    # we will give the required env files named .env.dev.ta.defaults
-    # you could copy paste the .env.dev.ta.defaults to .env.dev or use the following commands
+    # Or you having the environment files provied by us
+    # We will give the required env files named .env.dev.ta.defaults
+    # you could copy paste the .env.dev.ta.defaults content to .env.dev or use the following commands by first adding the .env.dev.ta.defaults to the backend/ directory
     cp .env.dev.ta.defaults .env.dev
     ```
 
-    Some explain for the .env.dev
+    Explanations and precautions for the .env.dev
     - you could change the secret key, we are using another key in production
     - the Email is one of our team member's own Email, and please don't use it for other purposes
     - we've use a different s3 bucket for testing, so it's encouraged to contact us after testing so that we could close the service and save some unnecessary costs.
@@ -107,16 +110,47 @@ An organizer can view, examine, and download detailed registration information o
 
 ### Frontend
 
-#### User Interface
-* Ant Design for React
-* Icons in Flaticon / Ant Design Icons
+#### User Interface / User Experience
+* [Ant Design of React](https://ant.design/docs/react/introduce)
+* Icons in [Flaticon](https://www.flaticon.com/) / [Ant Design Icons](https://ant.design/docs/spec/icon)
+* Random pictures and backgrounds on [Unsplash](https://unsplash.com/) 
 #### Web Services
-* react-router-dom
-* axios
+* [React](https://reactjs.org/)
+* [react-router-dom](https://v5.reactrouter.com/web/guides/quick-start)
+* [Axios](https://axios-http.com/docs/intro)
 
 
 ### Backend
+Only listing the main package, otherwise it'll be too long
+#### Web Framework
+* [Django](https://www.djangoproject.com)
+* [Django REST framework](https://www.django-rest-framework.org)
 
+#### Autheentication
+* [Djoser](https://djoser.readthedocs.io/en/latest/)
+* [Simple JWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+* [Django-Templated-Email](https://github.com/vintasoftware/django-templated-email)
+
+#### File Storge
+* [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+* [django-storages](https://django-storages.readthedocs.io/en/latest/)
+
+#### Database
+* [psycopg2](https://www.psycopg.org)
+
+#### OpenAPI generation
+* [drf-spectacular](https://drf-spectacular.readthedocs.io/en/latest/)
+
+#### utils
+* [django-cors-headers](https://github.com/adamchainz/django-cors-headers)
+* [python-dotenv](https://github.com/theskumar/python-dotenv)
+
+### DevOps
+* Docker/docker-compose
+* Nginx
+
+### Third Party Service
+* Digital Ocean Droplet Space Database DNS
 
 ## Contirbutors
 
