@@ -129,7 +129,7 @@ const CampManage = () => {
                 {empty ? 
                     <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', marginTop: '15vh'}}>
 						<WarningOutlined id='warning-icon'/>
-						<div id='pagination' style={{fontSize: '18px', marginTop: '5vh', color: 'hsl(0, 10%, 60%)'}}>Empty ! ! !</div>
+						<div id='pagination_camp' style={{fontSize: '18px', marginTop: '5vh', color: 'hsl(0, 10%, 60%)'}}>Empty ! ! !</div>
 					</div>
                     :
                     <>
