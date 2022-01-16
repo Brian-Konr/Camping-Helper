@@ -19,8 +19,9 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 1. `cd backend`
 2. Start virtual environment and load the required packages
     - using python venv for example (of course you could use conda, pipenv, or something else):
-    - you could type python if you sure the python your system have is python3
-    - only test on python3.9.7 and on mac and ubuntu 18.0.4
+    - type python3 or python according to your own machine (Since I'm using old Mac, I should use python3)
+    - if using python3 getting error in the following step, you might want to use python, we've occured this error on our Windows laptop
+    - only test on python3.9.7 and on mac and ubuntu 20.0.4
     ```
     # for mac/linux
     python3 -m venv be_env
