@@ -133,7 +133,6 @@ const CreateActivity = () => {
         <Layout 
             style={{
                 backgroundImage: `url(${Background})`,
-                opacity: '85%'
             }}>
             <Navbar />
             <Layout className='layout-container'>

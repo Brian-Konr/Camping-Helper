@@ -33,7 +33,6 @@ const FilterPage = () => {
         <Layout 
             style={{
                 backgroundImage: `url(${Background})`,
-                opacity: '85%'
             }}>
             {/* <Appbar /> */}
             <Navbar />

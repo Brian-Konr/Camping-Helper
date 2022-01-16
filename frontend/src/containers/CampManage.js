@@ -123,7 +123,6 @@ const CampManage = () => {
         <Layout
             style={{
                 backgroundImage: `url(${Background})`,
-                opacity: '85%'
             }}>
             <Navbar />
             <Layout className='table-container'>

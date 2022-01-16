@@ -82,7 +82,6 @@ const CampIntro = () => {
         <Layout
             style={{
                 backgroundImage: `url(${Background})`,
-                opacity: '85%'
             }}>
             <Navbar setLogin={setLogin}/>
             <div style={{height: '5vh'}}></div>

@@ -55,7 +55,6 @@ const AnswerForm = () => {
         <Layout
             style={{
                 backgroundImage: `url(${Background})`,
-                opacity: '85%'
             }}>
             <Navbar />
             <Layout style={{width: '43%', margin: '0 auto', backgroundColor: 'rgba(255, 255, 255, 0)'}}>
