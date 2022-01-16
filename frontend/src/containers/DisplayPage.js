@@ -75,11 +75,11 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                 </div>
             </div>
         : <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#fff', borderRadius: '16px'}}>
-                <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px 16px 0px 0px'}}>
+                <div id="img-container" style={{maxHeight: '80vh', overflowY: 'hidden', borderRadius: '16px 16px 0px 0px'}}>
                     <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
                 </div>
                 <div style={{marginTop: '1vh', marginLeft: '1.5vw', marginRight: '1.5vw', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                        <h1 style={{fontSize: '1.6em'}}>{activityName}</h1>
+                        <h1 style={{fontSize: '1.8em'}}>{activityName}</h1>
                     <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '1.1em', marginTop: '1vw', size: 'large'}}>
                         {tag === 1? "文法類" : 
                             tag === 2? "財經類" :

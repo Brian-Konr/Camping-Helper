@@ -118,7 +118,8 @@ h2 {
     text-align: center;
 }
 .question-footer {
-    position: fixed;
+    margin-top: 0.8vw;
+    margin-bottom: 1vw;
     left:45%;
     bottom: 2%;
     display: flex;

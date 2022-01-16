@@ -53,7 +53,7 @@ const FilterPage = () => {
                                     <h2>我舉辦的活動</h2>
                                     : 
                                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                                        <SearchOutlined style={{fontSize: '2.4em',color: 'hsl(0, 1%, 50%)', marginTop: '1.7vh'}}/>
+                                        <SearchOutlined style={{fontSize: '2.4em',color: 'hsl(0, 1%, 50%)', marginTop: '2.2vw'}}/>
                                         <h2>搜尋結果</h2>
                                     </div>
                             }

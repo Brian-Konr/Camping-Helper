@@ -62,7 +62,8 @@ const NormalLoginForm = () => {
             歡迎回來 !
           </div>
           <div className='intro'>
-            介紹
+            <p>Camping-Helper</p>
+            <p>讓你的營隊, 被更多人看見</p>
           </div>
         </div>
         <div className='Rightside-login'>

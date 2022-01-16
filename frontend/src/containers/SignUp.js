@@ -85,7 +85,7 @@ const RegistrationForm = () => {
           <p>請至您的電子信箱進行驗證</p>
         </Modal>
         <div className='Leftside-signup'>
-          <div className='form-wrapper'>
+          <div className='form-wrapper-s'>
             <h1>創建新帳號</h1>
             <Form
                 {...formItemLayout}
@@ -237,7 +237,8 @@ const RegistrationForm = () => {
             歡迎加入 !
           </div>
           <div className='intro'>
-            介紹
+            <p>Camping-Helper</p>
+            <p>讓你的營隊, 被更多人看見</p>
           </div>
         </div>
       </Content>
