@@ -9,7 +9,7 @@ import AnswerForm from './containers/AnswerForm';
 import FilterPage from './containers/FilterPage';
 import CampManage from './containers/CampManage';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Beforeunload } from 'react-beforeunload';
+// import { Beforeunload } from 'react-beforeunload';
 // TODO: set style, y-axis overflow or x-axis overflow make the screen is fixed
 
 const App = () => {
@@ -18,26 +18,21 @@ const App = () => {
         document.title = "Camping-Helper";
     }, [])
     
-    const handleClear = () => {
-        localStorage.clear();
-    }
     return (
         <div className='App'>
-            <Beforeunload onBeforeunload={handleClear}>
-                <Router>
-                    <Routes>
-                        <Route exact path="/" element={<HomePage /> } />
-                        <Route path="/search" element={<FilterPage />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/signup" element={<SignUp />} />
-                        <Route path="/activation/:uid/:token" element={<Activation />} />
-                        <Route path="/create" element={<CreateActivity />} />
-                        <Route path="/camping_info/:campId" element={<CampIntro />} />
-                        <Route path="/answer_form/:campId" element={<AnswerForm />} />
-                        <Route path="/manage/:campId" element={<CampManage />} />
-                    </Routes>
-                </Router>
-            </Beforeunload>
+            <Router>
+                <Routes>
+                    <Route exact path="/" element={<HomePage /> } />
+                    <Route path="/search" element={<FilterPage />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signup" element={<SignUp />} />
+                    <Route path="/activation/:uid/:token" element={<Activation />} />
+                    <Route path="/create" element={<CreateActivity />} />
+                    <Route path="/camping_info/:campId" element={<CampIntro />} />
+                    <Route path="/answer_form/:campId" element={<AnswerForm />} />
+                    <Route path="/manage/:campId" element={<CampManage />} />
+                </Routes>
+            </Router>
         </div>
     )
 }
