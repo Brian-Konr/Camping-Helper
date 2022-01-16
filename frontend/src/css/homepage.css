@@ -1,11 +1,11 @@
 .layout-container {
-    background: #fff;
+    background: rgba(255, 255, 255, 0);
     padding: 0px;
     width: 80%;
     margin: 0 auto;
 }
 .site-layout-background {
-    background: #fff;
+    background: rgba(255, 255, 255, 0);
 }
 .hotwrapper {
     position: relative;

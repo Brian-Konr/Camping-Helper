@@ -4,6 +4,7 @@ import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import CategoryFilterBar from '../components/CategoryFilterBar';
+import Background from "../icons/background.png";
 import '../css/homepage.css';
 import { SearchOutlined } from '@ant-design/icons';
 import BottomFooter from '../components/BottomFooter';
@@ -31,7 +32,8 @@ const FilterPage = () => {
     return (
         <Layout 
             style={{
-                backgroundColor: '#fff',
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
             }}>
             {/* <Appbar /> */}
             <Navbar />
@@ -51,7 +53,7 @@ const FilterPage = () => {
                                     <h2>我舉辦的活動</h2>
                                     : 
                                     <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                                        <SearchOutlined style={{fontSize: '3vw',color: 'hsl(0, 1%, 50%)', marginTop: '1vh'}}/>
+                                        <SearchOutlined style={{fontSize: '2.4em',color: 'hsl(0, 1%, 50%)', marginTop: '1.7vh'}}/>
                                         <h2>搜尋結果</h2>
                                     </div>
                             }
@@ -61,7 +63,7 @@ const FilterPage = () => {
                             height: '0.4vh',
                             width: '100%',
                             display: 'block',
-                            backgroundColor: '#64A1D1'}}/>
+                            backgroundColor: 'rgba(201, 186, 168, 0.795)'}}/>
                         <div className='filter'>
                             {/* <Button className='filterbutton' onClick={() => navigate('/')}>所有類別</Button>
                             <Button className='filterbutton'>文法類</Button>

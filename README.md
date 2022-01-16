@@ -10,7 +10,7 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
 1. `cd frontend`
 2. Run `yarn`
 3. find `frontend\.env` and set value of `REACT_APP_BACKEND_URL` according to different scenarios:
-    - If the server is run at localhost, replace the value with `localhost:8000`
+    - If the server is run at localhost, replace the value with `http://localhost:8000`
     - If the server is deployed, replace the value with `https://campinghelper.temp.dodofk.xyz`
 4. Run `yarn start` and make sure the app is run at `localhost:3000` (Due to CORS Issue)
 5. You should see your app being launched in your default browser.

@@ -56,10 +56,10 @@ const NormalLoginForm = () => {
         <div className='Leftside-login'>
           <div id="backhome" onClick={() => navigate('/')}>
             <HomeOutlined id='homeIcon'/>
-            <p style={{fontSize: '1.6em', color: '#fff'}}>主頁</p>
+            <p style={{fontSize: '1.3em', color: '#fff'}}>主頁</p>
           </div>
           <div className='title'>
-            歡迎回來!
+            歡迎回來 !
           </div>
           <div className='intro'>
             介紹
@@ -110,12 +110,6 @@ const NormalLoginForm = () => {
                   placeholder="Password"
                 />
               </Form.Item>
-              <Form.Item>
-                <a className="login-form-forgot" href="">
-                  忘記密碼？
-                </a>
-              </Form.Item>
-
               <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   登入

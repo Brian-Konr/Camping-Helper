@@ -7,6 +7,7 @@ import { OPTIONS } from "../utility/questions";
 import "../css/campManagement.css";
 import { WarningOutlined } from '@ant-design/icons';
 import BottomFooter from '../components/BottomFooter';
+import Background from "../icons/background.png";
 
 const {Footer} = Layout;
 const numberPerPage = 8;
@@ -119,7 +120,11 @@ const CampManage = () => {
 
 
     return (
-        <>
+        <Layout
+            style={{
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
+            }}>
             <Navbar />
             <Layout className='table-container'>
                 {empty ? 
@@ -150,7 +155,7 @@ const CampManage = () => {
             </Layout>
             <Button id="home" onClick={() => navigate('/')}>返回首頁</Button>
             <BottomFooter />
-        </>
+        </Layout>
     )
 }
 

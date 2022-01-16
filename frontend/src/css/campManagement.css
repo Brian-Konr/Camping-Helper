@@ -1,8 +1,6 @@
-.classtitle {
-    margin-top: 2vh;
-}
 .classtitle h2 {
-    font-size: 2rem;
+    margin-top: 4vh;
+    font-size: 1.4rem;
     font-weight: 500;
     text-align: center;
 }
@@ -17,43 +15,43 @@
 }
 .ant-table-thead > tr > th{
     color: white;
-    background: #6fb2ff !important;
+    background: #8b6c58 !important;
 }
 
 .ant-table-tbody > tr > th{
-    color: rgb(255, 255, 255);
-    background: #8ac0fd !important;
-    border:2px solid #6fb2ff;
+    color: rgb(223, 193, 193);
+    background: #8b6c58 !important;
+    border:2px solid #8b6c58;
 }
 .table-container {
-    background: #fff;
+    background: rgba(255, 255, 255, 0);
     padding: 0px;
     width: 80%;
     margin: 0 auto;
 }
 .table {
     margin-top: 2vh;
-    border:2px solid #6fb2ff;
+    border:2px solid #8b6c58;
 }
 #home {
-    bottom: 5%;
     text-align: center;
+    max-width: 100px;
     border-radius: 20px;
     border-color: #FB8CB3;
     color: #fff;
     background-color: #FB8CB3;
-    margin-top: 2vh;
-    margin-bottom: 10vh;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
     left: 47.2%;
 }
 #warning-icon {
-    margin-top: 3vh;
+    margin-top: 2.5vh;
     font-size: 8vw;
     color: hsl(0, 1%, 85%)
 }
 #pagination {
     margin-left: 47%;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
 
 }

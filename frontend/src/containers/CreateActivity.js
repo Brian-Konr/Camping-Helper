@@ -15,6 +15,7 @@ import totalCheck from "../utility/createInputTotalCheck";
 import axios from 'axios';
 import instance from "../instance";
 import BottomFooter from '../components/BottomFooter';
+import Background from "../icons/background.png";
 
 const {Step} = Steps;
 const dateFormat = "YYYY-MM-DD";
@@ -129,7 +130,11 @@ const CreateActivity = () => {
     }, [startDate])
 
     return (
-        <div>
+        <Layout 
+            style={{
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
+            }}>
             <Navbar />
             <Layout className='layout-container'>
                 <Steps className="stepwrapper" current={current}>
@@ -247,7 +252,7 @@ const CreateActivity = () => {
 				</Modal>
             </Layout>
             <BottomFooter />
-        </div>
+        </Layout>
     )
 }
 

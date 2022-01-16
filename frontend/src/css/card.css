@@ -15,8 +15,8 @@
 }
 .detail-wrapper {
     display: grid;
-    grid-template-rows: 0.8fr 2.4fr 0.8fr;
-    max-height: 180px;
+    grid-template-rows: 1fr 2fr 1fr;
+    max-height: 160px;
 }
 .detail-wrapper p {
     color: rgb(95, 106, 116);
@@ -60,4 +60,15 @@
 .ant-card-hoverable:hover {
     transform: translate(0px,-10px);
     box-shadow: 0 5px 15px rgba(83, 83, 83, 0.3);
+}
+#home-nav {
+    bottom: 5%;
+    text-align: center;
+    max-width: 100px;
+    border-radius: 20px;
+    border-color: #FB8CB3;
+    color: #fff;
+    background-color: #FB8CB3;
+    margin-top: 5vh;
+    left: 46.8%;
 }

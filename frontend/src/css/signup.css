@@ -86,3 +86,14 @@
     padding: 16px;
     text-align: center;
 }
+#backhome-right {
+    position: absolute;
+    top: 2vw;
+    left: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#backhome-right:hover {
+    cursor: pointer;
+}

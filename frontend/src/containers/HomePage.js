@@ -2,6 +2,7 @@ import { Layout, Divider, Button } from 'antd';
 import Hotcard from './HotCard';
 import Navbar from '../components/Navbar';
 import BottomFooter from '../components/BottomFooter';
+import Background from "../icons/background.png";
 import { useEffect, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import '../css/homepage.css';
@@ -21,7 +22,8 @@ const Homepage = () => {
     return (
         <Layout 
             style={{
-                backgroundColor: '#fff',
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
             }}>
             {/* <Appbar /> */}
             <Navbar />
@@ -42,7 +44,7 @@ const Homepage = () => {
                             height: '0.4vh',
                             width: '100%',
                             display: 'block',
-                            backgroundColor: '#64A1D1'}}/>
+                            backgroundColor: 'rgba(201, 186, 168, 0.795)'}}/>
                         <div className='filter-home'>
                             {/* <Button className='filterbutton'>所有類別</Button>
                             <Button className='filterbutton' onClick={handleTagFilter(1)}>文法類</Button>

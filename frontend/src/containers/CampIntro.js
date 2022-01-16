@@ -10,9 +10,11 @@ import checkLogin from "../utility/checkLogin";
 import { COVERS } from "../utility/randomCover";
 import moment from 'moment';
 import BottomFooter from '../components/BottomFooter';
+import Background from "../icons/background.png";
 
 const datetimeFormat = 'YYYY-MM-DD HH:mm:ss';
 const now = moment().format(datetimeFormat);
+
 const CampIntro = () => {
 
     const {campId} = useParams();
@@ -77,9 +79,13 @@ const CampIntro = () => {
     }, [])
 
     return (
-        <>
+        <Layout
+            style={{
+                backgroundImage: `url(${Background})`,
+                opacity: '85%'
+            }}>
             <Navbar setLogin={setLogin}/>
-            <div style={{height: '3vh'}}></div>
+            <div style={{height: '5vh'}}></div>
             <Layout className='layout-container'>
                 <DisplayPage 
                     activityName={activityName}
@@ -121,7 +127,7 @@ const CampIntro = () => {
                 </div>
             </Layout>
             <BottomFooter />
-        </>
+        </Layout>
     )
 }
 

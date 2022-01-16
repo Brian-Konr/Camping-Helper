@@ -14,18 +14,18 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
 
     return (
         type === 'edit' ? 
-            <div style={{display: 'flex', flexDirection: 'column', flex: 7,backgroundColor: 'rgb(255, 255, 255)'}}>
-                <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px'}}>
-                    <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
+            <div style={{display: 'flex', flexDirection: 'column', flex: 7, backgroundColor: '#fff', borderRadius: '16px 0px 0px 16px'}}>
+                <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px 0px 0px 0px'}}>
+                    <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px 0px 0px 0px'}}/>
                 </div>
-                {<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <h1><span>營隊名稱 : </span>{activityName}</h1>
-                    <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                {<div style={{marginTop: '1vw', marginRight: '1.5vw', marginLeft: '1.5vw', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <h1 style={{fontSize: '1.6em'}}><span>營隊名稱 : </span>{activityName}</h1>
+                    <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '1.1em', marginTop: '1vw', size: 'large'}}>
                         類組分類 ( optional )
                     </Tag>
                 </div>}
                 <div>
-                    <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                    <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '1.1em', marginTop: '1vw', marginRight: '1.5vw', marginLeft: '1.5vw', size: 'large'}}>
                         報名期間 : {moment(signupDate[0]).format(datetimeFormat)} ~ {moment(signupDate[1]).format(datetimeFormat)}
                     </Tag>
                 </div>
@@ -74,15 +74,13 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                     </Content>
                 </div>
             </div>
-        : <div style={{display: 'flex', flexDirection: 'column'}}>
-                <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px'}}>
+        : <div style={{display: 'flex', flexDirection: 'column', backgroundColor: '#fff', borderRadius: '16px'}}>
+                <div id="img-container" style={{maxHeight: '70vh', overflowY: 'hidden', borderRadius: '16px 16px 0px 0px'}}>
                     <img src={src} style={{width: '100%', padding: '0px', borderRadius: '16px'}}/>
                 </div>
-                <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <div>
-                        <h1>{activityName}</h1>
-                    </div>
-                    <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                <div style={{marginTop: '1vh', marginLeft: '1.5vw', marginRight: '1.5vw', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                        <h1 style={{fontSize: '1.6em'}}>{activityName}</h1>
+                    <Tag color="cyan" icon={<TagOutlined />} style={{fontSize: '1.1em', marginTop: '1vw', size: 'large'}}>
                         {tag === 1? "文法類" : 
                             tag === 2? "財經類" :
                                 tag === 3? "理工類" :
@@ -90,7 +88,7 @@ const DisplayPage = ({src, activityName, startDate, signupDate, info, place, fee
                     </Tag>
                 </div>
                 <div>
-                    <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '16px', margin: '1vw', size: 'large'}}>
+                    <Tag icon={<ClockCircleOutlined />} color="warning" style={{fontSize: '1.1em', marginTop: '1vw', marginRight: '1.5vw', marginLeft: '1.5vw', size: 'large'}}>
                         報名期間 : {moment(signupDate[0]).format(datetimeFormat)} ~ {moment(signupDate[1]).format(datetimeFormat)}
                     </Tag>
                 </div>
