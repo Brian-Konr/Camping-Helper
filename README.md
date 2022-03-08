@@ -38,25 +38,8 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     Make sure you are now in the virtual environment, then you can install required packages by typing the following command:  
     `pip3 install -r requirements.txt`
     (using pip3 if use have python2 and python3 on your system, otherwise, use pip)
-3. Set up environment files
 
-    ```console
-    # use the following command when you don't have the env files provided by us
-    # you should change the value with your own s3
-    cp .env.dev.defaults .env.dev
-
-    # Or you having the environment files provied by us
-    # We will give the required env files named .env.dev.ta.defaults
-    # you could copy paste the .env.dev.ta.defaults content to .env.dev or use the following commands by first adding the .env.dev.ta.defaults to the backend/ directory
-    cp .env.dev.ta.defaults .env.dev
-    ```
-
-    Explanations and precautions for the .env.dev
-    - you could change the secret key, we are using another key in production
-    - the Email is one of our team member's own Email, and please don't use it for other purposes
-    - we've use a different s3 bucket for testing, so it's encouraged to contact us after testing so that we could close the service and save some unnecessary costs.
-
-4. Set up Database and Set up static files
+3. Set up Database and Set up static files
     ```console
     python3 manage.py migrate
 
@@ -65,13 +48,13 @@ First, we need to clone this repo. After this, `cd` to the repo directory, then 
     - Set up sqlite3 for local test to reduce opportunity of causing errors, we use postgresql in production
     - after this two command, a db.sqlite3 file will create at backend/, and the static files will store at s3
 
-5. Create superuser (optional)
+4. Create superuser (optional)
 - To use the django admin page, you need to create a superuser account
     ``` console
         python3 manage.py createsuperuser
         # type the corresponding value to create superuser
     ```
-6. Start server:
+5. Start server:
     ``` console
         python3 manage.py runserver
     ```
